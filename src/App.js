@@ -18,7 +18,7 @@ import {
     FormText,
     Jumbotron,
     Button
-} from 'reactstrap';
+} from 'reactstrap'
 
 
 

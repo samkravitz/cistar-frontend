@@ -32,11 +32,15 @@ class Header extends Component {
     }
 
     handleChangeR = event => {
-        this.setState({ numReactants: event.target.value })
+        const numReactants = event.target.value
+        this.setState({ numReactants })
+        this.props.changeNumProducts(numReactants)
     }
 
     handleChangeP = event => {
-        this.setState({ numProducts: event.target.value })
+        const numProducts = event.target.value
+        this.setState({ numProducts })
+        this.props.changeNumProducts(numProducts)
     }
 
     render() {
@@ -47,7 +51,6 @@ class Header extends Component {
                         <Row>
                             <Col>
                                 <h1>CISTAR Web Tool</h1>
-                            
                             </Col>
                         </Row>
 
@@ -95,7 +98,8 @@ class Header extends Component {
 			          <Input type="select" name="n_r" id="exampleSelect" value={this.state.numReactants} onChange={this.handleChangeR}>
 			            <option>1</option>
 			            <option>2</option>
-
+                        <option>3</option>
+                        <option>4</option>
 			          </Input>
 			        </FormGroup>
 			        </Col>
@@ -105,7 +109,8 @@ class Header extends Component {
 			          <Input type="select" name="n_p" id="exampleSelect" value={this.state.numProducts} onChange={this.handleChangeP} >
 			            <option>1</option>
 			            <option>2</option>
-
+                        <option>3</option>
+                        <option>4</option>
 			          </Input>
 			        </FormGroup>
 			        </Col>
