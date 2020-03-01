@@ -1,23 +1,13 @@
 import React, { Component } from 'react'
 
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
     Container,
     Row,
     Col,
     FormGroup,
-    Form,
     Label,
     Input,
-    FormText,
-    Jumbotron,
-    Button
+    Jumbotron
 } from 'reactstrap';
 
 
@@ -32,13 +22,13 @@ class Header extends Component {
     }
 
     handleChangeR = event => {
-        const numReactants = event.target.value
+        const numReactants = parseInt(event.target.value, 10)
         this.setState({ numReactants })
-        this.props.changeNumProducts(numReactants)
+        this.props.changeNumReactants(numReactants)
     }
 
     handleChangeP = event => {
-        const numProducts = event.target.value
+        const numProducts = parseInt(event.target.value)
         this.setState({ numProducts })
         this.props.changeNumProducts(numProducts)
     }
@@ -55,7 +45,7 @@ class Header extends Component {
                         </Row>
 
                         <Row>
-                        <Col sm='2'> <h7>Temperature (&deg;C)</h7> </Col>
+                        <Col sm='2'> <h6>Temperature (&deg;C)</h6> </Col>
                         <Col sm="2">
                             <FormGroup>          
                                <Input type="text" name="text" id="exampleText" />
@@ -63,7 +53,7 @@ class Header extends Component {
 	                            
 	                     </Col>
 
-	                     <Col sm="1"> <h7>State </h7> </Col>
+	                     <Col sm="1"> <h6>State </h6> </Col>
                         <Col sm="2">
          		          <FormGroup>
 			        
@@ -79,7 +69,7 @@ class Header extends Component {
 
                         </Row>
                         <Row>
-                        <Col sm='2'> <h7>Pressure (bar)</h7> </Col>
+                        <Col sm='2'> <h6>Pressure (bar)</h6> </Col>
                         <Col sm="2">
                             <FormGroup>          
                                <Input type="text" name="text" id="exampleText" />

@@ -29,7 +29,10 @@ class Main extends Component {
                     changeNumReactants={this.changeNumReactants}
                     changeNumProducts={this.changeNumProducts}
                 />
-                <Body />
+                <Body
+                    numReactants={this.state.numReactants}
+                    numProducts={this.state.numProducts}
+                />
             </div>
         )
     }
