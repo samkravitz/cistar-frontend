@@ -22,34 +22,32 @@ class Reactant extends Component {
         const { number } = this.props
         return (
             <div className="Reactant" style={styles}>
-                
                 <h4 sm="4">Reactant {number}</h4>
- 
-                    <Input type="file" name="file" id="exampleFile" />     
-                    <Input type="text" name="text" id="exampleText" />
-                    <Input type="text" name="text" id="exampleText" />   
-                    <Input type="text" name="text" id="exampleText" />
                 
-                    <br/>
-       
-                    <Input type="text" name="text" id="exampleText" />         
-                    <Input type="text" name="text" id="exampleText" />      
-                    <Input type="text" name="text" id="exampleText" />   
-                    <Input type="text" name="text" id="exampleText" />    
-                    <Input type="text" name="text" id="exampleText" />          
-                    <Input type="text" name="text" id="exampleText" />       
-                    <Input type="text" name="text" id="exampleText" />                    
-                    <Input type="text" name="text" id="exampleText" />                    
-                    <Input type="text" name="text" id="exampleText" />                 
-                    <Input type="text" name="text" id="exampleText" />         
-                    <Input type="text" name="text" id="exampleText" />         
-                    <Input type="text" name="text" id="exampleText" />
-                    <Input type="text" name="text" id="exampleText" />
-                
-                    
-                      
-                    <Input type="text" name="text" id="exampleText" />   
-                    <Input type="text" name="text" id="exampleText" />
+                <Input type="file" name="file" id="exampleFile" />     
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />   
+                <Input type="text" name="text" id="exampleText" />
+                <br/>
+    
+                <Input type="text" name="text" id="exampleText" />         
+                <Input type="text" name="text" id="exampleText" />      
+                <Input type="text" name="text" id="exampleText" />   
+                <Input type="text" name="text" id="exampleText" />    
+                <Input type="text" name="text" id="exampleText" />          
+                <Input type="text" name="text" id="exampleText" />       
+                <Input type="text" name="text" id="exampleText" />                    
+                <Input type="text" name="text" id="exampleText" />                    
+                <Input type="text" name="text" id="exampleText" />                 
+                <Input type="text" name="text" id="exampleText" />         
+                <Input type="text" name="text" id="exampleText" />         
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <br/>
+            
+                <Input type="text" name="text" id="exampleText" />   
+                <Input type="text" name="text" id="exampleText" />
             </div>
         )
     }
@@ -58,7 +56,7 @@ class Reactant extends Component {
 const styles = {
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
+    //height: '100%',
     //flexDirection: 'column',
     //textAlign: 'center',
     //marginTop: 'auto',

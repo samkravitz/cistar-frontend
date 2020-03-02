@@ -46,10 +46,6 @@ class Body extends Component {
 
 const style = {
     display: 'flex',
-    //flexDirection: 'row',
-    //display: 'grid',
-    //gridTemplateColumns: '25% 25% 25% 25% 25% 25% 25%',
-    //gridAutoRows: 'auto',
     justifyContent: 'center',
     height: '100%'
 }
