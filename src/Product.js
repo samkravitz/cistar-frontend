@@ -9,7 +9,7 @@ import {
     Row
 } from 'reactstrap'
 
-class Reactant extends Component {
+class Product extends Component {
 
     constructor() {
         super()
@@ -26,8 +26,8 @@ class Reactant extends Component {
         const { number } = this.props
         const backgroundColor = this.getBackgroundColor(number)
         return (
-            <div className="Reactant" style={{ ...styles, backgroundColor: `${backgroundColor}` }}>
-                <h4 sm="4">Reactant {number}</h4>
+            <div className="Product" style={{ ...styles, backgroundColor: `${backgroundColor}`}}>
+                <h4 sm="4">Product {number}</h4>
                 
                 <Input type="file" name="file" id="exampleFile" />     
                 <Input type="text" name="text" id="exampleText" />
@@ -68,4 +68,4 @@ const styles = {
     //backgroundColor: '#f1f1f1'
 }
 
-export default Reactant
+export default Product

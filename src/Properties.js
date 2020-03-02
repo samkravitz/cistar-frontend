@@ -3,9 +3,9 @@ import React from 'react'
 const Properties = props => {
     return (
         <div className="Properties" style={styles.main}>
-            <div>
+            
                 <h2>Properties</h2>
-                <h1></h1>
+                <div></div>
                 <h6>Product Name</h6>
                 <h6>Mol. Weight (g/mol)</h6>
                 <h6>CAS-No.</h6>
@@ -29,7 +29,7 @@ const Properties = props => {
                 <h5>Operating Parameters</h5>
                 <h6>Temperature (°C)</h6>
                 <h6>Pressure (Pa)</h6>
-            </div>
+            
         </div>
         
     )
@@ -37,13 +37,17 @@ const Properties = props => {
 
 const styles = {
     main: {
-        display: 'flex',
-        flexDirection: 'column',
+        display: 'grid',
+        //gridTemplateRows: '100px 200px',
+        //gridTemplateRows: 'repeat(23, minmax(auto, 1fr))',
+        gridTemplateRows: 'repeat(5, 1fr) 1fr repeat(17, minmax(auto, 1fr))',
         //height: '100%',
+        margin: '0',
         //marginTop: 'auto',
         //marginBottom: 'auto',
         //flexDirection: 'column',
-        justifyContent: 'space-evenly',
+        //justifyContent: 'space-evenly',
+        alignItems: 'center',
         textAlign: 'center',
         //alignItems: 'center',
         //alignItems: 'stretch',
