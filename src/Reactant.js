@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import {
     FormGroup,
     Input,
@@ -8,6 +7,7 @@ import {
     Container,
     Row
 } from 'reactstrap'
+import axios from 'axios'
 
 class Reactant extends Component {
 
@@ -20,8 +20,20 @@ class Reactant extends Component {
 
     // when a file is uploaded
     handleChange = e => {
-        console.log('upload')
-        console.log(e)
+        const name = e.target.files[0].name
+        console.log('name is ', name)
+        console.log('http://localhost:5000/pdf/' + name)
+        const formData = new FormData()
+        formData.append("file", e.target.files[0])
+        formData.append('fileName', name)
+        console.log(formData)
+        axios.get('http://localhost:5000/').then(res => console.log(res))
+        axios.post('http://localhost:5000/pdf', {
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
     }
 
     getBackgroundColor = number => {
