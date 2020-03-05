@@ -9,7 +9,7 @@ import {
     Row
 } from 'reactstrap'
 
-class Reactant extends Component {
+class Diluent extends Component {
 
     constructor() {
         super()
@@ -18,29 +18,12 @@ class Reactant extends Component {
         }
     }
 
-    // when a file is uploaded
-    handleChange = e => {
-        console.log('upload')
-        console.log(e)
-    }
-
-    getBackgroundColor = number => {
-        return number % 2 === 0 ? '' : '#f1f1f1'
-    }
-
     render() {
-        const { number } = this.props
-        const backgroundColor = this.getBackgroundColor(number)
         return (
-            <div className="Reactant" style={{ ...styles }}>
-                <h4 sm="4">Reactant {number}</h4>
+            <div className="Diluent" style={{ ...styles }}>
+                <h4 sm="4">Diluent </h4>
                 
-                <Input
-                    type="file"
-                    name="file"
-                    id="exampleFile"
-                    onChange={this.handleChange}
-                />     
+                <Input type="file" name="file" id="exampleFile" />     
                 <Input type="text" name="text" id="exampleText" />
                 <Input type="text" name="text" id="exampleText" />   
                 <Input type="text" name="text" id="exampleText" />
@@ -79,4 +62,4 @@ const styles = {
     backgroundColor: '#f1f1f1'
 }
 
-export default Reactant
+export default Diluent

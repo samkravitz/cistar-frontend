@@ -4,7 +4,7 @@ const Properties = props => {
     return (
         <div className="Properties" style={styles.main}>
             
-                <h2>Properties</h2>
+                <h2>Property</h2>
                 <div></div>
                 <h6>Product Name</h6>
                 <h6>Mol. Weight (g/mol)</h6>
@@ -41,18 +41,9 @@ const styles = {
         //gridTemplateRows: '100px 200px',
         //gridTemplateRows: 'repeat(23, minmax(auto, 1fr))',
         gridTemplateRows: 'repeat(5, 1fr) 1fr repeat(17, minmax(auto, 1fr))',
-        //height: '100%',
         margin: '0',
-        //marginTop: 'auto',
-        //marginBottom: 'auto',
-        //flexDirection: 'column',
-        //justifyContent: 'space-evenly',
         alignItems: 'center',
         textAlign: 'center',
-        //alignItems: 'center',
-        //alignItems: 'stretch',
-        //height: '100%',
-        //alignItems: 'stretch'
     },
 }
 

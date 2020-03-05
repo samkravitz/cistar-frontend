@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Reactant from './Reactant'
 import Product from './Product'
 import Properties from './Properties'
+import Diluent from './Diluent'
 
 class Body extends Component {
 
@@ -12,13 +13,6 @@ class Body extends Component {
             numberOfElements: props.numReactants + props.numProducts + 2
         }
     }
-
-    // componentDidUpdate(prevProps) {
-    //     const numberOfElements = this.props.numReactants + this.props.numProducts + 2
-    //     if (numberOfElements !== this.state.numberOfElements) {
-    //         this.setState({ numberOfElements })
-    //     }
-    // }
 
     getReactants = numReactants => {
         const reactants = []
@@ -54,6 +48,7 @@ class Body extends Component {
                 <Properties />
                 {reactants}
                 {products}
+                <Diluent />
             </div>
         )
     }

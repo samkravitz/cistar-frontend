@@ -26,7 +26,7 @@ class Product extends Component {
         const { number } = this.props
         const backgroundColor = this.getBackgroundColor(number)
         return (
-            <div className="Product" style={{ ...styles, backgroundColor: `${backgroundColor}`}}>
+            <div className="Product" style={{ ...styles }}>
                 <h4 sm="4">Product {number}</h4>
                 
                 <Input type="file" name="file" id="exampleFile" />     
@@ -65,7 +65,7 @@ const styles = {
     textAlign: 'center',
     alignItems: 'center',
     //height: '100%',
-    //backgroundColor: '#f1f1f1'
+    backgroundColor: '#f1f1f1'
 }
 
 export default Product
