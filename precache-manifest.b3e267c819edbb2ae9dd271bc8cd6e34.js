@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "76db9652567cefa9d9bf92e82d40afae",
+    "revision": "5c2225c73391c98d2fa2d591ce8a437c",
     "url": "/cistar-frontend/index.html"
   },
   {
