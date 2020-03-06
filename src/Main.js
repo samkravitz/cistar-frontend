@@ -11,6 +11,7 @@ class Main extends Component {
         this.state = {
             numReactants: 1,
             numProducts: 1,
+            numDiluents: 0,
         }
     }
 
@@ -22,16 +23,22 @@ class Main extends Component {
         this.setState({ numProducts })
     }
 
+    changeNumDiluents = numDiluents => {
+        this.setState({ numDiluents })
+    }
+
     render() {
         return (
             <div className="Main">
                 <Header
                     changeNumReactants={this.changeNumReactants}
                     changeNumProducts={this.changeNumProducts}
+                    changeNumDiluents={this.changeNumDiluents}
                 />
                 <Body
                     numReactants={this.state.numReactants}
                     numProducts={this.state.numProducts}
+                    numDiluents={this.state.numDiluents}
                 />
             </div>
         )

@@ -19,9 +19,10 @@ class Diluent extends Component {
     }
 
     render() {
+        const { number } = this.props
         return (
             <div className="Diluent" style={{ ...styles }}>
-                <h4 sm="4">Diluent </h4>
+                <h4 sm="4">Diluent {number} </h4>
                 
                 <Input type="file" name="file" id="exampleFile" />     
                 <Input type="text" name="text" id="exampleText" />

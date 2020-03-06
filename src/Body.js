@@ -10,7 +10,7 @@ class Body extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            numberOfElements: props.numReactants + props.numProducts + 2
+            numberOfElements: props.numReactants + props.numProducts + props.numDiluents + 1
         }
     }
 
@@ -40,15 +40,30 @@ class Body extends Component {
         return products
     }
 
+    getDiluents = numDiluents => {
+        const diluents = []
+        for (let i = 0; i < numDiluents; i++) {
+            diluents.push(
+                <Diluent
+                    key={i}
+                    number={i + 1}
+                />
+            )
+        }
+        return diluents
+    }
+
     render() {
-        const reactants = this.getReactants(this.props.numReactants)
-        const products = this.getProducts(this.props.numProducts)
+        const { numReactants, numProducts, numDiluents } = this.props
+        const reactants = this.getReactants(numReactants)
+        const products = this.getProducts(numProducts)
+        const diluents = this.getDiluents(numDiluents)
         return (
             <div className="Body" style={{ ...style }}>
                 <Properties />
                 {reactants}
                 {products}
-                <Diluent />
+                {diluents}
             </div>
         )
     }
