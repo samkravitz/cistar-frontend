@@ -71,11 +71,6 @@ class Reactant extends Component {
                 <Input type="text" name="text" id="exampleText" />         
                 <Input type="text" name="text" id="exampleText" />
                 <Input type="text" name="text" id="exampleText" />
-                <Input type="text" name="text" id="exampleText" />
-                <br/>
-            
-                <Input type="text" name="text" id="exampleText" />   
-                <Input type="text" name="text" id="exampleText" />
             </div>
         )
     }

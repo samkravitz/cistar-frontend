@@ -58,9 +58,9 @@ class Header extends Component {
                         </div>
                     </div>
 
-                    <div className="OperatingParams" style={styles.operatingParams}>
+                    <div className="OperatingParams">
                         <h4>Operating Parameters: </h4>
-                        <div className="Params" style={{ padding: '1em' }}>
+                        <div className="Params" style={styles.operatingParams}>
                             <h6>Temperature (&deg;C)</h6>
                             <Input type="text" name="Temperature" id="Temperature" />
                             <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
@@ -105,7 +105,7 @@ class Header extends Component {
                         </Input>
                     </span>
                 </div>
-                <span>Hi</span>
+                <span style={{ color: '#c71e1e' }}>* Inputs in red are required user inputs *</span>
             </div >
             
         )
@@ -135,7 +135,8 @@ const styles = {
     },
 
     operatingParams: {
-
+        color: '#c71e1e',
+        padding: '1em'
     },
 
     rpd: {
