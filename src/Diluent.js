@@ -50,10 +50,11 @@ class Diluent extends Component {
 
 const styles = {
     display: 'grid',
+    gridTemplateRows: 'repeat(5, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
     //gridTemplateRows: '100px 200px',
     //gridTemplateRows: 'repeat(23, 1fr)',
     textAlign: 'center',
-    alignItems: 'center',
+    alignItems: 'start',
     //height: '100%',
     backgroundColor: '#f1f1f1'
 }

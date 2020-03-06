@@ -14,6 +14,20 @@ class Body extends Component {
         }
     }
 
+    getNumberOfElements = (reactants, products, diluents) => {
+        // + 1 to account for products column
+        return reactants + products + diluents + 1
+    }
+
+    // update number of Reactants, Products, Diluents that will be rendered
+    componentDidUpdate(prevProps, prevState) {
+        const { numReactants, numProducts, numDiluents } = this.props
+        const numberOfElements = this.getNumberOfElements(numReactants, numProducts, numDiluents)
+        if (prevState.numberOfElements !== numberOfElements) {
+            this.setState({ numberOfElements })
+        }
+    }
+
     getReactants = numReactants => {
         const reactants = []
         for (let i = 0; i < numReactants; i++) {
@@ -60,7 +74,7 @@ class Body extends Component {
         const diluents = this.getDiluents(numDiluents)
         return (
             <div className="Body" style={{ ...style }}>
-                <Properties />
+                <Properties numberOfElements={this.state.numberOfElements}/>
                 {reactants}
                 {products}
                 {diluents}

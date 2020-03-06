@@ -1,10 +1,15 @@
 import React from 'react'
 
-const Properties = props => {
-    return (
-        <div className="Properties" style={styles.main}>
+const getAlignment = numberOfElements => {
+    return numberOfElements > 6 ? 'start' : 'center'
+}
 
-            <h2>Property</h2>
+const Properties = props => {
+    const alignment = getAlignment(props.numberOfElements)
+    return (
+        <div className="Properties" style={{ ...styles.main, alignItems: alignment }}>
+
+            <h2 style={{ alignSelf: 'end' }}>Property</h2>
             <div></div>
             <h6>Product Name</h6>
             <h6 style={{ color: '#c71e1e' }}>Mol. Weight (g/mol)</h6>
@@ -36,7 +41,8 @@ const styles = {
         //gridTemplateRows: 'repeat(23, minmax(auto, 1fr))',
         gridTemplateRows: 'repeat(5, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
         margin: '0',
-        alignItems: 'center',
+        //alignItems: 'center',
+        //alignItems: 'start',
         textAlign: 'center',
     },
 }
