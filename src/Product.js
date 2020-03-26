@@ -31,7 +31,6 @@ class Product extends Component {
                 
                 <Input type="file" name="file" id="exampleFile" />     
                 <Input type="text" name="text" id="exampleText" />
-                <Input type="text" name="text" id="exampleText" />
                 <Input type="text" name="text" id="exampleText" />   
                 <Input type="text" name="text" id="exampleText" />
                 <br/>
@@ -56,7 +55,7 @@ class Product extends Component {
 
 const styles = {
     display: 'grid',
-    gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+    gridTemplateRows: 'repeat(5, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
     //gridTemplateRows: '100px 200px',
     //gridTemplateRows: 'repeat(23, 1fr)',
     textAlign: 'center',
