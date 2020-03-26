@@ -14,26 +14,21 @@ class Reactant extends Component {
     constructor() {
         super()
         this.state = {
-            
+            a: [],
         }
     }
 
     // when a file is uploaded
-    handleChange = e => {
-        const name = e.target.files[0].name
-        console.log('name is ', name)
-        console.log('http://localhost:5000/pdf/' + name)
+    handleChange = async e => {
+        if (!e.target.files[0]) return
+
         const formData = new FormData()
-        formData.append("file", e.target.files[0])
-        formData.append('fileName', name)
-        console.log(formData)
-        axios.get('http://localhost:5000/').then(res => console.log(res))
-        axios.post('http://localhost:5000/pdf', {
-            body: formData
+        formData.set('file', e.target.files[0], e.target.files[0].name)
+        const response = await axios.post('http://localhost:5000/pdf', formData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
         })
-            .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
+        .catch(err => console.log(err))
+        this.setState({ a: response.data })
     }
 
     getBackgroundColor = number => {
@@ -46,29 +41,31 @@ class Reactant extends Component {
         return (
             <div className="Reactant" style={{ ...styles }}>
                 <h4 sm="4">Reactant {number}</h4>
-                
+
                 <Input
                     type="file"
                     name="file"
+                    encType="multipart/form-data"
                     id="exampleFile"
                     onChange={this.handleChange}
-                />     
+                />
+                <Input type="text" name="text" id="exampleText" value={this.state.a[0] || ''}/>
                 <Input type="text" name="text" id="exampleText" />
-                <Input type="text" name="text" id="exampleText" />   
                 <Input type="text" name="text" id="exampleText" />
-                <br/>
-    
-                <Input type="text" name="text" id="exampleText" />         
-                <Input type="text" name="text" id="exampleText" />      
-                <Input type="text" name="text" id="exampleText" />   
-                <Input type="text" name="text" id="exampleText" />    
-                <Input type="text" name="text" id="exampleText" />          
-                <Input type="text" name="text" id="exampleText" />       
-                <Input type="text" name="text" id="exampleText" />                    
-                <Input type="text" name="text" id="exampleText" />                    
-                <Input type="text" name="text" id="exampleText" />                 
-                <Input type="text" name="text" id="exampleText" />         
-                <Input type="text" name="text" id="exampleText" />         
+                <Input type="text" name="text" id="exampleText" />
+                <br />
+
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
                 <Input type="text" name="text" id="exampleText" />
                 <Input type="text" name="text" id="exampleText" />
             </div>
@@ -78,12 +75,9 @@ class Reactant extends Component {
 
 const styles = {
     display: 'grid',
-    gridTemplateRows: 'repeat(5, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
-    //gridTemplateRows: '100px 200px',
-    //gridTemplateRows: 'repeat(23, 1fr)',
+    gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
     textAlign: 'center',
     alignItems: 'start',
-    //height: '100%',
     backgroundColor: '#f1f1f1'
 }
 

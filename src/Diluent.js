@@ -28,6 +28,7 @@ class Diluent extends Component {
                 <Input type="text" name="text" id="exampleText" />
                 <Input type="text" name="text" id="exampleText" />   
                 <Input type="text" name="text" id="exampleText" />
+                <Input type="text" name="text" id="exampleText" />
                 <br/>
     
                 <Input type="text" name="text" id="exampleText" />         
@@ -50,7 +51,7 @@ class Diluent extends Component {
 
 const styles = {
     display: 'grid',
-    gridTemplateRows: 'repeat(5, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+    gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
     //gridTemplateRows: '100px 200px',
     //gridTemplateRows: 'repeat(23, 1fr)',
     textAlign: 'center',

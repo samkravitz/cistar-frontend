@@ -12,7 +12,8 @@ const Properties = props => {
             <h2 style={{ alignSelf: 'end' }}>Property</h2>
             <div></div>
             <h6>Product Name</h6>
-            <h6 style={{ color: '#c71e1e' }}>Mol. Weight (g/mol)</h6>
+            <h6 style={{ color: '#c71e1e' }}>Mol. Weight Fraction</h6>
+            <h6>Mol. Weight (g/mol)</h6>
             <h6>CAS-No.</h6>
 
             <h5>Physical and Chemical Properties</h5>
@@ -39,7 +40,7 @@ const styles = {
         display: 'grid',
         //gridTemplateRows: '100px 200px',
         //gridTemplateRows: 'repeat(23, minmax(auto, 1fr))',
-        gridTemplateRows: 'repeat(5, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
         margin: '0',
         //alignItems: 'center',
         //alignItems: 'start',
