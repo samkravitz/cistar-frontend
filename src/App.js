@@ -1,27 +1,5 @@
 import React, { Component } from 'react';
 import Main from './Main'
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Container,
-    Row,
-    Col,
-    FormGroup,
-    Form,
-    Label,
-    Input,
-    FormText,
-    Jumbotron,
-    Button
-} from 'reactstrap'
-
-
-
 
 class App extends Component {
     constructor(props) {

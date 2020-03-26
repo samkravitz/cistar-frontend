@@ -1,15 +1,5 @@
 import React, { Component } from 'react'
-
-import {
-    Container,
-    Row,
-    Col,
-    FormGroup,
-    Label,
-    Input,
-    Jumbotron
-} from 'reactstrap';
-
+import { Label, Input } from 'reactstrap';
 
 class Header extends Component {
 
@@ -49,11 +39,11 @@ class Header extends Component {
                         <div className="TitleLocation" style={{ paddingLeft: '1em' }}>
                             <div className="Title" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }}>Title: </h6>
-                                <Input type="text" name="title" id="title" />
+                                <Input type="text" name="title" />
                             </div>
                             <div className="Location" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }} >Location: </h6>
-                                <Input type="text" name="title" id="title" />
+                                <Input type="text" name="title" />
                             </div>
                         </div>
                     </div>
