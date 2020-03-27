@@ -15,19 +15,23 @@ class Reactant extends Component {
 
     // when a file is uploaded
     handleFileSelect = async e => {
+        e.persist()
         if (!e.target.files[0]) return
 
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
-        const response = await axios.post('http://localhost:5000/pdf', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' }
-        })
-            .catch(err => console.log(err))
-        this.setState({ properties: response.data })
-        const res = await axios.post('http://localhost:5000/graph', response.data.hNumbers)
-            .catch(err => console.log(err))
-        //console.log(typeof(res.data))
-        this.props.showGraphs(res.data)
+        try {
+            const response = await axios.post('http://localhost:5000/pdf', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            })
+            this.setState({ properties: response.data })
+            const res = await axios.post('http://localhost:5000/graph', response.data.hNumbers)
+            this.props.showGraphs(res.data)
+        } catch (err) {
+            e.target.value = ""
+            this.resetState()
+            alert("Error parsing file. Please try again")
+        } 
     }
 
     handleChange = e => {
@@ -38,6 +42,14 @@ class Reactant extends Component {
         const { properties } = this.state
         properties[e.target.name] = e.target.value
         this.setState({ properties })
+    }
+
+    resetState = () => {
+        this.setState({
+            properties: {},
+            molWtFraction: '',
+            specificHeat: '',
+        })
     }
 
     render() {
