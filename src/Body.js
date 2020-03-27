@@ -35,6 +35,7 @@ class Body extends Component {
                 <Reactant
                     key={i}
                     number={i + 1}
+                    showGraphs={this.props.showGraphs}
                 />
             )
         }

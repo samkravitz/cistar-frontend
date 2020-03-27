@@ -24,6 +24,10 @@ class Reactant extends Component {
         })
             .catch(err => console.log(err))
         this.setState({ properties: response.data })
+        const res = await axios.post('http://localhost:5000/graph', response.data.hNumbers)
+            .catch(err => console.log(err))
+        //console.log(typeof(res.data))
+        this.props.showGraphs(res.data)
     }
 
     handleChange = e => {
