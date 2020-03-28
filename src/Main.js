@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import server from './server'
 
 import Header from './Header'
 import Body from './Body'
@@ -39,7 +40,7 @@ class Main extends Component {
     calculate = async () => {
         const { hNums } = this.state
         const promises = Object.keys(hNums).map(async name => {
-            const res = await axios.post('http://localhost:5000/graph', hNums[`${name}`])
+            const res = await axios.post(`${server}/graph`, hNums[`${name}`])
             const data = res.data
             data['name'] = name
             return data

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Input } from 'reactstrap'
 import axios from 'axios'
+import server from './server'
 
 class Product extends Component {
 
@@ -21,7 +22,7 @@ class Product extends Component {
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
         try {
-            const response = await axios.post('http://localhost:5000/pdf', formData, {
+            const response = await axios.post(`${server}/pdf`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             })
             this.setState({ properties: response.data })
