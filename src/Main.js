@@ -47,7 +47,7 @@ class Main extends Component {
         })
 
         const matrix =  await Promise.all(promises)
-        console.log(matrix)
+        
         this.setState({ matrix })
     }
 
