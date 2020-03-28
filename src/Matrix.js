@@ -19,7 +19,8 @@ const styles = {
         margin: '0',
         padding: '0.5rem',
         borderBottom: '1px solid black',
-        borderRight: '1px solid black'
+        borderRight: '1px solid black',
+        lineHeight: '1.5',
     },
 
     td: {
