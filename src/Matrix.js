@@ -33,6 +33,7 @@ const styles = {
 const Matrix = ({ matrix }) => {
     const columns = React.useMemo(
         () => [
+            { Header: '', accessor: 'name'},
             { Header: 'Flammability', accessor: 'flammability' },
             { Header: 'Reactivity', accessor: 'reactivity' },
             { Header: 'Skin absorption', accessor: 'skinAbsorption' },

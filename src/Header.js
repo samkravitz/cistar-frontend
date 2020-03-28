@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Label, Input } from 'reactstrap';
+import { Label, Input, Button } from 'reactstrap';
 
 class Header extends Component {
 
@@ -45,6 +45,7 @@ class Header extends Component {
                                 <h6 style={{ paddingRight: '1em' }} >Location: </h6>
                                 <Input type="text" name="title" />
                             </div>
+                            <Button color="primary" onClick={this.props.calculate}>Calculate</Button>
                         </div>
                     </div>
 

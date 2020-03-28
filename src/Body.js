@@ -35,7 +35,7 @@ class Body extends Component {
                 <Reactant
                     key={i}
                     number={i + 1}
-                    showGraphs={this.props.showGraphs}
+                    setHNums={this.props.setHNums}
                 />
             )
         }
@@ -49,6 +49,7 @@ class Body extends Component {
                 <Product
                     key={i}
                     number={i + 1}
+                    setHNums={this.props.setHNums}
                 />
             )
         }
@@ -62,6 +63,7 @@ class Body extends Component {
                 <Diluent
                     key={i}
                     number={i + 1}
+                    setHNums={this.props.setHNums}
                 />
             )
         }
