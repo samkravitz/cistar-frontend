@@ -12,7 +12,7 @@ const Properties = props => {
             <h2 style={{ alignSelf: 'end' }}>Property</h2>
             <div></div>
             <h6>Product Name</h6>
-            <h6 style={{ color: '#c71e1e' }}>Mol. Weight Fraction</h6>
+            <h6 style={{ color: '#c71e1e' }}>Weight Fraction</h6>
             <h6>Mol. Weight (g/mol)</h6>
             <h6>CAS-No.</h6>
 
