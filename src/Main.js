@@ -68,6 +68,7 @@ class Main extends Component {
                 />
                 <Report
                     matrix={this.state.matrix}
+                    hNums={this.state.hNums}
                 />
             </div>
         )
