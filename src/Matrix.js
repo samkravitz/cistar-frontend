@@ -4,14 +4,12 @@ const styles = {
     main: {
         padding: '1rem',
         width: '100vw',
-        display: 'flex',
-        justifyContent: 'center',
-
     },
 
     table: {
         borderSpacing: '0',
         border: '1px solid black',
+        align: 'center'
     },
 
     th: {
@@ -27,6 +25,11 @@ const styles = {
         padding: '0.5rem',
         borderBottom: '1px solid black',
         borderRight: '1px solid black'
+    },
+
+    caption: {
+        captionSide: 'top',
+        color: 'black'
     }
 }
 
@@ -48,7 +51,8 @@ const Matrix = ({ matrix }) => {
 
     return (
         <div className='Matrix' style={styles.main}>
-            <table style={styles.table}>
+            <table align='center' style={styles.table}>
+                <caption style={styles.caption}>Hazard Matrix</caption>
                 <thead>
                     <tr>
                         {columns.map((column, i) => (
@@ -77,6 +81,7 @@ const Matrix = ({ matrix }) => {
                     ))}
                 </tbody>
             </table>
+
         </div>
     )
 }

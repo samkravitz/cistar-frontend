@@ -4,7 +4,7 @@ import server from './server'
 
 import Header from './Header'
 import Body from './Body'
-import Matrix from './Matrix'
+import Report from './Report'
 
 class Main extends Component {
 
@@ -52,7 +52,6 @@ class Main extends Component {
     }
 
     render() {
-        const showMatrix = this.state.matrix.length > 0
         return (
             <div className="Main">
                 <Header
@@ -67,12 +66,9 @@ class Main extends Component {
                     numDiluents={this.state.numDiluents}
                     setHNums={this.setHNums}
                 />
-                {
-                    showMatrix &&
-                    <Matrix
-                        matrix={this.state.matrix}
-                    />
-                }
+                <Report
+                    matrix={this.state.matrix}
+                />
             </div>
         )
     }
