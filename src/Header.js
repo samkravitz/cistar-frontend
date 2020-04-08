@@ -8,8 +8,19 @@ class Header extends Component {
         this.state = {
             numReactants: 1,
             numProducts: 1,
-            numDiluents: 0
+            numDiluents: 0,
+            operatingParams: {
+                temperature: '0',
+                pressure: '',
+                heatOfReaction: '',
+            },
         }
+    }
+
+    handleChange = e => {
+        const { operatingParams } = this.state
+        operatingParams[e.target.name] = e.target.value
+        this.setState({ operatingParams })
     }
 
     handleChangeR = event => {
@@ -31,6 +42,8 @@ class Header extends Component {
     }
 
     render() {
+        const { temperature, pressure, heatOfReaction } = this.state.operatingParams
+
         return (
             <div className="Header" style={styles.main}>
                 <div className="HeaderFlex" style={styles.flexTop}>
@@ -53,16 +66,16 @@ class Header extends Component {
                         <h4>Operating Parameters: </h4>
                         <div className="Params" style={styles.operatingParams}>
                             <h6>Temperature (&deg;C)</h6>
-                            <Input type="text" name="Temperature" id="Temperature" />
+                            <Input type="text" name="temperature" id="temperature" value={temperature} onChange={this.handleChange}/>
                             <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
-                            <Input type="text" name="Pressure" id="Pressure" />
+                            <Input type="text" name="pressure" id="pressure" value={pressure} onChange={this.handleChange}/>
                             <h6 style={{ paddingTop: '1em' }}>State</h6>
                             <Input type="select" name="st" id="exampleSelect" >
                                 <option>Liquid</option>
                                 <option>Gas</option>
                             </Input>
                             <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
-                            <Input type="text" name="HeatOfReaction" id="HeatOfReaction" />
+                            <Input type="text" name="heatOfReaction" id="heatOfReaction" value={heatOfReaction} onChange={this.handleChange}/>
                         </div>
                     </div>
                 </div>
