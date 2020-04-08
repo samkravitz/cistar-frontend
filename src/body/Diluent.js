@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Input } from 'reactstrap'
 import axios from 'axios'
-import server from './server'
+import server from '../server'
 
-class Reactant extends Component {
+class Diluent extends Component {
 
     constructor() {
         super()
@@ -22,14 +22,12 @@ class Reactant extends Component {
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
         try {
-            const response = await axios.post(`${server}/pdf`, formData,  {
-                headers: { 'Content-Type': 'multipart/form-data' },
-                params: { temperature: this.props.temperature }
+            const response = await axios.post(`${server}/pdf`, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
             })
             this.setState({ properties: response.data })
             this.props.setHNums(response.data.productName, response.data.hNumbers)
         } catch (err) {
-            console.log(err)
             e.target.value = ""
             this.resetState()
             alert("Error parsing file. Please try again")
@@ -56,10 +54,10 @@ class Reactant extends Component {
 
     render() {
         const { number } = this.props
-        const { properties, molWtFraction } = this.state
+        const { properties, specificHeat, molWtFraction } = this.state
         return (
-            <div className="Reactant" style={{ ...styles }}>
-                <h4 sm="4">Reactant {number}</h4>
+            <div className="Diluent" style={{ ...styles }}>
+                <h4 sm="4">Diluent {number}</h4>
 
                 <Input
                     type="file"
@@ -85,7 +83,7 @@ class Reactant extends Component {
                 <Input type="text" name="decompositionTemp" value={properties.decompositionTemp || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="viscosity" value={properties.viscosity || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="thermalConductivity" value={properties.viscosity || ''} onChange={this.handleChangeProp} /> {/* Thermal conductivity */}
-                <Input type="text" name="cp" value={properties.cp || ''} onChange={this.handleChangeProp} /> {/* CP */}
+                <Input type="text" name="specificHeat" value={specificHeat} onChange={this.handleChange} /> {/* CP */}
             </div>
         )
     }
@@ -99,4 +97,4 @@ const styles = {
     backgroundColor: '#f1f1f1'
 }
 
-export default Reactant
+export default Diluent

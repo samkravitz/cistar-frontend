@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import server from './server'
 
-import Header from './Header'
-import Body from './Body'
-import Report from './Report'
+import Header from './header/Header'
+import Body from './body/Body'
+import Report from './report/Report'
 
 class Main extends Component {
 

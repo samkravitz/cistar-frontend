@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Input } from 'reactstrap'
 import axios from 'axios'
-import server from './server'
+import server from '../server'
 
-class Diluent extends Component {
+class Product extends Component {
 
     constructor() {
         super()
@@ -56,8 +56,8 @@ class Diluent extends Component {
         const { number } = this.props
         const { properties, specificHeat, molWtFraction } = this.state
         return (
-            <div className="Diluent" style={{ ...styles }}>
-                <h4 sm="4">Diluent {number}</h4>
+            <div className="Product" style={{ ...styles }}>
+                <h4 sm="4">Product {number}</h4>
 
                 <Input
                     type="file"
@@ -97,4 +97,4 @@ const styles = {
     backgroundColor: '#f1f1f1'
 }
 
-export default Diluent
+export default Product
