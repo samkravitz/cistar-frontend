@@ -35,6 +35,7 @@ class Body extends Component {
                 <Reactant
                     key={i}
                     number={i + 1}
+                    temperature={this.props.operatingParams.temperature}
                     setHNums={this.props.setHNums}
                 />
             )
