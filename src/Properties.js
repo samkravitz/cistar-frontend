@@ -29,7 +29,7 @@ const Properties = props => {
             <h6>Decomposition temperature (°C)</h6>
             <h6>Viscosity ()</h6>
             <h6>Thermal Conductivity - k</h6>
-            <h6 style={{ color: '#c71e1e' }}>Specific heat capacity - Cp</h6>
+            <h6 style={{ color: '#c71e1e' }}>Specific heat capacity - Cp (cal/g/°C)</h6>
         </div>
 
     )

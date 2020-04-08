@@ -61,7 +61,7 @@ class Header extends Component {
                                 <option>Liquid</option>
                                 <option>Gas</option>
                             </Input>
-                            <h6 style={{ paddingTop: '1em' }}>Heat of Reaction</h6>
+                            <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
                             <Input type="text" name="HeatOfReaction" id="HeatOfReaction" />
                         </div>
                     </div>
