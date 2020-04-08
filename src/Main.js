@@ -16,6 +16,12 @@ class Main extends Component {
             numDiluents: 0,
             hNums: {},
             matrix: [],
+            operatingParams: {
+                temperature: '0',
+                pressure: '',
+                heatOfReaction: '',
+            },
+
         }
     }
 
@@ -46,9 +52,15 @@ class Main extends Component {
             return data
         })
 
-        const matrix =  await Promise.all(promises)
-        
+        const matrix = await Promise.all(promises)
+
         this.setState({ matrix })
+    }
+
+    changeOperatingParams = e => {
+        const { operatingParams } = this.state
+        operatingParams[e.target.name] = e.target.value
+        this.setState({ operatingParams })
     }
 
     render() {
@@ -58,6 +70,7 @@ class Main extends Component {
                     changeNumReactants={this.changeNumReactants}
                     changeNumProducts={this.changeNumProducts}
                     changeNumDiluents={this.changeNumDiluents}
+                    changeOperatingParams={this.changeOperatingParams}
                     calculate={this.calculate}
                 />
                 <Body
