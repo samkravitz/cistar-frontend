@@ -22,17 +22,18 @@ class Reactant extends Component {
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
         try {
-            const response = await axios.post(`${server}/pdf`, formData,  {
+            const response = await axios.post(`${server}/pdf`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 params: { temperature: this.props.temperature }
             })
             this.setState({ properties: response.data })
             this.props.setHNums(response.data.productName, response.data.hNumbers)
-        } catch (err) {
-            console.log(err)
+        } catch (error) {
+            // Error 😨
+            const message = error.response ? error.response.data.error : error
             e.target.value = ""
             this.resetState()
-            alert("Error parsing file. Please try again")
+            alert(message)
         }
     }
 

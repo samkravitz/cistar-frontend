@@ -27,10 +27,12 @@ class Diluent extends Component {
             })
             this.setState({ properties: response.data })
             this.props.setHNums(response.data.productName, response.data.hNumbers)
-        } catch (err) {
+        } catch (error) {
+            // Error 😨
+            const message = error.response ? error.response.data.error : error
             e.target.value = ""
             this.resetState()
-            alert("Error parsing file. Please try again")
+            alert(message)
         }
     }
 
