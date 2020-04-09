@@ -45,7 +45,7 @@ class Header extends Component {
                                 <h6 style={{ paddingRight: '1em' }} >Location: </h6>
                                 <Input type="text" name="title" />
                             </div>
-                            <Button color="primary" onClick={this.props.calculate}>Calculate</Button>
+                            <Button color="primary" onClick={() => alert('Save feature coming soon :)')}>Save Reaction</Button>
                         </div>
                     </div>
 

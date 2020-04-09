@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'reactstrap'
 
 import Reactant from './Reactant'
 import Product from './Product'
@@ -77,12 +78,23 @@ class Body extends Component {
         const products = this.getProducts(numProducts)
         const diluents = this.getDiluents(numDiluents)
         return (
-            <div className="Body" style={{ ...style }}>
-                <Properties numberOfElements={this.state.numberOfElements}/>
-                {reactants}
-                {products}
-                {diluents}
+            <div className="Body">
+                <div style={style}>
+                    <Properties numberOfElements={this.state.numberOfElements} />
+                    {reactants}
+                    {products}
+                    {diluents}
+                </div>
+                <div style={style}>
+                    <Button
+                        color="primary"
+                        onClick={() => alert('Calculating!')}
+                    >
+                        Calculate
+                </Button>
+                </div>
             </div>
+
         )
     }
 }
@@ -90,7 +102,6 @@ class Body extends Component {
 const style = {
     display: 'flex',
     justifyContent: 'center',
-    height: '100%'
 }
 
 export default Body
