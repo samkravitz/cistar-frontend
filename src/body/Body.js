@@ -56,6 +56,7 @@ class Body extends Component {
             products.push(
                 <Product
                     key={i}
+                    index={i}
                     number={i + 1}
                     setHNums={this.props.setHNums}
                 />
@@ -70,6 +71,7 @@ class Body extends Component {
             diluents.push(
                 <Diluent
                     key={i}
+                    index={i}
                     number={i + 1}
                     setHNums={this.props.setHNums}
                 />

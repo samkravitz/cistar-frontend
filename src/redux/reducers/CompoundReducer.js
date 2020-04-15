@@ -24,7 +24,7 @@ export default (state = initialState, action) => produce(state, draft => {
             diff = numReactants - draft.reactants.length
             // if we are adding reactants, push on empty object
             if (diff >= 0) {
-                for (let i =0; i < diff; i++)
+                for (let i = 0; i < diff; i++)
                     draft.reactants.push({})
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
@@ -32,17 +32,17 @@ export default (state = initialState, action) => produce(state, draft => {
             }
 
             return
-        
+
 
         case (Types.SET_NUM_PRODUCTS):
             const numProducts = action.payload
-            draft.numProducts = numReactants
+            draft.numProducts = numProducts
 
             // update the contents of products array
             diff = numProducts - draft.products.length
             // if we are adding products, push on empty object
             if (diff >= 0) {
-                for (let i =0; i < diff; i++)
+                for (let i = 0; i < diff; i++)
                     draft.products.push({})
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
@@ -59,7 +59,7 @@ export default (state = initialState, action) => produce(state, draft => {
             diff = numDiluents - draft.diluents.length
             // if we are adding diluents, push on empty object
             if (diff >= 0) {
-                for (let i =0; i < diff; i++)
+                for (let i = 0; i < diff; i++)
                     draft.diluents.push({})
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
@@ -67,9 +67,17 @@ export default (state = initialState, action) => produce(state, draft => {
             }
 
             return
-        
+
         case (Types.SET_REACTANT):
             draft.reactants[action.payload.index] = action.payload.data
+            return
+
+        case (Types.SET_PRODUCT):
+            draft.products[action.payload.index] = action.payload.data
+            return
+
+        case (Types.SET_DILUENT):
+            draft.diluents[action.payload.index] = action.payload.data
             return
 
         default:

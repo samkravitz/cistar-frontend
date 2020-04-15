@@ -8,7 +8,6 @@ const Reactant = props => {
 
     // when a file is uploaded, parse it
     const handleFileSelect = e => {
-        e.persist()
         if (!e.target.files[0]) return
 
         const formData = new FormData()
@@ -21,7 +20,6 @@ const Reactant = props => {
         properties[e.target.name] = e.target.value
         props.updateReactant(props.index, properties)
     }
-
 
     const { number, index } = props
     const properties = props.reactants[index]

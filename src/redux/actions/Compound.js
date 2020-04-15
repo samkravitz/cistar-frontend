@@ -39,8 +39,54 @@ export const parseReactantFile = (index, temperature, formData) => {
     }
 }
 
-export const updateReactant = (index, newReactant) => {
+export const parseProductFile = (index, formData) => {
+    return async dispatch => {
+        try {
+            const response = await axios.post(`${server}/pdf`, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            })
+    
+            dispatch({ type: Types.SET_PRODUCT, payload: { index: index, data: response.data } })
+        } catch (error) {
+            // Error 😨
+            const message = error.response ? error.response.data.error : error
+            dispatch({ type: Types.SET_PRODUCT, payload: { index: index, data: {} } })
+            alert(message)
+        }
+    }
+}
+
+export const parseDiluentFile = (index, formData) => {
+    return async dispatch => {
+        try {
+            const response = await axios.post(`${server}/pdf`, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            })
+    
+            dispatch({ type: Types.SET_DILUENT, payload: { index: index, data: response.data } })
+        } catch (error) {
+            // Error 😨
+            const message = error.response ? error.response.data.error : error
+            dispatch({ type: Types.SET_DILUENT, payload: { index: index, data: {} } })
+            alert(message)
+        }
+    }
+}
+
+export const updateReactant = (index, reactant) => {
     return dispatch => {
-        dispatch({ type: Types.SET_REACTANT, payload: { index: index, data: newReactant } })
+        dispatch({ type: Types.SET_REACTANT, payload: { index: index, data: reactant } })
+    }
+}
+
+export const updateProduct = (index, product) => {
+    return dispatch => {
+        dispatch({ type: Types.SET_PRODUCT, payload: { index: index, data: product } })
+    }
+}
+
+export const updateDiluent = (index, diluent) => {
+    return dispatch => {
+        dispatch({ type: Types.SET_DILUENT, payload: { index: index, data: diluent } })
     }
 }
