@@ -28,6 +28,7 @@ class Body extends Component {
             <div className="Body">
                 <div style={style}>
                     <Properties numberOfElements={this.state.numberOfElements} />
+                    {/* this is just a hacky way to map numReactants number of times: */}
                     {
                         [...Array(numReactants)].map((e, i) => (
                             <Reactant
@@ -80,9 +81,5 @@ const mapStateToProps = state => ({
     numProducts: state.compound.numProducts,
     numDiluents: state.compound.numDiluents,
 })
-
-const mapDispatchToProps = {
-
-}
 
 export default connect(mapStateToProps)(Body)
