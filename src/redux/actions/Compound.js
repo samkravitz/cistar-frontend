@@ -38,3 +38,9 @@ export const parseReactantFile = (index, temperature, formData) => {
         }
     }
 }
+
+export const updateReactant = (index, newReactant) => {
+    return dispatch => {
+        dispatch({ type: Types.SET_REACTANT, payload: { index: index, data: newReactant } })
+    }
+}
