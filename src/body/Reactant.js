@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Input } from 'reactstrap'
-import axios from 'axios'
-import server from '../server'
+
+import { connect } from 'react-redux'
+import actions from '../redux/actions'
 
 class Reactant extends Component {
 
@@ -21,14 +22,16 @@ class Reactant extends Component {
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
         try {
-            const response = await axios.post(`${server}/pdf`, formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-                params: { temperature: this.props.temperature }
-            })
-            this.setState({ properties: response.data })
-            this.props.addReactant(this.props.number, response.data)
-            this.props.setHNums(response.data.productName, response.data.hNumbers)
+            // const response = await axios.post(`${server}/pdf`, formData, {
+            //     headers: { 'Content-Type': 'multipart/form-data' },
+            //     params: { temperature: this.props.temperature }
+            // })
+            // this.setState({ properties: response.data })
+            // this.props.addReactant(this.props.number, response.data)
+            // this.props.setHNums(response.data.productName, response.data.hNumbers)
+            this.props.parseReactantFile(this.props.number - 1, this.props.temperature, formData)
         } catch (error) {
+            console.log('hi')
             // Error 😨
             const message = error.response ? error.response.data.error : error
             e.target.value = ""
@@ -102,4 +105,12 @@ const styles = {
     backgroundColor: '#f1f1f1'
 }
 
-export default Reactant
+const mapStateToProps = state => ({
+    temperature: state.operatingParams.temperature,
+})
+
+const mapDispatchToProps = {
+    parseReactantFile: actions.compound.parseReactantFile,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reactant)

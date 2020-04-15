@@ -1,5 +1,6 @@
 // Reducer for the compounds: reactants, products, diluents
 import Types from '../actions/types'
+import produce from 'immer'
 
 const initialState = {
     numReactants: 1,
@@ -11,73 +12,67 @@ const initialState = {
     diluents: [],
 }
 
-export default (state = initialState, action) => {
+export default (state = initialState, action) => produce(state, draft => {
+
     let diff // difference between old array size and new size
     switch (action.type) {
         case (Types.SET_NUM_REACTANTS):
             const numReactants = action.payload
-            const { reactants } = state
+            draft.numReactants = numReactants
 
             // update the contents of reactants array
-            diff = numReactants - state.reactants.length
+            diff = numReactants - draft.reactants.length
             // if we are adding reactants, push on empty object
             if (diff >= 0) {
-                for (let i = 0; i < diff; i++)
-                    reactants.push({})
+                for (let i =0; i < diff; i++)
+                    draft.reactants.push({})
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
-                    reactants.pop()
+                    draft.reactants.pop()
             }
 
-            return {
-                ...state,
-                reactants,
-                numReactants,
-            }
+            return
+        
 
         case (Types.SET_NUM_PRODUCTS):
             const numProducts = action.payload
-            const { products } = state
+            draft.numProducts = numReactants
 
             // update the contents of products array
-            diff = numProducts - state.products.length
+            diff = numProducts - draft.products.length
             // if we are adding products, push on empty object
             if (diff >= 0) {
-                for (let i = 0; i < diff; i++)
-                    products.push({})
+                for (let i =0; i < diff; i++)
+                    draft.products.push({})
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
-                    products.pop()
+                    draft.products.pop()
             }
 
-            return {
-                ...state,
-                products,
-                numProducts,
-            }
+            return
 
         case (Types.SET_NUM_DILUENTS):
             const numDiluents = action.payload
-            const { diluents } = state
+            draft.numDiluents = numDiluents
 
             // update the contents of diluents array
-            diff = numDiluents - state.diluents.length
+            diff = numDiluents - draft.diluents.length
             // if we are adding diluents, push on empty object
             if (diff >= 0) {
-                for (let i = 0; i < diff; i++)
-                    diluents.push({})
+                for (let i =0; i < diff; i++)
+                    draft.diluents.push({})
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
-                    diluents.pop()
+                    draft.diluents.pop()
             }
 
-            return {
-                ...state,
-                diluents,
-                numDiluents,
-            }
+            return
+        
+        case (Types.SET_REACTANT):
+            draft.reactants[action.payload.index] = action.payload.data
+            return
 
         default:
-            return state
+            return
     }
-}
+})
