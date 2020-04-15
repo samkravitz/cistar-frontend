@@ -11,30 +11,9 @@ class Main extends Component {
     constructor() {
         super()
         this.state = {
-            numReactants: 1,
-            numProducts: 1,
-            numDiluents: 0,
             hNums: {},
             matrix: [],
-            operatingParams: {
-                temperature: '0',
-                pressure: '',
-                heatOfReaction: '',
-            },
-
         }
-    }
-
-    changeNumReactants = numReactants => {
-        this.setState({ numReactants })
-    }
-
-    changeNumProducts = numProducts => {
-        this.setState({ numProducts })
-    }
-
-    changeNumDiluents = numDiluents => {
-        this.setState({ numDiluents })
     }
 
     setHNums = (name, hNum) => {
@@ -65,12 +44,6 @@ class Main extends Component {
         this.setState({ matrix })
     }
 
-    changeOperatingParams = e => {
-        const { operatingParams } = this.state
-        operatingParams[e.target.name] = e.target.value
-        this.setState({ operatingParams })
-    }
-
     // validate the initial weight fraction and cp for reactants
     validateReactants = reactants => {
         for (let i = 1; i <= this.state.numReactants; i++) {
@@ -92,12 +65,7 @@ class Main extends Component {
     render() {
         return (
             <div className="Main">
-                <Header
-                    changeNumReactants={this.changeNumReactants}
-                    changeNumProducts={this.changeNumProducts}
-                    changeNumDiluents={this.changeNumDiluents}
-                    changeOperatingParams={this.changeOperatingParams}
-                />
+                <Header />
                 <Body
                     operatingParams={this.state.operatingParams}
                     setHNums={this.setHNums}
