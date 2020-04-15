@@ -15,29 +15,13 @@ class Reactant extends Component {
     }
 
     // when a file is uploaded, parse it
-    handleFileSelect = async e => {
+    handleFileSelect = e => {
         e.persist()
         if (!e.target.files[0]) return
 
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
-        try {
-            // const response = await axios.post(`${server}/pdf`, formData, {
-            //     headers: { 'Content-Type': 'multipart/form-data' },
-            //     params: { temperature: this.props.temperature }
-            // })
-            // this.setState({ properties: response.data })
-            // this.props.addReactant(this.props.number, response.data)
-            // this.props.setHNums(response.data.productName, response.data.hNumbers)
-            this.props.parseReactantFile(this.props.number - 1, this.props.temperature, formData)
-        } catch (error) {
-            console.log('hi')
-            // Error 😨
-            const message = error.response ? error.response.data.error : error
-            e.target.value = ""
-            this.resetState()
-            alert(message)
-        }
+        this.props.parseReactantFile(this.props.number - 1, this.props.temperature, formData)
     }
 
     handleChange = e => {
