@@ -10,7 +10,6 @@ class Reactant extends Component {
         this.state = {
             properties: {},
             molWtFraction: '',
-            specificHeat: '',
         }
     }
 
@@ -27,6 +26,7 @@ class Reactant extends Component {
                 params: { temperature: this.props.temperature }
             })
             this.setState({ properties: response.data })
+            this.props.addReactant(this.props.number, response.data)
             this.props.setHNums(response.data.productName, response.data.hNumbers)
         } catch (error) {
             // Error 😨
@@ -39,12 +39,14 @@ class Reactant extends Component {
 
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
+        this.props.addReactantWtFraction(this.props.number, e.target.value)
     }
 
     handleChangeProp = e => {
         const { properties } = this.state
         properties[e.target.name] = e.target.value
         this.setState({ properties })
+        
     }
 
     resetState = () => {
@@ -77,8 +79,8 @@ class Reactant extends Component {
                 <Input type="text" name="ph" value={properties.ph || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="boilingPt" value={properties.boilingPt || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="flashPt" value={properties.flashPt || ''} onChange={this.handleChangeProp} />
-                <Input type="text" name="upperExplosionLim" value={properties.explosiveProperties || ''} onChange={this.handleChangeProp} /> {/* upper explosion limit */}
-                <Input type="text" name="lowerExplosionLim" value={properties.explosiveProperties || ''} onChange={this.handleChangeProp} /> {/* lower explosion limit  */}
+                <Input type="text" name="upperExplosionLim" value={properties.upperExplosionLim || ''} onChange={this.handleChangeProp} /> {/* upper explosion limit */}
+                <Input type="text" name="lowerExplosionLim" value={properties.lowerExplosionLim || ''} onChange={this.handleChangeProp} /> {/* lower explosion limit  */}
                 <Input type="text" name="vapourPressure" value={properties.vapourPressure || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="vapourDensity" value={properties.vapourDensity || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="relDensity" value={properties.relDensity || ''} onChange={this.handleChangeProp} />

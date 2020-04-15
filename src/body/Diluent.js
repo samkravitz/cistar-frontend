@@ -76,8 +76,8 @@ class Diluent extends Component {
                 <Input type="text" name="ph" value={properties.ph || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="boilingPt" value={properties.boilingPt || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="flashPt" value={properties.flashPt || ''} onChange={this.handleChangeProp} />
-                <Input type="text" name="upperExplosionLim" value={properties.explosiveProperties || ''} onChange={this.handleChangeProp} /> {/* upper explosion limit */}
-                <Input type="text" name="lowerExplosionLim" value={properties.explosiveProperties || ''} onChange={this.handleChangeProp} /> {/* lower explosion limit  */}
+                <Input type="text" name="upperExplosionLim" value={properties.upperExplosionLim || ''} onChange={this.handleChangeProp} /> {/* upper explosion limit */}
+                <Input type="text" name="lowerExplosionLim" value={properties.lowerExplosionLim || ''} onChange={this.handleChangeProp} /> {/* lower explosion limit  */}
                 <Input type="text" name="vapourPressure" value={properties.vapourPressure || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="vapourDensity" value={properties.vapourDensity || ''} onChange={this.handleChangeProp} />
                 <Input type="text" name="relDensity" value={properties.relDensity || ''} onChange={this.handleChangeProp} />

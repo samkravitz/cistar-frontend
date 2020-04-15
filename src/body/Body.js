@@ -11,7 +11,12 @@ class Body extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            numberOfElements: props.numReactants + props.numProducts + props.numDiluents + 1
+            numberOfElements: props.numReactants + props.numProducts + props.numDiluents + 1,
+            reactants: {
+                1: {
+                   
+                }
+            }
         }
     }
 
@@ -38,6 +43,8 @@ class Body extends Component {
                     number={i + 1}
                     temperature={this.props.operatingParams.temperature}
                     setHNums={this.props.setHNums}
+                    addReactant={this.addReactant}
+                    addReactantWtFraction={this.addReactantWtFraction}
                 />
             )
         }
@@ -72,6 +79,19 @@ class Body extends Component {
         return diluents
     }
 
+    addReactant = (num, properties) => {
+        const { reactants } = this.state
+        reactants[num] = properties
+        this.setState({ reactants })
+    }
+
+    addReactantWtFraction = (num, frac) => {
+        const { reactants } = this.state
+        reactants[num]['wtFraction'] = frac
+        console.log('fracking is good')
+        this.setState({ reactants })
+    }
+
     render() {
         const { numReactants, numProducts, numDiluents } = this.props
         const reactants = this.getReactants(numReactants)
@@ -88,7 +108,7 @@ class Body extends Component {
                 <div style={style}>
                     <Button
                         color="primary"
-                        onClick={() => alert('Calculating!')}
+                        onClick={() => this.props.calculate(this.state.reactants)}
                     >
                         Calculate
                 </Button>
