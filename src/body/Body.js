@@ -16,95 +16,45 @@ class Body extends Component {
             numberOfElements: props.numReactants + props.numProducts + props.numDiluents + 1,
             reactants: {
                 1: {
-                   
+
                 }
             }
         }
     }
 
-    getNumberOfElements = (reactants, products, diluents) => {
-        // + 1 to account for products column
-        return reactants + products + diluents + 1
-    }
-
-    // update number of Reactants, Products, Diluents that will be rendered
-    componentDidUpdate(prevProps, prevState) {
-        const { numReactants, numProducts, numDiluents } = this.props
-        const numberOfElements = this.getNumberOfElements(numReactants, numProducts, numDiluents)
-        if (prevState.numberOfElements !== numberOfElements) {
-            this.setState({ numberOfElements })
-        }
-    }
-
-    getReactants = numReactants => {
-        const reactants = []
-        for (let i = 0; i < numReactants; i++) {
-            reactants.push(
-                <Reactant
-                    key={i}
-                    index={i}
-                    number={i + 1}
-                />
-            )
-        }
-        return reactants
-    }
-
-    getProducts = numProducts => {
-        const products = []
-        for (let i = 0; i < numProducts; i++) {
-            products.push(
-                <Product
-                    key={i}
-                    index={i}
-                    number={i + 1}
-                    setHNums={this.props.setHNums}
-                />
-            )
-        }
-        return products
-    }
-
-    getDiluents = numDiluents => {
-        const diluents = []
-        for (let i = 0; i < numDiluents; i++) {
-            diluents.push(
-                <Diluent
-                    key={i}
-                    index={i}
-                    number={i + 1}
-                    setHNums={this.props.setHNums}
-                />
-            )
-        }
-        return diluents
-    }
-
-    addReactant = (num, properties) => {
-        const { reactants } = this.state
-        reactants[num] = properties
-        this.setState({ reactants })
-    }
-
-    addReactantWtFraction = (num, frac) => {
-        const { reactants } = this.state
-        reactants[num]['wtFraction'] = frac
-        console.log('fracking is good')
-        this.setState({ reactants })
-    }
-
     render() {
         const { numReactants, numProducts, numDiluents } = this.props
-        const reactants = this.getReactants(numReactants)
-        const products = this.getProducts(numProducts)
-        const diluents = this.getDiluents(numDiluents)
         return (
             <div className="Body">
                 <div style={style}>
                     <Properties numberOfElements={this.state.numberOfElements} />
-                    {reactants}
-                    {products}
-                    {diluents}
+                    {
+                        [...Array(numReactants)].map((e, i) => (
+                            <Reactant
+                                key={i}
+                                index={i}
+                                number={i + 1}
+                            />
+                        ))
+                    }
+                    {
+                        [...Array(numProducts)].map((e, i) => (
+                            <Product
+                                key={i}
+                                index={i}
+                                number={i + 1}
+                            />
+                        ))
+                    }
+                    {
+                        [...Array(numDiluents)].map((e, i) => (
+                            <Diluent
+                                key={i}
+                                index={i}
+                                number={i + 1}
+                            />
+                        ))
+                    }
                 </div>
                 <div style={style}>
                     <Button
@@ -132,7 +82,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-	
+
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Body)
+export default connect(mapStateToProps)(Body)
