@@ -27,7 +27,19 @@ export default (state = initialState, action) => {
                 numReactants: action.payload,
             }
 
-        
+        case (Types.SET_NUM_PRODUCTS):
+            return {
+                ...state,
+                numProducts: action.payload,
+            }
+
+        case (Types.SET_NUM_DILUENTS):
+            return {
+                ...state,
+                numDiluents: action.payload,
+            }
+
+
         default:
             return state
     }

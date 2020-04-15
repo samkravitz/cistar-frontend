@@ -127,7 +127,9 @@ const style = {
 }
 
 const mapStateToProps = state => ({
-	numReactants: state.compound.numReactants,
+    numReactants: state.compound.numReactants,
+    numProducts: state.compound.numProducts,
+    numDiluents: state.compound.numDiluents,
 })
 
 const mapDispatchToProps = {

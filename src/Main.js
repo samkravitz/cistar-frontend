@@ -100,9 +100,6 @@ class Main extends Component {
                 />
                 <Body
                     operatingParams={this.state.operatingParams}
-                    //numReactants={this.state.numReactants}
-                    numProducts={this.state.numProducts}
-                    numDiluents={this.state.numDiluents}
                     setHNums={this.setHNums}
                     calculate={this.calculate}
                 />
