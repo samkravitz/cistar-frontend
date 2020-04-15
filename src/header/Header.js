@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { Label, Input, Button } from 'reactstrap';
+import { Label, Input, Button } from 'reactstrap'
+
+import { connect } from 'react-redux'
+import actions from '../redux/actions'
 
 class Header extends Component {
 
@@ -15,7 +18,7 @@ class Header extends Component {
     handleChangeR = event => {
         const numReactants = parseInt(event.target.value, 10)
         this.setState({ numReactants })
-        this.props.changeNumReactants(numReactants)
+        this.props.setNumReactants(numReactants)
     }
 
     handleChangeP = event => {
@@ -141,4 +144,12 @@ const styles = {
     
 }
 
-export default Header
+// const mapStateToProps = state => {
+
+// }
+
+const mapDispatchToProps = {
+    setNumReactants: actions.compound.setNumReactants,
+}
+
+export default connect(null, mapDispatchToProps)(Header)

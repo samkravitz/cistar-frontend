@@ -9,7 +9,7 @@ import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer(), applyMiddleware(thunk))
 
 const Entrypoint = () => {
     return (

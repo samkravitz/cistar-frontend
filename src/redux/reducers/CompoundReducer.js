@@ -21,7 +21,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        
         case (Types.SET_NUM_REACTANTS):
             return {
                 ...state,

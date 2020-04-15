@@ -1,10 +1,9 @@
 import axios from 'axios'
 import { Dispatch } from 'redux'
-import { Action } from '../reducers/AuthReducer'
-import Type from './Types'
+import Types from './types'
 
 export const setNumReactants = numReactants => {
-    return async dispatch => {
-        dispatch({ type: Type.SET_NUM_REACTANTS, payload: numReactants })
+    return dispatch => {
+        dispatch({ type: Types.SET_NUM_REACTANTS, payload: numReactants })
     }
 }
