@@ -1,5 +1,5 @@
 // Reducer for the compounds: reactants, products, diluents
-import { Types } from '../actions.types'
+import Types from '../actions/types'
 
 const initialState = {
     numReactants: 1,

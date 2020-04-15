@@ -5,10 +5,11 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Provider } from 'react-redux'
+import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 
-const store = createStore()
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const Entrypoint = () => {
     return (
