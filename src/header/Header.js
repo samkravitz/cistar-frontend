@@ -21,6 +21,26 @@ const Header = props => {
         props.setNumDiluents(numDiluents)
     }
 
+    const handleChangeTemperature = event => {
+        props.setTemperature(event.target.value)
+    }
+
+    const handleChangePressure = event => {
+        props.setPressure(event.target.value)
+    }
+
+    const handleChangePhysicalState = event => {
+        props.setPhysicalState(event.target.value)
+    }
+
+    const handleChangeHeatOfReaction = event => {
+        props.setHeatOfReaction(event.target.value)
+    }
+
+    const handleChangeCp = event => {
+        props.setCp(event.target.value)
+    }
+
     return (
         <div className="Header" style={styles.main}>
             <div className="HeaderFlex" style={styles.flexTop}>
@@ -43,16 +63,16 @@ const Header = props => {
                     <h4>Operating Parameters: </h4>
                     <div className="Params" style={styles.operatingParams}>
                         <h6>Temperature (&deg;C)</h6>
-                        <Input type="text" name="temperature" defaultValue="0" onChange={props.changeOperatingParams} />
+                        <Input type="text" name="temperature" defaultValue="0" onChange={handleChangeTemperature} />
                         <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
-                        <Input type="text" name="pressure" onChange={props.changeOperatingParams} />
+                        <Input type="text" name="pressure" defaultValue="1" onChange={handleChangePressure} />
                         <h6 style={{ paddingTop: '1em' }}>State</h6>
-                        <Input type="select" name="st" id="exampleSelect" >
+                        <Input type="select" name="st" id="exampleSelect" onChange={handleChangePhysicalState}>
                             <option>Liquid</option>
                             <option>Gas</option>
                         </Input>
                         <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
-                        <Input type="text" name="heatOfReaction" onChange={props.changeOperatingParams} />
+                        <Input type="text" name="heatOfReaction" onChange={handleChangeHeatOfReaction} />
                     </div>
                 </div>
             </div>
@@ -138,6 +158,12 @@ const mapDispatchToProps = {
     setNumReactants: actions.compound.setNumReactants,
     setNumProducts: actions.compound.setNumProducts,
     setNumDiluents: actions.compound.setNumDiluents,
+
+    setTemperature: actions.operatingParams.setTemperature,
+    setPressure: actions.operatingParams.setPressure,
+    setPhysicalState: actions.operatingParams.setPhysicalState,
+    setHeatOfReaction: actions.operatingParams.setHeatOfReaction,
+    setCp: actions.operatingParams.setCp,
 }
 
 export default connect(null, mapDispatchToProps)(Header)
