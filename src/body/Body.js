@@ -42,11 +42,8 @@ class Body extends Component {
             reactants.push(
                 <Reactant
                     key={i}
+                    index={i}
                     number={i + 1}
-                    //temperature={this.props.operatingParams.temperature}
-                    setHNums={this.props.setHNums}
-                    addReactant={this.addReactant}
-                    addReactantWtFraction={this.addReactantWtFraction}
                 />
             )
         }

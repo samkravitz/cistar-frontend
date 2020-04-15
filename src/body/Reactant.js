@@ -21,18 +21,18 @@ class Reactant extends Component {
 
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
-        this.props.parseReactantFile(this.props.number - 1, this.props.temperature, formData)
+        this.props.parseReactantFile(this.props.index, this.props.temperature, formData)
     }
 
     handleChange = e => {
-        const properties = {...this.props.reactants[this.props.number - 1]}
+        const properties = {...this.props.reactants[this.props.index]}
         properties[e.target.name] = e.target.value
-        this.props.updateReactant(this.props.number - 1, properties)
+        this.props.updateReactant(this.props.index, properties)
     }
 
     render() {
-        const { number } = this.props
-        const properties = this.props.reactants[number - 1]
+        const { number, index } = this.props
+        const properties = this.props.reactants[index]
         return (
             <div className="Reactant" style={{ ...styles }}>
                 <h4 sm="4">Reactant {number}</h4>
