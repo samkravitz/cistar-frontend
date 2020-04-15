@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap'
+import actions from '../redux/actions'
+import { connect } from 'react-redux'
 
 import Reactant from './Reactant'
 import Product from './Product'
@@ -124,4 +126,12 @@ const style = {
     justifyContent: 'center',
 }
 
-export default Body
+const mapStateToProps = state => ({
+	numReactants: state.compound.numReactants,
+})
+
+const mapDispatchToProps = {
+	
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body)

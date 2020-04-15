@@ -1,7 +1,7 @@
 const Types = {
-    SET_REACTANT: 1,
+    SET_REACTANT: 'SET_REACTANT',
 
-    SET_NUM_REACTANTS: 2,
+    SET_NUM_REACTANTS: 'SET_NUM_REACTANTS',
 }
 
 export default Types
