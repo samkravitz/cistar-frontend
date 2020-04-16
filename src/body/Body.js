@@ -16,11 +16,11 @@ const Body = props => {
             validateOperatingParams(props.operatingParams)
             // check if we have are using a global cp or cp/reactant
             const cpMix = props.operatingParams.cp !== '' ? true : false
-            if (!cpMix) {
+            if (!cpMix)
                 validateReactants(props.reactants)
-            } else {
-                props.calculate(props.operatingParams)
-            } 
+
+            props.calculate(props.operatingParams)
+
         } catch (error) {
             alert(error)
         }
@@ -63,7 +63,7 @@ const Body = props => {
             // initial weight fraction validation
             if (isNaN(Number(molWtFraction)) || Number(molWtFraction) < 0)
                 throw new Error('Please enter a valid weight fraction for reactant ' + number)
-            
+
             fractions.push(Number(molWtFraction))
         })
 

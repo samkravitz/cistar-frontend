@@ -20,18 +20,16 @@ export const calculate = operatingParams => {
             dispatch({ type: Types.SET_MATRIX, payload: matrix })
 
             // calculation block
-            const response = await axios.get(`${server}/calculate`, {
-                params: { 
-                    operatingParams: operatingParams,
-                    reactants: reactants
-                }
+            const response = await axios.post(`${server}/calculate`, {
+                operatingParams: operatingParams,
+                reactants: reactants
             })
 
             dispatch({ type: Types.SET_REACTION_INFO, payload: response.data })
         } catch (error) {
             // Error 😨
-           const message = error.response ? error.response.data.error : error
-           alert(message)
+            const message = error.response ? error.response.data.error : error
+            alert(message)
         }
 
         // const { hNums } = this.state
