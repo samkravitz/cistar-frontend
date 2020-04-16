@@ -15,8 +15,8 @@ const Calculation = ({ reactionInfo }) => {
         <div className='Calculation' style={styles.main}>
             <h4>Calculation</h4>
             <span>Adiabatic temperature change: {Number(reactionInfo.adiabaticTemp).toFixed(3)} °C</span> <br/>
-            <span>Final temperature: {Number(reactionInfo.finalTemp).toFixed(3)} °C</span> <br/>
-            <span>Adiabatic pressure change: {Number(reactionInfo.adiabaticPressure).toFixed(3)} bar</span>
+            <span>Calculated final temperature: {Number(reactionInfo.finalTemp).toFixed(3)} °C</span> <br/>
+            <span>Calculated final pressure: {Number(reactionInfo.adiabaticPressure).toFixed(3)} bar</span>
         </div>
     )
 }
