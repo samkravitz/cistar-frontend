@@ -31,26 +31,6 @@ export const calculate = operatingParams => {
             const message = error.response ? error.response.data.error : error
             alert(message)
         }
-
-        // const { hNums } = this.state
-        // try {
-        //     this.validateReactants(reactants)
-        // } catch (error) {
-        //     const message = error.response ? error.response.data.error : error
-        //     alert(message)
-        //     return
-        // }
-
-        // const promises = Object.keys(hNums).map(async name => {
-        //     const res = await axios.post(`${server}/graph`, Object.keys(hNums[`${name}`]))
-        //     const data = res.data
-        //     data['name'] = name
-        //     return data
-        // })
-
-        // const matrix = await Promise.all(promises)
-
-        // this.setState({ matrix })
     }
 }
 

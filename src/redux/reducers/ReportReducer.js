@@ -5,7 +5,11 @@ import produce from 'immer'
 const initialState = {
     matrix: [],
     hNums: {},
-    reactionInfo: {},
+    reactionInfo: {
+        adiabaticTemp: '',
+        finalTemp: '',
+        adiabaticPressure: ''
+    },
 }
 
 export default (state = initialState, action) => produce(state, draft => {

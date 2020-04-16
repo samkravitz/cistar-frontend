@@ -43,7 +43,6 @@ const HTable = ({ hNums }) => {
         'H-Statement',
     ]
 
-    console.log(hNums)
     return (
         <div className='HTable' style={styles.main}>
             <table align='center' style={styles.table}>
