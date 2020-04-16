@@ -11,8 +11,6 @@ const styles = {
 }
 
 const Calculation = ({ reactionInfo }) => {
-    console.log(reactionInfo)
-    console.log(typeof(reactionInfo.adiabaticPressure))
     return (
         <div className='Calculation' style={styles.main}>
             <h4>Calculation</h4>
