@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import actions from './redux/actions'
+import { connect } from 'react-redux'
 import axios from 'axios'
 import server from './server'
 

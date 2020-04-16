@@ -1,6 +1,5 @@
 import axios from 'axios'
 import server from '../../server'
-//import { Dispatch } from 'redux'
 import Types from './types'
 
 export const setNumReactants = numReactants => {
