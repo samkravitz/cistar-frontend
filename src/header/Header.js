@@ -73,6 +73,8 @@ const Header = props => {
                         </Input>
                         <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
                         <Input type="text" name="heatOfReaction" onChange={handleChangeHeatOfReaction} />
+                        <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
+                        <Input type="text" name="cp" onChange={handleChangeCp} />
                     </div>
                 </div>
             </div>

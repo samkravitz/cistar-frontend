@@ -14,7 +14,10 @@ const Body = props => {
     const handleClick = () => {
         try {
             validateOperatingParams(props.operatingParams)
-            validateReactants(props.reactants)
+            // check if we have are using a global cp or cp/reactant
+            const globalCp = props.operatingParams.cp !== '' ? true : false
+            if (!globalCp) 
+                validateReactants(props.reactants)
         } catch (error) {
             alert(error)
         }
