@@ -1,17 +1,15 @@
 {
   "files": {
-    "main.css": "/cistar-frontend/static/css/main.34de6062.chunk.css",
-    "main.js": "/cistar-frontend/static/js/main.4b2b478a.chunk.js",
-    "main.js.map": "/cistar-frontend/static/js/main.4b2b478a.chunk.js.map",
+    "main.js": "/cistar-frontend/static/js/main.6838c185.chunk.js",
+    "main.js.map": "/cistar-frontend/static/js/main.6838c185.chunk.js.map",
     "runtime~main.js": "/cistar-frontend/static/js/runtime~main.cd80e71c.js",
     "runtime~main.js.map": "/cistar-frontend/static/js/runtime~main.cd80e71c.js.map",
     "static/css/2.47e06e2e.chunk.css": "/cistar-frontend/static/css/2.47e06e2e.chunk.css",
-    "static/js/2.0af58069.chunk.js": "/cistar-frontend/static/js/2.0af58069.chunk.js",
-    "static/js/2.0af58069.chunk.js.map": "/cistar-frontend/static/js/2.0af58069.chunk.js.map",
+    "static/js/2.4eed2485.chunk.js": "/cistar-frontend/static/js/2.4eed2485.chunk.js",
+    "static/js/2.4eed2485.chunk.js.map": "/cistar-frontend/static/js/2.4eed2485.chunk.js.map",
     "index.html": "/cistar-frontend/index.html",
-    "precache-manifest.a496b9575d110e56ecb1765141b3868b.js": "/cistar-frontend/precache-manifest.a496b9575d110e56ecb1765141b3868b.js",
+    "precache-manifest.b15b8ca3dffbd711b5d5b2bb24adb38a.js": "/cistar-frontend/precache-manifest.b15b8ca3dffbd711b5d5b2bb24adb38a.js",
     "service-worker.js": "/cistar-frontend/service-worker.js",
-    "static/css/2.47e06e2e.chunk.css.map": "/cistar-frontend/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.34de6062.chunk.css.map": "/cistar-frontend/static/css/main.34de6062.chunk.css.map"
+    "static/css/2.47e06e2e.chunk.css.map": "/cistar-frontend/static/css/2.47e06e2e.chunk.css.map"
   }
 }
