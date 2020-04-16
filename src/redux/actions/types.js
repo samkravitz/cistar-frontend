@@ -15,6 +15,10 @@ const Types = {
     SET_HEAT_OF_REACTION: 'SET_HEAT_OF_REACTION',
     SET_CP:               'SET_CP',
 
+    // report types
+    SET_HNUMS:            'SET_HNUMS',
+    SET_MATRIX:           'SET_MATRIX',
+
 }
 
 export default Types

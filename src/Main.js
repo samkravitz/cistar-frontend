@@ -73,10 +73,7 @@ class Main extends Component {
                     setHNums={this.setHNums}
                     calculate={this.calculate}
                 />
-                <Report
-                    matrix={this.state.matrix}
-                    hNums={this.state.hNums}
-                />
+                <Report />
             </div>
         )
     }

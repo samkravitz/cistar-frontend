@@ -8,7 +8,8 @@ import Product from './Product'
 import Properties from './Properties'
 import Diluent from './Diluent'
 
-const Body = ({ numReactants, numProducts, numDiluents }) => {
+const Body = props => {
+    const { numReactants, numProducts, numDiluents } = props
     return (
         <div className="Body">
             <div style={style}>
@@ -45,7 +46,7 @@ const Body = ({ numReactants, numProducts, numDiluents }) => {
             <div style={style}>
                 <Button
                     color="primary"
-                    onClick={() => this.props.calculate(this.state.reactants)}
+                    onClick={() => props.calculate()}
                 >
                     Calculate
                 </Button>
@@ -67,4 +68,8 @@ const mapStateToProps = state => ({
     numDiluents: state.compound.numDiluents,
 })
 
-export default connect(mapStateToProps)(Body)
+const mapDispatchToProps = {
+    calculate: actions.report.calculate,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Matrix from './Matrix'
 import HTable from './HTable'
@@ -29,4 +30,8 @@ const Report = props => {
     )
 }
 
-export default Report
+const mapStateToProps = state => ({
+    matrix: state.report.matrix,
+})
+
+export default connect(mapStateToProps)(Report)
