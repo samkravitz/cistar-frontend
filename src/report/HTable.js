@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
+
 const styles = {
     main: {
         padding: '1rem',
@@ -41,6 +43,7 @@ const HTable = ({ hNums }) => {
         'H-Statement',
     ]
 
+    console.log(hNums)
     return (
         <div className='HTable' style={styles.main}>
             <table align='center' style={styles.table}>
@@ -102,4 +105,8 @@ const HTable = ({ hNums }) => {
     )
 }
 
-export default HTable
+const mapStateToProps = state => ({
+    hNums: state.report.hNums,
+})
+
+export default connect(mapStateToProps)(HTable)

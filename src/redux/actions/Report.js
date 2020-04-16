@@ -42,8 +42,8 @@ export const calculate = () => {
             dispatch({ type: Types.SET_MATRIX, payload: matrix })
         } catch (error) {
             // Error 😨
-            const message = error.response ? error.response.data.error : error
-            alert(message)
+           const message = error.response ? error.response.data.error : error
+           alert(message)
         }
 
         // const { hNums } = this.state
@@ -71,18 +71,20 @@ export const calculate = () => {
 const getHNums = (reactants, products, diluents) => {
     const hNums = {}
     reactants.forEach(reactant => {
-        hNums[reactant.productName] = reactant.hNumbers
+        if (reactant.productName)
+            hNums[reactant.productName] = reactant.hNumbers
     })
 
     products.forEach(product => {
-        hNums[product.productName] = product.hNumbers
+        if (product.productName)
+            hNums[product.productName] = product.hNumbers
     })
 
     diluents.forEach(diluent => {
-        hNums[diluent.productName] = diluent.hNumbers
+        if (diluent.productName)
+            hNums[diluent.productName] = diluent.hNumbers
     })
 
-    console.log(hNums)
     return hNums
 }
 

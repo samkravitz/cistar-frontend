@@ -18,6 +18,7 @@ const Types = {
     // report types
     SET_HNUMS:            'SET_HNUMS',
     SET_MATRIX:           'SET_MATRIX',
+    SET_REACTION_INFO:    'SET_REACTION_INFO',
 
 }
 
