@@ -5,6 +5,7 @@ import produce from 'immer'
 const initialState = {
     matrix: [],
     hNums: {},
+    reactionInfo: {},
 }
 
 export default (state = initialState, action) => produce(state, draft => {
@@ -15,6 +16,10 @@ export default (state = initialState, action) => produce(state, draft => {
 
         case (Types.SET_MATRIX):
             draft.matrix = action.payload
+            return
+
+        case (Types.SET_REACTION_INFO):
+            draft.reactionInfo = action.payload
             return
 
         default:

@@ -15,9 +15,12 @@ const Body = props => {
         try {
             validateOperatingParams(props.operatingParams)
             // check if we have are using a global cp or cp/reactant
-            const globalCp = props.operatingParams.cp !== '' ? true : false
-            if (!globalCp) 
+            const cpMix = props.operatingParams.cp !== '' ? true : false
+            if (!cpMix) {
                 validateReactants(props.reactants)
+            } else {
+                props.calculate(props.operatingParams)
+            } 
         } catch (error) {
             alert(error)
         }

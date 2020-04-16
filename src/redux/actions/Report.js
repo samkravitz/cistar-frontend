@@ -2,7 +2,8 @@ import axios from 'axios'
 import server from '../../server'
 import Types from './types'
 
-export const calculate = () => {
+// cpMix will either be false or the value of cp mix in the operating params
+export const calculate = operatingParams => {
     return async (dispatch, getState) => {
         const { reactants, products, diluents } = getState().compound
         const hNums = getHNums(reactants, products, diluents)
@@ -17,6 +18,16 @@ export const calculate = () => {
 
             const matrix = await Promise.all(promises)
             dispatch({ type: Types.SET_MATRIX, payload: matrix })
+
+            // calculation block
+            const response = await axios.get(`${server}/calculate`, {
+                params: { 
+                    operatingParams: operatingParams,
+                    reactants: reactants
+                }
+            })
+
+            dispatch({ type: Types.SET_REACTION_INFO, payload: response.data })
         } catch (error) {
             // Error 😨
            const message = error.response ? error.response.data.error : error
