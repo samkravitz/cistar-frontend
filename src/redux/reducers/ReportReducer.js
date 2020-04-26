@@ -5,6 +5,7 @@ import produce from 'immer'
 const initialState = {
     matrix: [],
     hNums: {},
+    cameoTable: '',
     reactionInfo: {
         adiabaticTemp: '',
         finalTemp: '',
@@ -26,6 +27,10 @@ export default (state = initialState, action) => produce(state, draft => {
             draft.reactionInfo = action.payload
             return
 
+        case (Types.SET_CAMEO_TABLE):
+            draft.cameoTable = action.payload
+            return
+            
         default:
             return
     }

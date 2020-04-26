@@ -19,7 +19,7 @@ const Types = {
     SET_HNUMS:            'SET_HNUMS',
     SET_MATRIX:           'SET_MATRIX',
     SET_REACTION_INFO:    'SET_REACTION_INFO',
-
+    SET_CAMEO_TABLE:      'SET_CAMEO_TABLE',
 }
 
 export default Types

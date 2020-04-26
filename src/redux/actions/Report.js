@@ -33,7 +33,7 @@ export const calculate = operatingParams => {
                 diluents: diluents
             })
 
-            console.log(cameoResponse.data)
+            dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoResponse.data })
         } catch (error) {
             // Error 😨
             const message = error.response ? error.response.data.error : error
