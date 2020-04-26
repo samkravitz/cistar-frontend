@@ -24,8 +24,16 @@ export const calculate = operatingParams => {
                 operatingParams: operatingParams,
                 reactants: reactants
             })
-
             dispatch({ type: Types.SET_REACTION_INFO, payload: response.data })
+
+            // cameo table
+            const cameoResponse = await axios.post(`${server}/cameo`, {
+                reactants: reactants,
+                products: products,
+                diluents: diluents
+            })
+
+            console.log(cameoResponse.data)
         } catch (error) {
             // Error 😨
             const message = error.response ? error.response.data.error : error

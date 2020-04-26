@@ -52,7 +52,7 @@ class Main extends Component {
             console.log('before')
             const reactant = reactants[i]
             console.log('after')
-            if (! reactant) throw new Error('Please enter data for reactant ' + i)
+            if (!reactant) throw new Error('Please enter data for reactant ' + i)
             console.log(reactant)
             // cp validation
             const cp = reactant['cp']
