@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Matrix from './Matrix'
 import HTable from './HTable'
 import Calculation from './Calculation'
+import Cameo from './Cameo'
 
 const styles = {
     main: {
@@ -24,6 +25,7 @@ const Report = props => {
             <Calculation />
             <HTable />
             <Matrix />
+            <Cameo />
         </div>
     )
 }
