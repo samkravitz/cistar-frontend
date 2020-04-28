@@ -7,6 +7,7 @@ const Cameo = ({ cameoTable }) => {
     console.log(cameoTable)
     return (
         <div className='Cameo'>
+            <caption>Cameo Matrix</caption>
             <div dangerouslySetInnerHTML={{ __html: cameoTable }}></div>
         </div>
     )

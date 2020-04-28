@@ -4,114 +4,116 @@ import { Label, Input, Button } from 'reactstrap'
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
 
-const Header = props => {
+class Header extends Component {
 
-    const handleChangeR = event => {
+    handleChangeR = event => {
         const numReactants = parseInt(event.target.value)
-        props.setNumReactants(numReactants)
+        this.props.setNumReactants(numReactants)
     }
 
-    const handleChangeP = event => {
+    handleChangeP = event => {
         const numProducts = parseInt(event.target.value)
-        props.setNumProducts(numProducts)
+        this.props.setNumProducts(numProducts)
     }
 
-    const handleChangeD = event => {
+    handleChangeD = event => {
         const numDiluents = parseInt(event.target.value)
-        props.setNumDiluents(numDiluents)
+        this.props.setNumDiluents(numDiluents)
     }
 
-    const handleChangeTemperature = event => {
-        props.setTemperature(event.target.value)
+    handleChangeTemperature = event => {
+        this.props.setTemperature(event.target.value)
     }
 
-    const handleChangePressure = event => {
-        props.setPressure(event.target.value)
+    handleChangePressure = event => {
+        this.props.setPressure(event.target.value)
     }
 
-    const handleChangePhysicalState = event => {
-        props.setPhysicalState(event.target.value)
+    handleChangePhysicalState = event => {
+        this.props.setPhysicalState(event.target.value)
     }
 
-    const handleChangeHeatOfReaction = event => {
-        props.setHeatOfReaction(event.target.value)
+    handleChangeHeatOfReaction = event => {
+        this.props.setHeatOfReaction(event.target.value)
     }
 
-    const handleChangeCp = event => {
-        props.setCp(event.target.value)
+    handleChangeCp = event => {
+        this.props.setCp(event.target.value)
     }
 
-    return (
-        <div className="Header" style={styles.main}>
-            <div className="HeaderFlex" style={styles.flexTop}>
-                <div className="TopWrapper">
-                    <h1 style={{ paddingBottom: '.5em' }}>CISTAR Web Tool</h1>
-                    <div className="TitleLocation" style={{ paddingLeft: '1em' }}>
-                        <div className="Title" style={styles.titleLocation}>
-                            <h6 style={{ paddingRight: '1em' }}>Title: </h6>
-                            <Input type="text" name="title" />
+    render() {
+        return (
+            <div className="Header" style={styles.main}>
+                <div className="HeaderFlex" style={styles.flexTop}>
+                    <div className="TopWrapper">
+                        <h1 style={{ paddingBottom: '.5em' }}>CISTAR Web Tool</h1>
+                        <div className="TitleLocation" style={{ paddingLeft: '1em' }}>
+                            <div className="Title" style={styles.titleLocation}>
+                                <h6 style={{ paddingRight: '1em' }}>Title: </h6>
+                                <Input type="text" name="title" />
+                            </div>
+                            <div className="Location" style={styles.titleLocation}>
+                                <h6 style={{ paddingRight: '1em' }} >Location: </h6>
+                                <Input type="text" name="title" />
+                            </div>
+                            <Button color="primary" onClick={() => alert('Save feature coming soon :)')}>Save Reaction</Button>
                         </div>
-                        <div className="Location" style={styles.titleLocation}>
-                            <h6 style={{ paddingRight: '1em' }} >Location: </h6>
-                            <Input type="text" name="title" />
+                    </div>
+
+                    <div className="OperatingParams">
+                        <h4>Operating Parameters: </h4>
+                        <div className="Params" style={styles.operatingParams}>
+                            <h6>Temperature (&deg;C)</h6>
+                            <Input type="text" name="temperature" defaultValue="0" onChange={this.handleChangeTemperature} />
+                            <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
+                            <Input type="text" name="pressure" defaultValue="1" onChange={this.handleChangePressure} />
+                            <h6 style={{ paddingTop: '1em' }}>State</h6>
+                            <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState}>
+                                <option>Liquid</option>
+                                <option>Gas</option>
+                            </Input>
+                            <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
+                            <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} />
+                            <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
+                            <Input type="text" name="cp" onChange={this.handleChangeCp} />
                         </div>
-                        <Button color="primary" onClick={() => alert('Save feature coming soon :)')}>Save Reaction</Button>
                     </div>
                 </div>
-
-                <div className="OperatingParams">
-                    <h4>Operating Parameters: </h4>
-                    <div className="Params" style={styles.operatingParams}>
-                        <h6>Temperature (&deg;C)</h6>
-                        <Input type="text" name="temperature" defaultValue="0" onChange={handleChangeTemperature} />
-                        <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
-                        <Input type="text" name="pressure" defaultValue="1" onChange={handleChangePressure} />
-                        <h6 style={{ paddingTop: '1em' }}>State</h6>
-                        <Input type="select" name="st" id="exampleSelect" onChange={handleChangePhysicalState}>
-                            <option>Liquid</option>
-                            <option>Gas</option>
+                <div className="ReactantsProductsDiluents" style={styles.rpd}>
+                    <span style={styles.rpd.element}>
+                        <Label for="Reactants">Reactants</Label>
+                        <Input type="select" name="Reactants" id="Reactants" onChange={this.handleChangeR}>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
                         </Input>
-                        <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
-                        <Input type="text" name="heatOfReaction" onChange={handleChangeHeatOfReaction} />
-                        <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
-                        <Input type="text" name="cp" onChange={handleChangeCp} />
-                    </div>
+                    </span>
+
+                    <span style={styles.rpd.element}>
+                        <Label for="Products">Products</Label>
+                        <Input type="select" name="Products" id="Products" onChange={this.handleChangeP}>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </Input>
+                    </span>
+
+                    <span style={styles.rpd.element}>
+                        <Label for="Diluents">Diluents</Label>
+                        <Input type="select" name="Diluents" id="Diluents" onChange={this.handleChangeD}>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                        </Input>
+                    </span>
                 </div>
-            </div>
-            <div className="ReactantsProductsDiluents" style={styles.rpd}>
-                <span style={styles.rpd.element}>
-                    <Label for="Reactants">Reactants</Label>
-                    <Input type="select" name="Reactants" id="Reactants" onChange={handleChangeR}>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </Input>
-                </span>
+                <span style={{ color: '#c71e1e' }}>* Inputs in red are required user inputs *</span>
+            </div >
 
-                <span style={styles.rpd.element}>
-                    <Label for="Products">Products</Label>
-                    <Input type="select" name="Products" id="Products" onChange={handleChangeP}>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </Input>
-                </span>
-
-                <span style={styles.rpd.element}>
-                    <Label for="Diluents">Diluents</Label>
-                    <Input type="select" name="Diluents" id="Diluents" onChange={handleChangeD}>
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                    </Input>
-                </span>
-            </div>
-            <span style={{ color: '#c71e1e' }}>* Inputs in red are required user inputs *</span>
-        </div >
-
-    )
+        )
+    }
 }
 
 const styles = {
@@ -152,7 +154,7 @@ const styles = {
 
 }
 
-// const mapStateToProps = state => {
+// const mapStateTothis.props = state => {
 
 // }
 
