@@ -4,7 +4,24 @@ import { Label, Input, Button } from 'reactstrap'
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
 
+import { save, load } from '../saveload'
+
 class Header extends Component {
+
+    state = {
+        title: '',
+        location: '',
+    }
+
+    onChangeTitle = event => {
+        event.preventDefault()
+        this.setState({ title: event.target.value })
+    }
+
+    onChangeLocation = event => {
+        event.preventDefault()
+        this.setState({ location: event.target.value })
+    }
 
     handleChangeR = event => {
         const numReactants = parseInt(event.target.value)
@@ -41,6 +58,14 @@ class Header extends Component {
         this.props.setCp(event.target.value)
     }
 
+    saveReaction = () => {
+        save(this.state.title, this.state.location)
+    }
+
+    loadReaction = () => {
+        load()
+    }
+
     render() {
         return (
             <div className="Header" style={styles.main}>
@@ -50,13 +75,13 @@ class Header extends Component {
                         <div className="TitleLocation" style={{ paddingLeft: '1em' }}>
                             <div className="Title" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }}>Title: </h6>
-                                <Input type="text" name="title" />
+                                <Input type="text" name="title" value={this.state.title} onChange={this.onChangeTitle}/>
                             </div>
                             <div className="Location" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }} >Location: </h6>
-                                <Input type="text" name="title" />
+                                <Input type="text" name="title" value={this.state.location} onChange={this.onChangeLocation}/>
                             </div>
-                            <Button color="primary" onClick={() => alert('Save feature coming soon :)')}>Save Reaction</Button>
+                            <Button color="primary" onClick={this.saveReaction}>Save Reaction</Button>
                         </div>
                     </div>
 
