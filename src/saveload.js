@@ -17,6 +17,8 @@ export const save = (title, location) => {
     download(new Blob([...data]), title + '.json', 'text/json')
 }
 
+// dispatches all redux store components in a reaction file
+// and returns the title and location to the header component
 export const load = reader => {
     try {
         const reaction = JSON.parse(reader.target.result)
@@ -51,6 +53,7 @@ export const load = reader => {
         store.dispatch({ type: Types.SET_HEAT_OF_REACTION, payload: operatingParams.heatOfReaction })
         store.dispatch({ type: Types.SET_CP, payload: operatingParams.cp })
 
+        return { title: reaction.title, location: reaction.location }
     } catch (err) {
         alert('Unable to load reaction.')
     }

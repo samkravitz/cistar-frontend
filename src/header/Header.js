@@ -63,9 +63,19 @@ class Header extends Component {
     }
 
     loadReaction = event => {
-        console.log('loading!')
         const reader = new FileReader()
-        reader.onload = load
+
+        // hacky way to get the return value from this load callback.
+        // this is gonna return the title, location from the reaction
+        // and set everything else to the store
+        reader.onload = (file => {
+            const data = load(file)
+            this.setState({
+                title: data.title,
+                location: data.location,
+            })
+        })
+        
         reader.readAsText(event.target.files[0])
     }
 
