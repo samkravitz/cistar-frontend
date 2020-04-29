@@ -12,7 +12,7 @@ const Product = props => {
 
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
-        props.parseProductFile(props.index, formData)
+        props.parseProductFile(props.index, props.temperature, formData)
     }
 
     const handleChange = e => {

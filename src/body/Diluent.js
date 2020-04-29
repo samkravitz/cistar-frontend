@@ -12,7 +12,7 @@ const Diluent = props => {
 
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
-        props.parseDiluentFile(props.index, formData)
+        props.parseDiluentFile(props.index, props.temperature, formData)
     }
 
     const handleChange = e => {

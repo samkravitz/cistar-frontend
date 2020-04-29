@@ -38,11 +38,12 @@ export const parseReactantFile = (index, temperature, formData) => {
     }
 }
 
-export const parseProductFile = (index, formData) => {
+export const parseProductFile = (index, temperature, formData) => {
     return async dispatch => {
         try {
             const response = await axios.post(`${server}/pdf`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
+                params: { temperature: temperature }
             })
     
             dispatch({ type: Types.SET_PRODUCT, payload: { index: index, data: response.data } })
@@ -55,11 +56,12 @@ export const parseProductFile = (index, formData) => {
     }
 }
 
-export const parseDiluentFile = (index, formData) => {
+export const parseDiluentFile = (index, temperature, formData) => {
     return async dispatch => {
         try {
             const response = await axios.post(`${server}/pdf`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
+                params: { temperature: temperature }
             })
     
             dispatch({ type: Types.SET_DILUENT, payload: { index: index, data: response.data } })
