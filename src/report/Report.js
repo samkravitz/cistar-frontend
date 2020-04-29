@@ -17,7 +17,7 @@ const styles = {
 
 const Report = props => {
     // if report has not been submitted yet return
-    if (props.matrix.length === 0) return null;
+    if (props.cameoTable === '') return null;
 
     return (
         <div className='Report' style={styles.main}>
@@ -31,7 +31,7 @@ const Report = props => {
 }
 
 const mapStateToProps = state => ({
-    matrix: state.report.matrix,
+    cameoTable: state.report.cameoTable,
 })
 
 export default connect(mapStateToProps)(Report)
