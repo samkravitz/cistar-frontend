@@ -12,9 +12,9 @@ const Cameo = ({ cameoTable }) => {
     console.log(yellow)
     console.log(red)
 
-    cameoTable = cameoTable.replace('/images/reactivity/green_compatible.png', green)
-    cameoTable = cameoTable.replace('/images/reactivity/yellow_caution', yellow)
-    cameoTable = cameoTable.replace('/images/reactivity/red_incompatible.png', red)
+    cameoTable = cameoTable.split('/images/reactivity/green_compatible.png').join(green)
+    cameoTable = cameoTable.split('/images/reactivity/yellow_caution').join(yellow)
+    cameoTable = cameoTable.split('/images/reactivity/red_incompatible.png').join(red)
 
     console.log(cameoTable)
     return (
