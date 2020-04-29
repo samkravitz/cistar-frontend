@@ -1,11 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const getAlignment = numberOfElements => {
-    return numberOfElements > 6 ? 'start' : 'center'
-}
-
-const Properties = props => {
-    const alignment = getAlignment(props.numberOfElements)
+const Properties = ({ numReactants, numProducts, numDiluents }) => {
+    const numberOfElements = numReactants + numProducts + numDiluents
+    const alignment = numberOfElements > 6 ? 'start' : 'center'
     return (
         <div className="Properties" style={{ ...styles.main, alignItems: alignment }}>
 
@@ -38,14 +36,16 @@ const Properties = props => {
 const styles = {
     main: {
         display: 'grid',
-        //gridTemplateRows: '100px 200px',
-        //gridTemplateRows: 'repeat(23, minmax(auto, 1fr))',
         gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
         margin: '0',
-        //alignItems: 'center',
-        //alignItems: 'start',
         textAlign: 'center',
     },
 }
 
-export default Properties
+const mapStateToProps = state => ({
+    numReactants: state.compound.numReactants,
+    numProducts: state.compound.numProducts,
+    numDiluents: state.compound.numDiluents,
+})
+
+export default connect(mapStateToProps)(Properties)

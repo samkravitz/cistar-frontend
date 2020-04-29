@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
+
 const styles = {
     main: {
         padding: '1rem',
@@ -86,4 +88,8 @@ const Matrix = ({ matrix }) => {
     )
 }
 
-export default Matrix
+const mapStateToProps = state => ({
+    matrix: state.report.matrix,
+})
+
+export default connect(mapStateToProps)(Matrix)

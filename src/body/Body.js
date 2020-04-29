@@ -1,96 +1,142 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Button } from 'reactstrap'
+import actions from '../redux/actions'
+import { connect } from 'react-redux'
 
 import Reactant from './Reactant'
 import Product from './Product'
 import Properties from './Properties'
 import Diluent from './Diluent'
 
-class Body extends Component {
+const Body = props => {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            numberOfElements: props.numReactants + props.numProducts + props.numDiluents + 1
+    // validate data
+    const handleClick = () => {
+        try {
+            validateOperatingParams(props.operatingParams)
+            // check if we have are using a global cp or cp/reactant
+            const cpMix = props.operatingParams.cp !== '' ? true : false
+            if (!cpMix)
+                validateReactants(props.reactants)
+
+            props.calculate(props.operatingParams)
+
+        } catch (error) {
+            alert(error)
         }
     }
 
-    getNumberOfElements = (reactants, products, diluents) => {
-        // + 1 to account for products column
-        return reactants + products + diluents + 1
+    const validateOperatingParams = operatingParams => {
+        // temperature
+        if (!operatingParams.temperature)
+            throw new Error("Please enter a temperature")
+
+        if (isNaN(Number(operatingParams.temperature)))
+            throw new Error("Please enter a valid temperature")
+
+        // pressure
+        if (!operatingParams.pressure)
+            throw new Error("Please enter a pressure")
+
+        if (isNaN(Number(operatingParams.pressure)) || Number(operatingParams.pressure) < 0)
+            throw new Error("Please enter a valid pressure")
+
+        // heat of reaction
+        if (!operatingParams.heatOfReaction)
+            throw new Error("Please enter a heat of reaction")
+
+        if (isNaN(Number(operatingParams.temperature)))
+            throw new Error("Please enter a valid heat of reaction")
     }
 
-    // update number of Reactants, Products, Diluents that will be rendered
-    componentDidUpdate(prevProps, prevState) {
-        const { numReactants, numProducts, numDiluents } = this.props
-        const numberOfElements = this.getNumberOfElements(numReactants, numProducts, numDiluents)
-        if (prevState.numberOfElements !== numberOfElements) {
-            this.setState({ numberOfElements })
-        }
+    const validateReactants = reactants => {
+        const fractions = []
+        reactants.forEach((reactant, i) => {
+            const { cp, molWtFraction } = reactant
+            const number = i + 1
+
+            // cp validation
+            if (cp === '') throw new Error('Please enter a valid cp for reactant ' + number)
+            if (isNaN(Number(cp)) || Number(cp) < 0)
+                throw new Error('Please enter a valid cp for reactant ' + number)
+
+            // initial weight fraction validation
+            if (isNaN(Number(molWtFraction)) || Number(molWtFraction) < 0)
+                throw new Error('Please enter a valid weight fraction for reactant ' + number)
+
+            fractions.push(Number(molWtFraction))
+        })
+
+        // validate that weight fractions add to 1
+        const sum = fractions.reduce((a, b) => a + b, 0)
+        if (sum !== 1)
+            throw new Error('Please make sure weight fractions add to 1')
     }
 
-    getReactants = numReactants => {
-        const reactants = []
-        for (let i = 0; i < numReactants; i++) {
-            reactants.push(
-                <Reactant
-                    key={i}
-                    number={i + 1}
-                    temperature={this.props.operatingParams.temperature}
-                    setHNums={this.props.setHNums}
-                />
-            )
-        }
-        return reactants
-    }
-
-    getProducts = numProducts => {
-        const products = []
-        for (let i = 0; i < numProducts; i++) {
-            products.push(
-                <Product
-                    key={i}
-                    number={i + 1}
-                    setHNums={this.props.setHNums}
-                />
-            )
-        }
-        return products
-    }
-
-    getDiluents = numDiluents => {
-        const diluents = []
-        for (let i = 0; i < numDiluents; i++) {
-            diluents.push(
-                <Diluent
-                    key={i}
-                    number={i + 1}
-                    setHNums={this.props.setHNums}
-                />
-            )
-        }
-        return diluents
-    }
-
-    render() {
-        const { numReactants, numProducts, numDiluents } = this.props
-        const reactants = this.getReactants(numReactants)
-        const products = this.getProducts(numProducts)
-        const diluents = this.getDiluents(numDiluents)
-        return (
-            <div className="Body" style={{ ...style }}>
-                <Properties numberOfElements={this.state.numberOfElements}/>
-                {reactants}
-                {products}
-                {diluents}
+    const { numReactants, numProducts, numDiluents } = props
+    return (
+        <div className="Body">
+            <div style={style}>
+                <Properties />
+                {/* this is just a hacky way to map numReactants number of times: */}
+                {
+                    [...Array(numReactants)].map((e, i) => (
+                        <Reactant
+                            key={i}
+                            index={i}
+                            number={i + 1}
+                        />
+                    ))
+                }
+                {
+                    [...Array(numProducts)].map((e, i) => (
+                        <Product
+                            key={i}
+                            index={i}
+                            number={i + 1}
+                        />
+                    ))
+                }
+                {
+                    [...Array(numDiluents)].map((e, i) => (
+                        <Diluent
+                            key={i}
+                            index={i}
+                            number={i + 1}
+                        />
+                    ))
+                }
             </div>
-        )
-    }
+            <div style={style}>
+                <Button
+                    color="primary"
+                    onClick={handleClick}
+                >
+                    Calculate
+                </Button>
+            </div>
+        </div>
+
+    )
+
 }
 
 const style = {
     display: 'flex',
     justifyContent: 'center',
-    height: '100%'
 }
 
-export default Body
+const mapStateToProps = state => ({
+    numReactants: state.compound.numReactants,
+    numProducts: state.compound.numProducts,
+    numDiluents: state.compound.numDiluents,
+
+    reactants: state.compound.reactants,
+    operatingParams: state.operatingParams,
+})
+
+const mapDispatchToProps = {
+    calculate: actions.report.calculate,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body)

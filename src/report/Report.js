@@ -1,7 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Matrix from './Matrix'
 import HTable from './HTable'
+import Calculation from './Calculation'
+import Cameo from './Cameo'
 
 const styles = {
     main: {
@@ -19,14 +22,16 @@ const Report = props => {
     return (
         <div className='Report' style={styles.main}>
             <h2>Report</h2>
-            <HTable 
-                hNums={props.hNums}
-            />
-            <Matrix
-                matrix={props.matrix}
-            />
+            <Calculation />
+            <HTable />
+            <Matrix />
+            <Cameo />
         </div>
     )
 }
 
-export default Report
+const mapStateToProps = state => ({
+    matrix: state.report.matrix,
+})
+
+export default connect(mapStateToProps)(Report)
