@@ -95,19 +95,16 @@ class Header extends Component {
                                 <Input type="text" name="title" value={this.state.location} onChange={this.onChangeLocation} />
                             </div>
                             <Button color="primary" onClick={this.saveReaction}>Save Reaction</Button>
-                            <div className='inputWrapper'
-                                
-                            >
-                                Load Reaction
+                            <label className="customFileInput" style={styles.customFileInput}>
                                 <Input
                                     type="file"
                                     name="file"
                                     encType="multipart/form-data"
-                                    //style={{ opacity: '0',zIndex:'-1' }}
-                                    //style={{ display: 'none' }}
+                                    style={{ display: 'none' }}
                                     onChange={this.loadReaction}
                                 />
-                            </div>
+                                Load Reaction
+                            </label>
                         </div>
                     </div>
 
@@ -179,10 +176,6 @@ const styles = {
         justifyContent: 'space-between',
     },
 
-    flexBottom: {
-
-    },
-
     titleLocation: {
         display: 'flex',
         alignItems: 'center',
@@ -201,6 +194,20 @@ const styles = {
             width: '33%',
             padding: '1em'
         },
+    },
+
+    customFileInput : {
+        marginLeft: '1em',
+        color: 'white',
+        backgroundColor: '#007bff',
+        borderColor: '#007bff',
+        padding: '.375rem .75rem',
+        border: '1px solid transparent',
+        borderRadius: '.25rem',
+        lineHeight: '1.5',
+        fontWeight: '400',
+        fontSize: '1rem',
+        cursor: 'pointer',
     }
 
 }
