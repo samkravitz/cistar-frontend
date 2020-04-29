@@ -62,8 +62,11 @@ class Header extends Component {
         save(this.state.title, this.state.location)
     }
 
-    loadReaction = () => {
-        load()
+    loadReaction = event => {
+        console.log('loading!')
+        const reader = new FileReader()
+        reader.onload = load
+        reader.readAsText(event.target.files[0])
     }
 
     render() {
@@ -75,13 +78,26 @@ class Header extends Component {
                         <div className="TitleLocation" style={{ paddingLeft: '1em' }}>
                             <div className="Title" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }}>Title: </h6>
-                                <Input type="text" name="title" value={this.state.title} onChange={this.onChangeTitle}/>
+                                <Input type="text" name="title" value={this.state.title} onChange={this.onChangeTitle} />
                             </div>
                             <div className="Location" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }} >Location: </h6>
-                                <Input type="text" name="title" value={this.state.location} onChange={this.onChangeLocation}/>
+                                <Input type="text" name="title" value={this.state.location} onChange={this.onChangeLocation} />
                             </div>
                             <Button color="primary" onClick={this.saveReaction}>Save Reaction</Button>
+                            <div className='inputWrapper'
+                                
+                            >
+                                Load Reaction
+                                <Input
+                                    type="file"
+                                    name="file"
+                                    encType="multipart/form-data"
+                                    //style={{ opacity: '0',zIndex:'-1' }}
+                                    //style={{ display: 'none' }}
+                                    onChange={this.loadReaction}
+                                />
+                            </div>
                         </div>
                     </div>
 
@@ -89,25 +105,25 @@ class Header extends Component {
                         <h4>Operating Parameters: </h4>
                         <div className="Params" style={styles.operatingParams}>
                             <h6>Temperature (&deg;C)</h6>
-                            <Input type="text" name="temperature" defaultValue="0" onChange={this.handleChangeTemperature} />
+                            <Input type="text" name="temperature" defaultValue="0" onChange={this.handleChangeTemperature} value={this.props.temperature}/>
                             <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
-                            <Input type="text" name="pressure" defaultValue="1" onChange={this.handleChangePressure} />
+                            <Input type="text" name="pressure" defaultValue="1" onChange={this.handleChangePressure} value={this.props.pressure}/>
                             <h6 style={{ paddingTop: '1em' }}>State</h6>
-                            <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState}>
+                            <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState} value={this.props.physicalState}>
                                 <option>Liquid</option>
                                 <option>Gas</option>
                             </Input>
                             <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
-                            <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} />
+                            <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} value={this.props.heatOfReaction}/>
                             <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
-                            <Input type="text" name="cp" onChange={this.handleChangeCp} />
+                            <Input type="text" name="cp" onChange={this.handleChangeCp} value={this.props.cp}/>
                         </div>
                     </div>
                 </div>
                 <div className="ReactantsProductsDiluents" style={styles.rpd}>
                     <span style={styles.rpd.element}>
                         <Label for="Reactants">Reactants</Label>
-                        <Input type="select" name="Reactants" id="Reactants" onChange={this.handleChangeR}>
+                        <Input type="select" name="Reactants" id="Reactants" onChange={this.handleChangeR} value={this.props.numReactants}>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -117,7 +133,7 @@ class Header extends Component {
 
                     <span style={styles.rpd.element}>
                         <Label for="Products">Products</Label>
-                        <Input type="select" name="Products" id="Products" onChange={this.handleChangeP}>
+                        <Input type="select" name="Products" id="Products" onChange={this.handleChangeP} value={this.props.numProducts}>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -127,7 +143,7 @@ class Header extends Component {
 
                     <span style={styles.rpd.element}>
                         <Label for="Diluents">Diluents</Label>
-                        <Input type="select" name="Diluents" id="Diluents" onChange={this.handleChangeD}>
+                        <Input type="select" name="Diluents" id="Diluents" onChange={this.handleChangeD} value={this.props.numDiluents}>
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>
@@ -179,9 +195,17 @@ const styles = {
 
 }
 
-// const mapStateTothis.props = state => {
+const mapStateToProps = state => ({
+    temperature: state.operatingParams.temperature,
+    pressure: state.operatingParams.pressure,
+    physicalState: state.operatingParams.physicalState,
+    heatOfReaction: state.operatingParams.heatOfReaction,
+    cp: state.operatingParams.cp,
 
-// }
+    numReactants: state.compound.numReactants,
+    numProducts: state.compound.numProducts,
+    numDiluents: state.compound.numDiluents,
+})
 
 const mapDispatchToProps = {
     setNumReactants: actions.compound.setNumReactants,
@@ -195,4 +219,4 @@ const mapDispatchToProps = {
     setCp: actions.operatingParams.setCp,
 }
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
