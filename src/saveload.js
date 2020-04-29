@@ -56,5 +56,6 @@ export const load = reader => {
         return { title: reaction.title, location: reaction.location }
     } catch (err) {
         alert('Unable to load reaction.')
+        return { title: '', location: '' }
     }
 }
