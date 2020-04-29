@@ -12,7 +12,8 @@ export const save = (title, location) => {
         type: 'CISTAR_REACTION',
         title: title,
         location: location,
-        ...state
+        compound: state.compound,
+        operatingParams: state.operatingParams,
     })
     download(new Blob([...data]), title + '.json', 'text/json')
 }
