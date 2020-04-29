@@ -1,4 +1,3 @@
-import { Dispatch } from 'redux'
 import Types from './types'
 
 export const setTemperature = temperature => {

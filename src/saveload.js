@@ -22,7 +22,7 @@ export const load = reader => {
         const reaction = JSON.parse(reader.target.result)
         
         // correct file check
-        if (reaction.type != 'CISTAR_REACTION') throw new Error('Invalid file type')
+        if (reaction.type !== 'CISTAR_REACTION') throw new Error('Invalid file type')
 
         // compound dispatching
         const compound = reaction.compound

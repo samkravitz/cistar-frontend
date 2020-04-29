@@ -105,9 +105,9 @@ class Header extends Component {
                         <h4>Operating Parameters: </h4>
                         <div className="Params" style={styles.operatingParams}>
                             <h6>Temperature (&deg;C)</h6>
-                            <Input type="text" name="temperature" defaultValue="0" onChange={this.handleChangeTemperature} value={this.props.temperature}/>
+                            <Input type="text" name="temperature" onChange={this.handleChangeTemperature} value={this.props.temperature}/>
                             <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
-                            <Input type="text" name="pressure" defaultValue="1" onChange={this.handleChangePressure} value={this.props.pressure}/>
+                            <Input type="text" name="pressure" onChange={this.handleChangePressure} value={this.props.pressure}/>
                             <h6 style={{ paddingTop: '1em' }}>State</h6>
                             <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState} value={this.props.physicalState}>
                                 <option>Liquid</option>

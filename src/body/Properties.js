@@ -1,6 +1,4 @@
 import React from 'react'
-
-import actions from '../redux/actions'
 import { connect } from 'react-redux'
 
 const Properties = ({ numReactants, numProducts, numDiluents }) => {
