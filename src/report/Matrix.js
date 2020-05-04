@@ -1,6 +1,9 @@
 import React from 'react'
-
 import { connect } from 'react-redux'
+
+import green from '../images/reactivity/green_compatible.png'
+import yellow from '../images/reactivity/yellow_caution.png'
+import red from '../images/reactivity/red_incompatible.png'
 
 const styles = {
     main: {
@@ -32,10 +35,16 @@ const styles = {
     caption: {
         captionSide: 'top',
         color: 'black'
-    }
+    },
+
+    legend: {
+        display: 'inline-block',
+        color: 'black',
+    },
 }
 
 const Matrix = ({ matrix }) => {
+    console.log('hi')
     const columns = [
         'Name',
         'Flammability',
@@ -83,7 +92,12 @@ const Matrix = ({ matrix }) => {
                     ))}
                 </tbody>
             </table>
-
+            <div className="Legend" style={styles.legend} >
+                <span>Legend:</span>
+                <img src={green} alt="green"/>
+                <img src={yellow} alt="yellow"/>
+                <img src={red} alt="red"/>
+            </div>
         </div>
     )
 }

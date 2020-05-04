@@ -17,7 +17,7 @@ const styles = {
 
 const Report = props => {
     // if report has not been submitted yet return
-    if (props.cameoTable === '') return null;
+    // if (props.cameoTable === '') return null;
 
     return (
         <div className='Report' style={styles.main}>
