@@ -5,6 +5,7 @@ import Types from '../actions/types'
 
 const initialState = {
     calculationInProgress: false,
+    reportComplete: false,
 }
 
 export default (state = initialState, action) => {
@@ -20,7 +21,13 @@ export default (state = initialState, action) => {
                 ...state,
                 calculationInProgress: false,
             }
-            
+        
+        case (Types.REPORT_COMPLETE):
+            return {
+                ...state,
+                reportComplete: true,
+            }
+        
         default:
             return state
     }

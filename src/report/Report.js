@@ -17,7 +17,7 @@ const styles = {
 
 const Report = props => {
     // if report has not been submitted yet return
-    // if (props.cameoTable === '') return null;
+    if (! props.reportComplete) return null;
 
     return (
         <div className='Report' style={styles.main}>
@@ -32,6 +32,7 @@ const Report = props => {
 
 const mapStateToProps = state => ({
     cameoTable: state.report.cameoTable,
+    reportComplete: state.status.reportComplete,
 })
 
 export default connect(mapStateToProps)(Report)
