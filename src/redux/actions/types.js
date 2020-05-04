@@ -24,6 +24,7 @@ const Types = {
     // status types
     CALCULATION_IN_PROGRESS: 'CALCULATION_IN_PROGRESS',
     CALCULATION_COMPLETE:    'CALCULATION_COMPLETE',
+    REPORT_COMPLETE:         'REPORT_COMPLETE',
 }
 
 export default Types

@@ -12,7 +12,6 @@ const Cameo = ({ cameoTable }) => {
     cameoTable = cameoTable.split('/images/reactivity/yellow_caution.png').join(yellow)
     cameoTable = cameoTable.split('/images/reactivity/red_incompatible.png').join(red)
 
-    console.log(cameoTable)
     return (
         <div className='Cameo'>
             <caption>Cameo Matrix</caption>
