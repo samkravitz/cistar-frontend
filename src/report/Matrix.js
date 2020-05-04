@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import green from '../images/reactivity/green_compatible.png'
 import yellow from '../images/reactivity/yellow_caution.png'
+import orange from '../images/reactivity/orange_warning.png'
 import red from '../images/reactivity/red_incompatible.png'
 
 const styles = {
@@ -34,17 +35,21 @@ const styles = {
 
     caption: {
         captionSide: 'top',
-        color: 'black'
+        color: 'black',
     },
 
     legend: {
-        display: 'inline-block',
+        display: 'flex',
+        justifyContent: 'center',
         color: 'black',
     },
+
+    legendItem : {
+        padding: '0em 1em',
+    }
 }
 
 const Matrix = ({ matrix }) => {
-    console.log('hi')
     const columns = [
         'Name',
         'Flammability',
@@ -94,9 +99,22 @@ const Matrix = ({ matrix }) => {
             </table>
             <div className="Legend" style={styles.legend} >
                 <span>Legend:</span>
-                <img src={green} alt="green"/>
-                <img src={yellow} alt="yellow"/>
-                <img src={red} alt="red"/>
+                <div style={styles.legendItem}>
+                    <img src={green} alt="green" style={{ margin: '0px 6px' }}/>
+                    Compatible
+                </div>
+                <div style={styles.legendItem}>
+                    <img src={yellow} alt="yellow" style={{ margin: '0px 6px' }}/>
+                    Caution
+                </div>
+                <div style={styles.legendItem}>
+                    <img src={orange} alt="orange" style={{ margin: '0px 6px' }}/>
+                    Warning
+                </div>
+                <div style={styles.legendItem}>
+                    <img src={red} alt="red" style={{ margin: '0px 6px' }}/>
+                    Incompatible
+                </div>
             </div>
         </div>
     )

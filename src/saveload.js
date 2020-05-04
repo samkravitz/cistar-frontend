@@ -1,3 +1,9 @@
+/*
+ * This module saves all* information the user entered as a JSON file and can load those JSON files
+ *
+ * * - title, location, operating params, number of reactants/products/diluents, and all parsed information
+ */
+
 import download from 'downloadjs'
 import { store } from './index'
 import Types from './redux/actions/types'
