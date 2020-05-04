@@ -27,13 +27,13 @@ export const calculate = operatingParams => {
             dispatch({ type: Types.SET_REACTION_INFO, payload: response.data })
 
             // cameo table
-            // const cameoResponse = await axios.post(`${server}/cameo`, {
-            //     reactants: reactants,
-            //     products: products,
-            //     diluents: diluents
-            // })
+            const cameoResponse = await axios.post(`${server}/cameo`, {
+                reactants: reactants,
+                products: products,
+                diluents: diluents
+            })
 
-            //dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoResponse.data })
+            dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoResponse.data })
         } catch (error) {
             // Error 😨
             const message = error.response ? error.response.data.error : error

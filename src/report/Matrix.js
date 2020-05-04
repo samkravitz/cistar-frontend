@@ -101,7 +101,7 @@ const Matrix = ({ matrix }) => {
                 <span>Legend:</span>
                 <div style={styles.legendItem}>
                     <img src={green} alt="green" style={{ margin: '0px 6px' }}/>
-                    Compatible
+                    Safe
                 </div>
                 <div style={styles.legendItem}>
                     <img src={yellow} alt="yellow" style={{ margin: '0px 6px' }}/>
@@ -113,7 +113,7 @@ const Matrix = ({ matrix }) => {
                 </div>
                 <div style={styles.legendItem}>
                     <img src={red} alt="red" style={{ margin: '0px 6px' }}/>
-                    Incompatible
+                    Danger
                 </div>
             </div>
         </div>
