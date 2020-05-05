@@ -14,7 +14,7 @@ import Report from './report/Report'
 
 const Main = props => {
     const modal = false;
-    const toggle = () => {}
+    const toggle = () => { }
     return (
         <div className="Main">
             <Header />
@@ -22,23 +22,65 @@ const Main = props => {
             <Report />
 
             {/* calculation status information modal */}
-            <Modal className='reactionInfoModal' isOpen={modal} toggle={toggle} >
-                <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+            <Modal
+                className='reactionInfoModal'
+                isOpen={props.calculationInProgress}
+                toggle={toggle}
+                size='lg'
+                style={{ cursor: 'wait' }}
+            >
+                <ModalHeader>Generating report</ModalHeader>
                 <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <div>
+                        <div style={styles.modalItem}>
+                            <span>Calculations</span>
+                            {
+                                props.calculationBlockComplete &&
+                                <span>done</span>
+                            }
+                        </div>
+                        <div style={styles.modalItem}>
+                            <span>Hazard Statements</span>
+                            <span>done</span>
+                        </div>
+                        <div style={styles.modalItem}>
+                            <span>Hazard Matrix</span>
+                            {
+                                props.hazardMatrixComplete &&
+                                <span>done</span>
+                            }
+                        </div>
+                        <div style={styles.modalItem}>
+                            <span>Cameo Table</span>
+                            {
+                                props.cameoTableComplete &&
+                                <span>done</span>
+                            }
+                        </div>
+                    </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-                    <Button color="secondary" onClick={toggle}>Cancel</Button>
+                    <Button color="primary" onClick={toggle}>Okay</Button>{' '}
                 </ModalFooter>
             </Modal>
         </div>
     )
 }
 
+const styles = {
+    modalItem: {
+        display: 'flex',
+        justifyContent: 'space-between'
+    }
+}
+
 const mapStateToProps = state => ({
     calculationInProgress: state.status.calculationInProgress,
     reportComplete: state.status.reportComplete,
+
+    hazardMatrixComplete: state.status.hazardMatrixComplete,
+    calculationBlockComplete: state.status.calculationBlockComplete,
+    cameoTableComplete: state.status.cameoTableComplete,
 })
 
 export default connect(mapStateToProps)(Main)

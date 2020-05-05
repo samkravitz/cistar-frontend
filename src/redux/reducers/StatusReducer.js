@@ -6,6 +6,9 @@ import Types from '../actions/types'
 const initialState = {
     calculationInProgress: false,
     reportComplete: false,
+    calculationBlockComplete: false,
+    hazardMatrixComplete: false,
+    cameoTableComplete: false,
 }
 
 export default (state = initialState, action) => {
@@ -26,6 +29,24 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 reportComplete: true,
+            }
+        
+        case (Types.HAZARD_MATRIX_COMPLETE):
+            return {
+                ...state,
+                hazardMatrixComplete: true,
+            }
+        
+        case (Types.CALCULATION_BLOCK_COMPLETE):
+            return {
+                ...state,
+                calculationBlockComplete: true,
+            }
+        
+        case (Types.CAMEO_TABLE_COMPLETE):
+            return {
+                ...state,
+                cameoTableComplete: true,
             }
         
         default:

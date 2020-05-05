@@ -14,14 +14,17 @@ export const calculate = operatingParams => {
         try {
             const matrix = await getMatrix(hNums)
             dispatch({ type: Types.SET_MATRIX, payload: matrix })
+            dispatch({ type: Types.HAZARD_MATRIX_COMPLETE })
 
             // calculation block
             const reactionInfo = await calculationBlock(operatingParams, reactants)
             dispatch({ type: Types.SET_REACTION_INFO, payload: reactionInfo })
+            dispatch({ type: Types.CALCULATION_BLOCK_COMPLETE })
 
             // cameo table
             const cameoTable = await getCameoTable(reactants, products, diluents)
             dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable })
+            dispatch({ type: Types.CAMEO_TABLE_COMPLETE })
 
         } catch (error) {
             // Error 😨
