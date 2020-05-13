@@ -29,3 +29,21 @@ export const setCp = cp => {
         dispatch({ type: Types.SET_CP, payload: cp })
     }
 }
+
+export const setReactionClass = reactionClass => {
+    return dispatch => {
+        dispatch({ type: Types.SET_REACTION_CLASS, payload: reactionClass })
+    }
+}
+
+export const setReactionScale = reactionScale => {
+    return dispatch => {
+        dispatch({ type: Types.SET_REACTION_SCALE, payload: reactionScale })
+    }
+}
+
+export const setKeyReactantQuantity = reactantQuantity => {
+    return dispatch => {
+        dispatch({ type: Types.SET_KEY_REACTANT_QUANTITY, payload: reactantQuantity })
+    }
+}

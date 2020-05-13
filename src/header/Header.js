@@ -25,11 +25,6 @@ class Header extends Component {
         this.setState({ [event.target.name]: event.target.value })
     }
 
-    // sets the state from one of the text area inputs as they change
-    onChangeTextArea = event => {
-        this.setState({ [event.target.name]: event.target.value })
-    }
-
     handleChangeR = event => {
         const numReactants = parseInt(event.target.value)
         this.props.setNumReactants(numReactants)
@@ -65,8 +60,20 @@ class Header extends Component {
         this.props.setCp(event.target.value)
     }
 
+    handleChangeReactionClass = event => {
+        this.props.setReactionClass(event.target.value)
+    }
+
+    handleChangeReactionScale = event => {
+        this.props.setReactionScale(event.target.value)
+    }
+
+    handleChangeKeyReactantQuantity = event => {
+        this.props.setKeyReactantQuantity(event.target.value)
+    }
+
     saveReaction = () => {
-        save(this.state.title, this.state.location)
+        save(this.state)
     }
 
     loadReaction = event => {
@@ -77,9 +84,15 @@ class Header extends Component {
         // and set everything else to the store
         reader.onload = (file => {
             const data = load(file)
+            console.log(data)
             this.setState({
-                title: data.title,
-                location: data.location,
+                nameOfResearcher: data.nameOfResearcher,
+                projectTitle: data.projectTitle,
+                principalInvestigator: data.principalInvestigator,
+                labLocation: data.labLocation,
+                organization: data.organization,
+                chemicalScheme: data.chemicalScheme,
+                description: data.description,
             })
         })
 
@@ -96,7 +109,7 @@ class Header extends Component {
                         <div className="TitleLocation" style={{ paddingLeft: '1em' }}>
                             <div className="nameOfResearcher" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }}>Name of the Researcher: </h6>
-                                <Input type="text" name="nameOfResearcher" value={this.state.title} onChange={this.onChange} />
+                                <Input type="text" name="nameOfResearcher" value={this.state.nameOfResearcher} onChange={this.onChange} />
                             </div>
                             <div className="projectTitle" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }}>Project Title: </h6>
@@ -132,11 +145,11 @@ class Header extends Component {
                         <Form>
                             <FormGroup>
                                 <Label for="chemicalScheme">Paste the complete, balanced chemical reaction scheme including ALL the by-products</Label>
-                                <Input type="textarea" name="chemicalScheme" id="chemicalScheme" onChange={this.onChangeTextArea} />
+                                <Input type="textarea" name="chemicalScheme" id="chemicalScheme" onChange={this.onChange} value={this.state.chemicalScheme} />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="description">Provide a brief description of scope of the experiment highlighting key unit operations, sequences, hazards, etc.</Label>
-                                <Input type="textarea" name="description" id="description" onChange={this.onChangeTextArea} />
+                                <Input type="textarea" name="description" id="description" onChange={this.onChange} value={this.state.description} />
                             </FormGroup>
                         </Form>
                     </div>
@@ -144,6 +157,8 @@ class Header extends Component {
                     <div className="OperatingParams">
                         <h4>Operating Parameters: </h4>
                         <div className="Params" style={styles.operatingParams}>
+                            <h6>Reaction Class</h6>
+                            <Input type="text" name="reactionClass" onChange={this.handleChangeReactionClass} value={this.props.reactionClass} />
                             <h6>Temperature (&deg;C)</h6>
                             <Input type="text" name="temperature" onChange={this.handleChangeTemperature} value={this.props.temperature} />
                             <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
@@ -157,6 +172,10 @@ class Header extends Component {
                             <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} value={this.props.heatOfReaction} />
                             <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
                             <Input type="text" name="cp" onChange={this.handleChangeCp} value={this.props.cp} />
+                            <h6>Reaction Scale (kg)</h6>
+                            <Input type="text" name="reactionScale" onChange={this.handleChangeReactionScale} value={this.props.reactionScale} />
+                            <h6>Key Reactant quantity (moles)</h6>
+                            <Input type="text" name="keyReactantQuantity" onChange={this.handleChangeKeyReactantQuantity} value={this.props.keyReactantQuantity} />
                         </div>
                     </div>
                 </div>
@@ -262,6 +281,9 @@ const mapStateToProps = state => ({
     physicalState: state.operatingParams.physicalState,
     heatOfReaction: state.operatingParams.heatOfReaction,
     cp: state.operatingParams.cp,
+    reactionClass: state.operatingParams.reactionClass,
+    reactionScale: state.operatingParams.reactionScale,
+    keyReactantQuantity: state.operatingParams.keyReactantQuantity,
 
     numReactants: state.compound.numReactants,
     numProducts: state.compound.numProducts,
@@ -278,6 +300,9 @@ const mapDispatchToProps = {
     setPhysicalState: actions.operatingParams.setPhysicalState,
     setHeatOfReaction: actions.operatingParams.setHeatOfReaction,
     setCp: actions.operatingParams.setCp,
+    setReactionScale: actions.operatingParams.setReactionScale,
+    setReactionClass: actions.operatingParams.setReactionClass,
+    setKeyReactantQuantity: actions.operatingParams.setKeyReactantQuantity,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

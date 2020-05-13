@@ -14,6 +14,9 @@ const Types = {
     SET_PHYSICAL_STATE:         'SET_PHYSICAL_STATE',
     SET_HEAT_OF_REACTION:       'SET_HEAT_OF_REACTION',
     SET_CP:                     'SET_CP',
+    SET_REACTION_CLASS:         'SET_REACTION_CLASS',
+    SET_REACTION_SCALE:         'SET_REACTION_SCALE',
+    SET_KEY_REACTANT_QUANTITY:  'SET_KEY_REACTANT_QUANTITY',
 
     // report types
     SET_HNUMS:                  'SET_HNUMS',

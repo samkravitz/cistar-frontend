@@ -8,20 +8,25 @@ import download from 'downloadjs'
 import { store } from './index'
 import Types from './redux/actions/types'
 
-// saving a reaction takes the title and location as a parameter because everything else
+// saving a reaction takes everything in the Header state as a parameter because everything else
 // is imported from the store.
-export const save = (title, location) => {
+export const save = headerState => {
     // current state
     const state = store.getState()
 
     const data = JSON.stringify({
         type: 'CISTAR_REACTION',
-        title: title,
-        location: location,
+        nameOfResearcher: headerState.nameOfResearcher,
+        projectTitle: headerState.projectTitle,
+        principalInvestigator: headerState.principalInvestigator,
+        labLocation: headerState.labLocation,
+        organization: headerState.organization,
+        chemicalScheme: headerState.chemicalScheme,
+        description: headerState.description,
         compound: state.compound,
         operatingParams: state.operatingParams,
     })
-    download(new Blob([...data]), title + '.json', 'text/json')
+    download(new Blob([...data]), headerState.projectTitle + '.json', 'text/json')
 }
 
 // dispatches all redux store components in a reaction file
@@ -59,10 +64,30 @@ export const load = reader => {
         store.dispatch({ type: Types.SET_PHYSICAL_STATE, payload: operatingParams.physicalState })
         store.dispatch({ type: Types.SET_HEAT_OF_REACTION, payload: operatingParams.heatOfReaction })
         store.dispatch({ type: Types.SET_CP, payload: operatingParams.cp })
+        store.dispatch({ type: Types.SET_REACTION_CLASS, payload: operatingParams.reactionClass })
+        store.dispatch({ type: Types.SET_REACTION_SCALE, payload: operatingParams.reactionScale })
+        store.dispatch({ type: Types.SET_KEY_REACTANT_QUANTITY, payload: operatingParams.keyReactantQuantity })
 
-        return { title: reaction.title, location: reaction.location }
+        return { 
+            nameOfResearcher: reaction.nameOfResearcher,
+            projectTitle: reaction.projectTitle,
+            principalInvestigator: reaction.principalInvestigator,
+            labLocation: reaction.labLocation,
+            organization: reaction.organization,
+            chemicalScheme: reaction.chemicalScheme,
+            description: reaction.description,
+        }
+
     } catch (err) {
         alert('Unable to load reaction.')
-        return { title: '', location: '' }
+        return {
+            nameOfResearcher: '',
+            projectTitle: '',
+            principalInvestigator: '',
+            labLocation: '',
+            organization: '',
+            chemicalScheme: '',
+            description: ''
+        }
     }
 }

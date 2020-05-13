@@ -7,6 +7,9 @@ const initialState = {
     physicalState: 'Liquid',
     heatOfReaction: '',
     cp: '',
+    reactionClass: '',
+    reactionScale: '',
+    keyReactantQuantity: '',
 }
 
 export default (state = initialState, action) => {
@@ -41,6 +44,23 @@ export default (state = initialState, action) => {
                 cp: action.payload,
             }
 
+        case (Types.SET_REACTION_CLASS):
+            return {
+                ...state,
+                reactionClass: action.payload,
+            }
+
+        case (Types.SET_REACTION_SCALE):
+            return {
+                ...state,
+                reactionScale: action.payload,
+            }
+
+        case (Types.SET_KEY_REACTANT_QUANTITY):
+            return {
+                ...state,
+                keyReactantQuantity: action.payload,
+            }
 
         default:
             return state
