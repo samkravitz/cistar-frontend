@@ -9,18 +9,16 @@ import { save, load } from '../saveload'
 class Header extends Component {
 
     state = {
-        title: '',
-        location: '',
+        nameOfResearcher: '',
+        projectTitle: '',
+        principalInvestigator: '',
+        labLocation: '',
+        organization: '',
     }
 
-    onChangeTitle = event => {
-        event.preventDefault()
-        this.setState({ title: event.target.value })
-    }
-
-    onChangeLocation = event => {
-        event.preventDefault()
-        this.setState({ location: event.target.value })
+    // sets the state from one of the non-operating param inputs as they change
+    onChange = event => {
+        this.setState({ [event.target.name] : event.target.value })
     }
 
     handleChangeR = event => {
@@ -82,17 +80,30 @@ class Header extends Component {
     render() {
         return (
             <div className="Header" style={styles.main}>
+                <h1 style={styles.rheact}>RHEACT</h1>
+                <h3 style={styles.rheactLabel}>Reactive Hazards Evaluation Analysis Tool</h3>
                 <div className="HeaderFlex" style={styles.flexTop}>
                     <div className="TopWrapper">
-                        <h1 style={{ paddingBottom: '.5em' }}>CISTAR Web Tool</h1>
                         <div className="TitleLocation" style={{ paddingLeft: '1em' }}>
-                            <div className="Title" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }}>Title: </h6>
-                                <Input type="text" name="title" value={this.state.title} onChange={this.onChangeTitle} />
+                            <div className="nameOfResearcher" style={styles.titleLocation}>
+                                <h6 style={{ paddingRight: '1em' }}>Name of the Researcher: </h6>
+                                <Input type="text" name="nameOfResearcher" value={this.state.title} onChange={this.onChange} />
                             </div>
-                            <div className="Location" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }} >Location: </h6>
-                                <Input type="text" name="title" value={this.state.location} onChange={this.onChangeLocation} />
+                            <div className="projectTitle" style={styles.titleLocation}>
+                                <h6 style={{ paddingRight: '1em' }}>Project Title: </h6>
+                                <Input type="text" name="projectTitle" value={this.state.projectTitle} onChange={this.onChange} />
+                            </div>
+                            <div className="principalInvestigator" style={styles.titleLocation}>
+                                <h6 style={{ paddingRight: '1em' }}>Principal Investigator: </h6>
+                                <Input type="text" name="principalInvestigator" value={this.state.principalInvestigator} onChange={this.onChange} />
+                            </div>
+                            <div className="labLocation" style={styles.titleLocation}>
+                                <h6 style={{ paddingRight: '1em' }}>Lab Location: </h6>
+                                <Input type="text" name="labLocation" value={this.state.labLocation} onChange={this.onChange} />
+                            </div>
+                            <div className="organization" style={styles.titleLocation}>
+                                <h6 style={{ paddingRight: '1em' }} >Organization: </h6>
+                                <Input type="text" name="organization" value={this.state.organization} onChange={this.onChange} />
                             </div>
                             <Button color="primary" onClick={this.saveReaction}>Save Reaction</Button>
                             <label className="customFileInput" style={styles.customFileInput}>
@@ -208,6 +219,17 @@ const styles = {
         fontWeight: '400',
         fontSize: '1rem',
         cursor: 'pointer',
+    },
+
+    rheact: {
+        fontSize: '3.5rem',
+        textAlign: 'center',
+        paddingBottom: '0'
+    },
+
+    rheactLabel: {
+        textAlign: 'center',
+        fontSize: '1.25rem',
     }
 
 }
