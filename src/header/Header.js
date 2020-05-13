@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Label, Input, Button } from 'reactstrap'
+import { Label, Input, Button, FormGroup, Form } from 'reactstrap'
 
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
@@ -14,11 +14,20 @@ class Header extends Component {
         principalInvestigator: '',
         labLocation: '',
         organization: '',
+
+        // textarea state
+        chemicalScheme: '',
+        description: '',
     }
 
     // sets the state from one of the non-operating param inputs as they change
     onChange = event => {
-        this.setState({ [event.target.name] : event.target.value })
+        this.setState({ [event.target.name]: event.target.value })
+    }
+
+    // sets the state from one of the text area inputs as they change
+    onChangeTextArea = event => {
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     handleChangeR = event => {
@@ -73,7 +82,7 @@ class Header extends Component {
                 location: data.location,
             })
         })
-        
+
         reader.readAsText(event.target.files[0])
     }
 
@@ -119,22 +128,35 @@ class Header extends Component {
                         </div>
                     </div>
 
+                    <div className="textArea" style={{ paddingTop: '5em' }}>
+                        <Form>
+                            <FormGroup>
+                                <Label for="chemicalScheme">Paste the complete, balanced chemical reaction scheme including ALL the by-products</Label>
+                                <Input type="textarea" name="chemicalScheme" id="chemicalScheme" onChange={this.onChangeTextArea} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="description">Provide a brief description of scope of the experiment highlighting key unit operations, sequences, hazards, etc.</Label>
+                                <Input type="textarea" name="description" id="description" onChange={this.onChangeTextArea} />
+                            </FormGroup>
+                        </Form>
+                    </div>
+
                     <div className="OperatingParams">
                         <h4>Operating Parameters: </h4>
                         <div className="Params" style={styles.operatingParams}>
                             <h6>Temperature (&deg;C)</h6>
-                            <Input type="text" name="temperature" onChange={this.handleChangeTemperature} value={this.props.temperature}/>
+                            <Input type="text" name="temperature" onChange={this.handleChangeTemperature} value={this.props.temperature} />
                             <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
-                            <Input type="text" name="pressure" onChange={this.handleChangePressure} value={this.props.pressure}/>
+                            <Input type="text" name="pressure" onChange={this.handleChangePressure} value={this.props.pressure} />
                             <h6 style={{ paddingTop: '1em' }}>State</h6>
                             <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState} value={this.props.physicalState}>
                                 <option>Liquid</option>
                                 <option>Gas</option>
                             </Input>
                             <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
-                            <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} value={this.props.heatOfReaction}/>
+                            <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} value={this.props.heatOfReaction} />
                             <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
-                            <Input type="text" name="cp" onChange={this.handleChangeCp} value={this.props.cp}/>
+                            <Input type="text" name="cp" onChange={this.handleChangeCp} value={this.props.cp} />
                         </div>
                     </div>
                 </div>
@@ -207,7 +229,7 @@ const styles = {
         },
     },
 
-    customFileInput : {
+    customFileInput: {
         marginLeft: '1em',
         color: 'white',
         backgroundColor: '#007bff',
