@@ -106,7 +106,7 @@ class Header extends Component {
                 <h3 style={styles.rheactLabel}>Reactive Hazards Evaluation Analysis Tool</h3>
                 <div className="HeaderFlex" style={styles.flexTop}>
                     <div className="TopWrapper">
-                        <div className="TitleLocation" style={{ paddingLeft: '1em' }}>
+                        <div className="TitleLocation" style={{ padding: '4em 1em' }}>
                             <div className="nameOfResearcher" style={styles.titleLocation}>
                                 <h6 style={{ paddingRight: '1em' }}>Name of the Researcher: </h6>
                                 <Input type="text" name="nameOfResearcher" value={this.state.nameOfResearcher} onChange={this.onChange} />
@@ -141,44 +141,55 @@ class Header extends Component {
                         </div>
                     </div>
 
-                    <div className="textArea" style={{ paddingTop: '5em' }}>
-                        <Form>
-                            <FormGroup>
-                                <Label for="chemicalScheme">Paste the complete, balanced chemical reaction scheme including ALL the by-products</Label>
-                                <Input type="textarea" name="chemicalScheme" id="chemicalScheme" onChange={this.onChange} value={this.state.chemicalScheme} />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="description">Provide a brief description of scope of the experiment highlighting key unit operations, sequences, hazards, etc.</Label>
-                                <Input type="textarea" name="description" id="description" onChange={this.onChange} value={this.state.description} />
-                            </FormGroup>
-                        </Form>
-                    </div>
 
                     <div className="OperatingParams">
-                        <h4>Operating Parameters: </h4>
-                        <div className="Params" style={styles.operatingParams}>
-                            <h6>Reaction Class</h6>
-                            <Input type="text" name="reactionClass" onChange={this.handleChangeReactionClass} value={this.props.reactionClass} />
-                            <h6>Temperature (&deg;C)</h6>
-                            <Input type="text" name="temperature" onChange={this.handleChangeTemperature} value={this.props.temperature} />
-                            <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
-                            <Input type="text" name="pressure" onChange={this.handleChangePressure} value={this.props.pressure} />
-                            <h6 style={{ paddingTop: '1em' }}>State</h6>
-                            <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState} value={this.props.physicalState}>
-                                <option>Liquid</option>
-                                <option>Gas</option>
-                            </Input>
-                            <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
-                            <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} value={this.props.heatOfReaction} />
-                            <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
-                            <Input type="text" name="cp" onChange={this.handleChangeCp} value={this.props.cp} />
-                            <h6>Reaction Scale (kg)</h6>
-                            <Input type="text" name="reactionScale" onChange={this.handleChangeReactionScale} value={this.props.reactionScale} />
-                            <h6>Key Reactant quantity (moles)</h6>
-                            <Input type="text" name="keyReactantQuantity" onChange={this.handleChangeKeyReactantQuantity} value={this.props.keyReactantQuantity} />
+                        <h4 style={{ textAlign: 'center' }}>Operating Parameters: </h4>
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <div className="Params" style={styles.operatingParams}>
+                                <h6>Temperature (&deg;C)</h6>
+                                <Input type="text" name="temperature" onChange={this.handleChangeTemperature} value={this.props.temperature} />
+                                <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
+                                <Input type="text" name="pressure" onChange={this.handleChangePressure} value={this.props.pressure} />
+                                <h6 style={{ paddingTop: '1em' }}>State</h6>
+                                <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState} value={this.props.physicalState}>
+                                    <option>Liquid</option>
+                                    <option>Gas</option>
+                                </Input>
+                                <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
+                                <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} value={this.props.heatOfReaction} />
+                            </div>
+
+                            <div style={{ ...styles.operatingParams, color: 'black' }}>
+                                <h6>Reaction Class</h6>
+                                <Input type="text" name="reactionClass" onChange={this.handleChangeReactionClass} value={this.props.reactionClass} />
+                                <h6 style={{ paddingTop: '1em' }}>Reaction Scale (kg)</h6>
+                                <Input type="text" name="reactionScale" onChange={this.handleChangeReactionScale} value={this.props.reactionScale} />
+                                <h6 style={{ paddingTop: '1em' }}>Key Reactant quantity (moles)</h6>
+                                <Input type="text" name="keyReactantQuantity" onChange={this.handleChangeKeyReactantQuantity} value={this.props.keyReactantQuantity} />
+                                <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
+                                <Input type="text" name="cp" onChange={this.handleChangeCp} value={this.props.cp} />
+                            </div>
                         </div>
+
                     </div>
+
+
+
                 </div>
+
+                <div className="textArea" style={styles.textArea}>
+                    <Form>
+                        <FormGroup>
+                            <Label for="chemicalScheme">Paste the complete, balanced chemical reaction scheme including ALL the by-products</Label>
+                            <Input type="textarea" name="chemicalScheme" id="chemicalScheme" onChange={this.onChange} value={this.state.chemicalScheme} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="description">Provide a brief description of scope of the experiment highlighting key unit operations, sequences, hazards, etc.</Label>
+                            <Input type="textarea" name="description" id="description" onChange={this.onChange} value={this.state.description} />
+                        </FormGroup>
+                    </Form>
+                </div>
+
                 <div className="ReactantsProductsDiluents" style={styles.rpd}>
                     <span style={styles.rpd.element}>
                         <Label for="Reactants">Reactants</Label>
@@ -225,7 +236,8 @@ const styles = {
 
     flexTop: {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
+        paddingTop: '2em',
     },
 
     titleLocation: {
@@ -236,7 +248,7 @@ const styles = {
 
     operatingParams: {
         color: '#c71e1e',
-        padding: '1em'
+        padding: '1em',
     },
 
     rpd: {
@@ -271,6 +283,13 @@ const styles = {
     rheactLabel: {
         textAlign: 'center',
         fontSize: '1.25rem',
+        paddingBottom: '1em',
+    },
+
+    textArea: {
+        paddingTop: '5em',
+        display: 'flex',
+        justifyContent: 'center'
     }
 
 }
