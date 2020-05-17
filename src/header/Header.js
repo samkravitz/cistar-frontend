@@ -166,11 +166,11 @@ class Header extends Component {
                         </h4>
                         <Popover placement="bottom" isOpen={this.state.operatingParamsInfoOpen} target="operatingParamsInfo">
                             <PopoverBody>
-                                1.    Temperature: Enter reaction system temperature (in 0C) <br/>
+                                1.    Temperature: Enter reaction system temperature (in &deg;C) <br/>
                                 2.    Pressure: Enter reaction system pressure (in bar) <br/>
                                 3.    State: Enter the physical state of the system (Liquid/Gas) <br/>
                                 4.    Heat of reaction: Enter the heat of the reaction for this system (in cal/g) <br/>
-                                5.    Cp, mix: Enter the specific heat capacity of the reaction mixture (in cal/g/0C). Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components.
+                                5.    Cp, mix: Enter the specific heat capacity of the reaction mixture (in cal/g/&deg;C). Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components.
                             </PopoverBody>
                         </Popover>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
