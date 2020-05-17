@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f27147547caa32ee7917723096f995bf",
+    "revision": "a651ff9990700d1e517688c06d0633cf",
     "url": "/cistar-frontend/index.html"
   },
   {
-    "revision": "52b70dc9edc3d5cb33aa",
+    "revision": "409af8ec28597647e272",
     "url": "/cistar-frontend/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "8d833c3c10f1a3b9bce1",
+    "revision": "21b5495f63a62642cbda",
     "url": "/cistar-frontend/static/css/main.c2097976.chunk.css"
   },
   {
-    "revision": "52b70dc9edc3d5cb33aa",
-    "url": "/cistar-frontend/static/js/2.93a1cf3a.chunk.js"
+    "revision": "409af8ec28597647e272",
+    "url": "/cistar-frontend/static/js/2.ee70aa88.chunk.js"
   },
   {
-    "revision": "8d833c3c10f1a3b9bce1",
-    "url": "/cistar-frontend/static/js/main.2aef3138.chunk.js"
+    "revision": "21b5495f63a62642cbda",
+    "url": "/cistar-frontend/static/js/main.deb1ecbb.chunk.js"
   },
   {
     "revision": "5952009413c65c76ba0c",
