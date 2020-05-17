@@ -18,6 +18,9 @@ class Header extends Component {
         // textarea state
         chemicalScheme: '',
         description: '',
+
+        // information icon popover
+        operatingParamsInfoOpen: false,
     }
 
     // sets the state from one of the non-operating param inputs as they change
@@ -143,7 +146,10 @@ class Header extends Component {
 
 
                     <div className="OperatingParams">
-                        <h4 style={{ textAlign: 'center' }}>Operating Parameters: </h4>
+                        <h4 style={{ textAlign: 'center' }}>
+                            <i class="far fa-question-circle fa-1x" style={{ paddingRight: '0.5em' }}></i>
+                            Operating Parameters:
+                        </h4>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <div className="Params" style={styles.operatingParams}>
                                 <h6>Temperature (&deg;C)</h6>
