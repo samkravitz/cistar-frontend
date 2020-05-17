@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Label, Input, Button, FormGroup, Form } from 'reactstrap'
+import { Label, Input, Button, FormGroup, Form, Popover, PopoverBody } from 'reactstrap'
+import { StyleSheet, css } from 'aphrodite'
 
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
@@ -75,6 +76,12 @@ class Header extends Component {
         this.props.setKeyReactantQuantity(event.target.value)
     }
 
+    toggleOperatingParamsInfo = event => {
+        this.setState(prevState => ({
+            operatingParamsInfoOpen: !prevState.operatingParamsInfoOpen,
+        }))
+    }
+
     saveReaction = () => {
         save(this.state)
     }
@@ -147,9 +154,25 @@ class Header extends Component {
 
                     <div className="OperatingParams">
                         <h4 style={{ textAlign: 'center' }}>
-                            <i class="far fa-question-circle fa-1x" style={{ paddingRight: '0.5em' }}></i>
+                            <span
+                                id='operatingParamsInfo'
+                                className={css(infoIconStyles.operatingParams)}
+                                onMouseEnter={this.toggleOperatingParamsInfo}
+                                onMouseLeave={this.toggleOperatingParamsInfo}
+                            >
+                                <i className="far fa-question-circle fa-1x"></i>
+                            </span>
                             Operating Parameters:
                         </h4>
+                        <Popover placement="bottom" isOpen={this.state.operatingParamsInfoOpen} target="operatingParamsInfo">
+                            <PopoverBody>
+                                1.    Temperature: Enter reaction system temperature (in 0C) <br/>
+                                2.    Pressure: Enter reaction system pressure (in bar) <br/>
+                                3.    State: Enter the physical state of the system (Liquid/Gas) <br/>
+                                4.    Heat of reaction: Enter the heat of the reaction for this system (in cal/g) <br/>
+                                5.    Cp, mix: Enter the specific heat capacity of the reaction mixture (in cal/g/0C). Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components.
+                            </PopoverBody>
+                        </Popover>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <div className="Params" style={styles.operatingParams}>
                                 <h6>Temperature (&deg;C)</h6>
@@ -299,6 +322,17 @@ const styles = {
     }
 
 }
+
+const infoIconStyles = StyleSheet.create({
+    operatingParams: {
+        paddingRight: '0.5em',
+
+        ':hover': {
+            color: '#3366ff',
+            cursor: 'pointer'
+        },
+    },
+})
 
 const mapStateToProps = state => ({
     temperature: state.operatingParams.temperature,
