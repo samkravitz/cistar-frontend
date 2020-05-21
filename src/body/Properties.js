@@ -38,8 +38,8 @@ class Properties extends Component {
                     <span
                         id='initialWtFractionInfo'
                         className={css(infoIconStyles.infoIconStyles)}
-                        onMouseEnter={() => this.toggleInfo('initialWtFraction')}
-                        onMouseLeave={() => this.toggleInfo('initialWtFraction')}
+                        onMouseOver={() => this.toggleInfo('initialWtFraction')}
+                        onMouseOut={() => this.toggleInfo('initialWtFraction')}
                     >
                         <i className="far fa-question-circle fa-1x"></i>
                     </span>
@@ -67,8 +67,8 @@ class Properties extends Component {
                     <span
                         id='specificHeatInfo'
                         className={css(infoIconStyles.infoIconStyles)}
-                        onMouseEnter={() => this.toggleInfo('specificHeat')}
-                        onMouseLeave={() => this.toggleInfo('specificHeat')}
+                        onMouseOver={() => this.toggleInfo('specificHeat')}
+                        onMouseOut={() => this.toggleInfo('specificHeat')}
                     >
                         <i className="far fa-question-circle fa-1x"></i>
                     </span>

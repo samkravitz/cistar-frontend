@@ -196,8 +196,8 @@ class Header extends Component {
                                     <span
                                         id='temperatureInfo'
                                         className={css(infoIconStyles.operatingParams)}
-                                        onMouseEnter={this.toggleTemperatureInfo}
-                                        onMouseLeave={this.toggleTemperatureInfo}
+                                        onMouseOver={this.toggleTemperatureInfo}
+                                        onMouseOut={this.toggleTemperatureInfo}
                                     >
                                         <i className="far fa-question-circle fa-1x"></i>
                                     </span>
@@ -212,8 +212,8 @@ class Header extends Component {
                                     <span
                                         id='pressureInfo'
                                         className={css(infoIconStyles.operatingParams)}
-                                        onMouseEnter={this.togglePressureInfo}
-                                        onMouseLeave={this.togglePressureInfo}
+                                        onMouseOver={this.togglePressureInfo}
+                                        onMouseOut={this.togglePressureInfo}
                                     >
                                         <i className="far fa-question-circle fa-1x"></i>
                                     </span>
@@ -228,8 +228,8 @@ class Header extends Component {
                                     <span
                                         id='stateInfo'
                                         className={css(infoIconStyles.operatingParams)}
-                                        onMouseEnter={this.toggleStateInfo}
-                                        onMouseLeave={this.toggleStateInfo}
+                                        onMouseOver={this.toggleStateInfo}
+                                        onMouseOut={this.toggleStateInfo}
                                     >
                                         <i className="far fa-question-circle fa-1x"></i>
                                     </span>
@@ -247,8 +247,8 @@ class Header extends Component {
                                     <span
                                         id='heatOfReactionInfo'
                                         className={css(infoIconStyles.operatingParams)}
-                                        onMouseEnter={this.toggleHeatOfReactionInfo}
-                                        onMouseLeave={this.toggleHeatOfReactionInfo}
+                                        onMouseOver={this.toggleHeatOfReactionInfo}
+                                        onMouseOut={this.toggleHeatOfReactionInfo}
                                     >
                                         <i className="far fa-question-circle fa-1x"></i>
                                     </span>
@@ -270,8 +270,8 @@ class Header extends Component {
                                     <span
                                         id='cpMixInfo'
                                         className={css(infoIconStyles.operatingParams)}
-                                        onMouseEnter={this.toggleCpMixInfo}
-                                        onMouseLeave={this.toggleCpMixInfo}
+                                        onMouseOver={this.toggleCpMixInfo}
+                                        onMouseOut={this.toggleCpMixInfo}
                                     >
                                         <i className="far fa-question-circle fa-1x"></i>
                                     </span>
@@ -306,8 +306,8 @@ class Header extends Component {
                             <span
                                 id='compoundInfo'
                                 className={css(infoIconStyles.operatingParams)}
-                                onMouseEnter={this.toggleCompoundInfo}
-                                onMouseLeave={this.toggleCompoundInfo}
+                                onMouseOver={this.toggleCompoundInfo}
+                                onMouseOut={this.toggleCompoundInfo}
                             >
                                 <i className="far fa-question-circle fa-1x"></i>
                             </span>
