@@ -64,11 +64,23 @@ const Body = props => {
             if (isNaN(Number(molWtFraction)) || Number(molWtFraction) < 0)
                 throw new Error('Please enter a valid weight fraction for reactant ' + number)
 
-            fractions.push(Number(molWtFraction))
+            fractions.push(molWtFraction)
         })
 
+        // add weight fractions of products
+        props.products.forEach(product => {
+            fractions.push(product.molWtFraction)
+        })
+
+
+        // add weight fractions of diluents
+        props.diluents.forEach(diluent => {
+            fractions.push(diluent.molWtFraction)
+        })
+
+
         // validate that weight fractions add to 1
-        const sum = fractions.reduce((a, b) => a + b, 0)
+        const sum = fractions.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
         if (sum !== 1)
             throw new Error('Please make sure weight fractions add to 1')
     }
@@ -132,6 +144,8 @@ const mapStateToProps = state => ({
     numDiluents: state.compound.numDiluents,
 
     reactants: state.compound.reactants,
+    products: state.compound.products,
+    diluents: state.compound.diluents,
     operatingParams: state.operatingParams,
 })
 
