@@ -21,7 +21,11 @@ class Header extends Component {
         description: '',
 
         // information icon popover
-        operatingParamsInfoOpen: false,
+        temperatureInfoOpen: false,
+        pressureInfoOpen: false,
+        stateInfoOpen: false,
+        heatOfReactionInfoOpen: false,
+        cpMixInfoOpen: false,
     }
 
     // sets the state from one of the non-operating param inputs as they change
@@ -76,9 +80,33 @@ class Header extends Component {
         this.props.setKeyReactantQuantity(event.target.value)
     }
 
-    toggleOperatingParamsInfo = event => {
+    toggleTemperatureInfo = event => {
         this.setState(prevState => ({
-            operatingParamsInfoOpen: !prevState.operatingParamsInfoOpen,
+            temperatureInfoOpen: !prevState.temperatureInfoOpen,
+        }))
+    }
+
+    togglePressureInfo = event => {
+        this.setState(prevState => ({
+            pressureInfoOpen: !prevState.pressureInfoOpen,
+        }))
+    }
+
+    toggleStateInfo = event => {
+        this.setState(prevState => ({
+            stateInfoOpen: !prevState.stateInfoOpen,
+        }))
+    }
+
+    toggleHeatOfReactionInfo = event => {
+        this.setState(prevState => ({
+            heatOfReactionInfoOpen: !prevState.heatOfReactionInfoOpen,
+        }))
+    }
+
+    toggleCpMixInfo = event => {
+        this.setState(prevState => ({
+            cpMixInfoOpen: !prevState.cpMixInfoOpen,
         }))
     }
 
@@ -153,38 +181,71 @@ class Header extends Component {
 
 
                     <div className="OperatingParams">
-                        <h4 style={{ textAlign: 'center' }}>
-                            <span
-                                id='operatingParamsInfo'
-                                className={css(infoIconStyles.operatingParams)}
-                                onMouseEnter={this.toggleOperatingParamsInfo}
-                                onMouseLeave={this.toggleOperatingParamsInfo}
-                            >
-                                <i className="far fa-question-circle fa-1x"></i>
-                            </span>
-                            Operating Parameters:
-                        </h4>
-                        <Popover placement="bottom" isOpen={this.state.operatingParamsInfoOpen} target="operatingParamsInfo">
-                            <PopoverBody>
-                                1.    Temperature: Enter reaction system temperature (in &deg;C) <br/>
-                                2.    Pressure: Enter reaction system pressure (in bar) <br/>
-                                3.    State: Enter the physical state of the system (Liquid/Gas) <br/>
-                                4.    Heat of reaction: Enter the heat of the reaction for this system (in cal/g) <br/>
-                                5.    Cp, mix: Enter the specific heat capacity of the reaction mixture (in cal/g/&deg;C). Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components.
-                            </PopoverBody>
-                        </Popover>
+                        <h4 style={{ textAlign: 'center' }}> Operating Parameters: </h4>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <div className="Params" style={styles.operatingParams}>
-                                <h6>Temperature (&deg;C)</h6>
+                                <h6>
+                                    Temperature (&deg;C)
+                                    <span
+                                        id='temperatureInfo'
+                                        className={css(infoIconStyles.operatingParams)}
+                                        onMouseEnter={this.toggleTemperatureInfo}
+                                        onMouseLeave={this.toggleTemperatureInfo}
+                                    >
+                                        <i className="far fa-question-circle fa-1x"></i>
+                                    </span>
+                                </h6>
                                 <Input type="text" name="temperature" onChange={this.handleChangeTemperature} value={this.props.temperature} />
-                                <h6 style={{ paddingTop: '1em' }}>Pressure (bar)</h6>
+
+
+                                <h6
+                                    style={{ paddingTop: '1em' }}
+                                >
+                                    Pressure (bar)
+                                    <span
+                                        id='pressureInfo'
+                                        className={css(infoIconStyles.operatingParams)}
+                                        onMouseEnter={this.togglePressureInfo}
+                                        onMouseLeave={this.togglePressureInfo}
+                                    >
+                                        <i className="far fa-question-circle fa-1x"></i>
+                                    </span>
+                                </h6>
                                 <Input type="text" name="pressure" onChange={this.handleChangePressure} value={this.props.pressure} />
-                                <h6 style={{ paddingTop: '1em' }}>State</h6>
+
+
+                                <h6
+                                    style={{ paddingTop: '1em' }}
+                                >
+                                    State
+                                    <span
+                                        id='stateInfo'
+                                        className={css(infoIconStyles.operatingParams)}
+                                        onMouseEnter={this.toggleStateInfo}
+                                        onMouseLeave={this.toggleStateInfo}
+                                    >
+                                        <i className="far fa-question-circle fa-1x"></i>
+                                    </span>
+                                </h6>
                                 <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState} value={this.props.physicalState}>
                                     <option>Liquid</option>
                                     <option>Gas</option>
                                 </Input>
-                                <h6 style={{ paddingTop: '1em' }}>Heat of Reaction (cal / g)</h6>
+
+
+                                <h6
+                                    style={{ paddingTop: '1em' }}
+                                >
+                                    Heat of Reaction (cal / g)
+                                    <span
+                                        id='heatOfReactionInfo'
+                                        className={css(infoIconStyles.operatingParams)}
+                                        onMouseEnter={this.toggleHeatOfReactionInfo}
+                                        onMouseLeave={this.toggleHeatOfReactionInfo}
+                                    >
+                                        <i className="far fa-question-circle fa-1x"></i>
+                                    </span>
+                                </h6>
                                 <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} value={this.props.heatOfReaction} />
                             </div>
 
@@ -195,7 +256,19 @@ class Header extends Component {
                                 <Input type="text" name="reactionScale" onChange={this.handleChangeReactionScale} value={this.props.reactionScale} />
                                 <h6 style={{ paddingTop: '1em' }}>Key Reactant quantity (moles)</h6>
                                 <Input type="text" name="keyReactantQuantity" onChange={this.handleChangeKeyReactantQuantity} value={this.props.keyReactantQuantity} />
-                                <h6 style={{ paddingTop: '1em', color: 'black' }}>Cp (mix) (cal/g/°C)</h6>
+                                <h6
+                                    style={{ paddingTop: '1em', color: 'black' }}
+                                >
+                                    Cp (mix) (cal/g/°C)
+                                    <span
+                                        id='cpMixInfo'
+                                        className={css(infoIconStyles.operatingParams)}
+                                        onMouseEnter={this.toggleCpMixInfo}
+                                        onMouseLeave={this.toggleCpMixInfo}
+                                    >
+                                        <i className="far fa-question-circle fa-1x"></i>
+                                    </span>
+                                </h6>
                                 <Input type="text" name="cp" onChange={this.handleChangeCp} value={this.props.cp} />
                             </div>
                         </div>
@@ -250,6 +323,27 @@ class Header extends Component {
                     </span>
                 </div>
                 <span style={{ color: '#c71e1e' }}>* Inputs in red are required user inputs *</span>
+
+                {/* Popovers */}
+                <Popover placement="right" isOpen={this.state.temperatureInfoOpen} target="temperatureInfo">
+                    <PopoverBody>Enter reaction system temperature (in &deg;C)</PopoverBody>
+                </Popover>
+
+                <Popover placement="right" isOpen={this.state.pressureInfoOpen} target="pressureInfo">
+                    <PopoverBody> Enter reaction system pressure (in bar) </PopoverBody>
+                </Popover>
+
+                <Popover placement="right" isOpen={this.state.stateInfoOpen} target="stateInfo">
+                    <PopoverBody> Enter the physical state of the system (Liquid/Gas) </PopoverBody>
+                </Popover>
+
+                <Popover placement="right" isOpen={this.state.heatOfReactionInfoOpen} target="heatOfReactionInfo">
+                    <PopoverBody> Enter the heat of the reaction for this system (in cal/g) </PopoverBody>
+                </Popover>
+
+                <Popover placement="right" isOpen={this.state.cpMixInfoOpen} target="cpMixInfo">
+                    <PopoverBody> Enter the specific heat capacity of the reaction mixture (in cal/g/&deg;C). Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components. </PopoverBody>
+                </Popover>
             </div >
 
         )
@@ -325,7 +419,7 @@ const styles = {
 
 const infoIconStyles = StyleSheet.create({
     operatingParams: {
-        paddingRight: '0.5em',
+        paddingLeft: '0.5em',
 
         ':hover': {
             color: '#3366ff',
