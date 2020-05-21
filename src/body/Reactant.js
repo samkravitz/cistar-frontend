@@ -1,65 +1,97 @@
-import React from 'react'
-import { Input } from 'reactstrap'
+import React, { Component } from 'react'
+import { StyleSheet, css } from 'aphrodite'
+import { Popover, PopoverBody, Input } from 'reactstrap'
 
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
 
-const Reactant = props => {
+class Reactant extends Component {
+
+    state = {
+        infoOpen: false,
+    }
 
     // when a file is uploaded, parse it
-    const handleFileSelect = e => {
+    handleFileSelect = e => {
         if (!e.target.files[0]) return
 
         const formData = new FormData()
         formData.set('file', e.target.files[0], e.target.files[0].name)
-        props.parseReactantFile(props.index, props.temperature, formData)
+        this.props.parseReactantFile(this.props.index, this.props.temperature, formData)
     }
 
-    const handleChange = e => {
-        const properties = { ...props.reactants[props.index] }
+    handleChange = e => {
+        const properties = { ...this.props.reactants[this.props.index] }
         properties[e.target.name] = e.target.value
-        props.updateReactant(props.index, properties)
+        this.props.updateReactant(this.props.index, properties)
     }
 
-    const { number, index } = props
-    const properties = props.reactants[index]
-    return (
-        <div className="Reactant" style={styles.main}>
-            <h4 sm="4">Reactant {number}</h4>
+    toggleInfo = () => {
+        this.setState(prevState => ({
+            infoOpen: !prevState.infoOpen,
+        }))
+    }
 
-            <label className="customFileInput" style={styles.customFileInput}>
-                <Input
-                    type="file"
-                    name="file"
-                    encType="multipart/form-data"
-                    style={{ display: 'none' }}
-                    onChange={handleFileSelect}
-                />
+    render() {
+        const { number, index } = this.props
+        const properties = this.props.reactants[index]
+        return (
+            <div className="Reactant" style={styles.main}>
+                <h4 sm="4">Reactant {number}</h4>
+
+                <div className='uploadSDSButton'>
+                    <label className="customFileInput" style={styles.customFileInput}>
+                        <Input
+                            type="file"
+                            name="file"
+                            encType="multipart/form-data"
+                            style={{ display: 'none' }}
+                            onChange={this.handleFileSelect}
+                        />
                     Upload SDS
-            </label>
-            
-            <Input type="text" name="productName" value={properties.productName || ''} onChange={handleChange} />
-            <Input type="text" name="molWtFraction" value={properties.molWtFraction || ''} onChange={handleChange} />
-            <Input type="text" name="molWt" value={properties.molWt || ''} onChange={handleChange} />
-            <Input type="text" name="casNo" value={properties.casNo || ''} onChange={handleChange} />
-            <br />
+                    </label>
 
-            <Input type="text" name="ph" value={properties.ph || ''} onChange={handleChange} />
-            <Input type="text" name="boilingPt" value={properties.boilingPt || ''} onChange={handleChange} />
-            <Input type="text" name="flashPt" value={properties.flashPt || ''} onChange={handleChange} />
-            <Input type="text" name="upperExplosionLim" value={properties.upperExplosionLim || ''} onChange={handleChange} /> {/* upper explosion limit */}
-            <Input type="text" name="lowerExplosionLim" value={properties.lowerExplosionLim || ''} onChange={handleChange} /> {/* lower explosion limit  */}
-            <Input type="text" name="vapourPressure" value={properties.vapourPressure || ''} onChange={handleChange} />
-            <Input type="text" name="vapourDensity" value={properties.vapourDensity || ''} onChange={handleChange} />
-            <Input type="text" name="relDensity" value={properties.relDensity || ''} onChange={handleChange} />
-            <Input type="text" name="autoIgnitionTemp" value={properties.autoIgnitionTemp || ''} onChange={handleChange} />
-            <Input type="text" name="decompositionTemp" value={properties.decompositionTemp || ''} onChange={handleChange} />
-            <Input type="text" name="viscosity" value={properties.viscosity || ''} onChange={handleChange} />
-            <Input type="text" name="thermalConductivity" value={properties.viscosity || ''} onChange={handleChange} /> {/* Thermal conductivity */}
-            <Input type="text" name="cp" value={properties.cp || ''} onChange={handleChange} /> {/* CP */}
-        </div>
-    )
+                    {/* only want the info icon to show for the first reactant */}
+                    {
+                        number === 1 &&
+                        <span
+                            id='info'
+                            className={css(infoIconStyles.infoIconStyles)}
+                            onMouseOver={this.toggleInfo}
+                            onMouseOut={this.toggleInfo}
+                        >
+                            <i className="far fa-question-circle fa-1x"></i>
+                        </span>
+                    }
+                </div>
 
+                <Input type="text" name="productName" value={properties.productName || ''} onChange={this.handleChange} />
+                <Input type="text" name="molWtFraction" value={properties.molWtFraction || ''} onChange={this.handleChange} />
+                <Input type="text" name="molWt" value={properties.molWt || ''} onChange={this.handleChange} />
+                <Input type="text" name="casNo" value={properties.casNo || ''} onChange={this.handleChange} />
+                <br />
+
+                <Input type="text" name="ph" value={properties.ph || ''} onChange={this.handleChange} />
+                <Input type="text" name="boilingPt" value={properties.boilingPt || ''} onChange={this.handleChange} />
+                <Input type="text" name="flashPt" value={properties.flashPt || ''} onChange={this.handleChange} />
+                <Input type="text" name="upperExplosionLim" value={properties.upperExplosionLim || ''} onChange={this.handleChange} /> {/* upper explosion limit */}
+                <Input type="text" name="lowerExplosionLim" value={properties.lowerExplosionLim || ''} onChange={this.handleChange} /> {/* lower explosion limit  */}
+                <Input type="text" name="vapourPressure" value={properties.vapourPressure || ''} onChange={this.handleChange} />
+                <Input type="text" name="vapourDensity" value={properties.vapourDensity || ''} onChange={this.handleChange} />
+                <Input type="text" name="relDensity" value={properties.relDensity || ''} onChange={this.handleChange} />
+                <Input type="text" name="autoIgnitionTemp" value={properties.autoIgnitionTemp || ''} onChange={this.handleChange} />
+                <Input type="text" name="decompositionTemp" value={properties.decompositionTemp || ''} onChange={this.handleChange} />
+                <Input type="text" name="viscosity" value={properties.viscosity || ''} onChange={this.handleChange} />
+                <Input type="text" name="thermalConductivity" value={properties.viscosity || ''} onChange={this.handleChange} /> {/* Thermal conductivity */}
+                <Input type="text" name="cp" value={properties.cp || ''} onChange={this.handleChange} /> {/* CP */}
+
+                {/* Popovers */}
+                <Popover placement='right' isOpen={this.state.infoOpen} target='info'>
+                    <PopoverBody>Upload the SDS for the component (Currently the tool is compatible with Sigma Aldrich SDS)</PopoverBody>
+                </Popover>
+            </div>
+        )
+    }
 }
 
 const styles = {
@@ -85,6 +117,17 @@ const styles = {
         justifySelf: 'center',
     },
 }
+
+const infoIconStyles = StyleSheet.create({
+    infoIconStyles: {
+        paddingLeft: '0.5em',
+
+        ':hover': {
+            color: '#3366ff',
+            cursor: 'pointer'
+        },
+    }
+})
 
 const mapStateToProps = state => ({
     temperature: state.operatingParams.temperature,
