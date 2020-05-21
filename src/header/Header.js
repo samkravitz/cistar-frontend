@@ -26,6 +26,7 @@ class Header extends Component {
         stateInfoOpen: false,
         heatOfReactionInfoOpen: false,
         cpMixInfoOpen: false,
+        numCompoundsInfoOpen: false,
     }
 
     // sets the state from one of the non-operating param inputs as they change
@@ -107,6 +108,12 @@ class Header extends Component {
     toggleCpMixInfo = event => {
         this.setState(prevState => ({
             cpMixInfoOpen: !prevState.cpMixInfoOpen,
+        }))
+    }
+
+    toggleCompoundInfo = event => {
+        this.setState(prevState => ({
+            compoundInfoOpen: !prevState.compoundInfoOpen,
         }))
     }
 
@@ -294,7 +301,17 @@ class Header extends Component {
 
                 <div className="ReactantsProductsDiluents" style={styles.rpd}>
                     <span style={styles.rpd.element}>
-                        <Label for="Reactants">Reactants</Label>
+                        <Label for="Reactants">
+                            Reactants
+                            <span
+                                id='compoundInfo'
+                                className={css(infoIconStyles.operatingParams)}
+                                onMouseEnter={this.toggleCompoundInfo}
+                                onMouseLeave={this.toggleCompoundInfo}
+                            >
+                                <i className="far fa-question-circle fa-1x"></i>
+                            </span>
+                        </Label>
                         <Input type="select" name="Reactants" id="Reactants" onChange={this.handleChangeR} value={this.props.numReactants}>
                             <option>1</option>
                             <option>2</option>
@@ -343,6 +360,10 @@ class Header extends Component {
 
                 <Popover placement="right" isOpen={this.state.cpMixInfoOpen} target="cpMixInfo">
                     <PopoverBody> Enter the specific heat capacity of the reaction mixture (in cal/g/&deg;C). Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components. </PopoverBody>
+                </Popover>
+
+                <Popover placement="right" isOpen={this.state.compoundInfoOpen} target="compoundInfo">
+                    <PopoverBody> Enter the number of reactants, products and diluents involved in the system </PopoverBody>
                 </Popover>
             </div >
 
