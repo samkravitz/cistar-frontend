@@ -24,15 +24,19 @@ const Product = props => {
     const { number, index } = props
     const properties = props.products[index]
     return (
-        <div className="Product" style={{ ...styles }}>
+        <div className="Product" style={styles.main}>
             <h4 sm="4">Product {number}</h4>
 
-            <Input
-                type="file"
-                name="file"
-                encType="multipart/form-data"
-                onChange={handleFileSelect}
-            />
+            <label className="customFileInput" style={styles.customFileInput}>
+                <Input
+                    type="file"
+                    name="file"
+                    encType="multipart/form-data"
+                    style={{ display: 'none' }}
+                    onChange={handleFileSelect}
+                />
+                    Upload SDS
+            </label>
             <Input type="text" name="productName" value={properties.productName || ''} onChange={handleChange} />
             <Input type="text" name="molWtFraction" value={properties.molWtFraction || ''} onChange={handleChange} />
             <Input type="text" name="molWt" value={properties.molWt || ''} onChange={handleChange} />
@@ -58,11 +62,28 @@ const Product = props => {
 }
 
 const styles = {
-    display: 'grid',
-    gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
-    textAlign: 'center',
-    alignItems: 'start',
-    backgroundColor: '#f1f1f1'
+    main: {
+        display: 'grid',
+        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+        textAlign: 'center',
+        alignItems: 'start',
+        backgroundColor: '#f1f1f1',
+    },
+    
+    customFileInput: {
+        color: 'white',
+        backgroundColor: '#007bff',
+        borderColor: '#007bff',
+        padding: '.375rem .75rem',
+        border: '1px solid transparent',
+        borderRadius: '.25rem',
+        lineHeight: '1.5',
+        fontWeight: '400',
+        fontSize: '1rem',
+        cursor: 'pointer',
+        width: '50%',
+        justifySelf: 'center',
+    },
 }
 
 const mapStateToProps = state => ({
