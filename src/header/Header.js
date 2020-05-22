@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Label, Input, Button, FormGroup, Form, Popover, PopoverBody } from 'reactstrap'
 import { StyleSheet, css } from 'aphrodite'
-
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
+
+import ReactionScheme from './ReactionScheme'
 
 import { save, load } from '../saveload'
 
