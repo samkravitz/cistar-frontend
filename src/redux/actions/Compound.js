@@ -27,8 +27,18 @@ export const parseReactantFile = (index, temperature, formData) => {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 params: { temperature: temperature }
             })
-    
-            dispatch({ type: Types.SET_REACTANT, payload: { index: index, data: response.data } })
+            
+            // if flask returns a string instead of JSON object for some reason, parse it into an object
+            let properties = {}
+            if (typeof(response.data) === 'string') {
+                // remove NaN
+                const parsed = response.data.replace('NaN', 'null')
+                properties = JSON.parse(parsed)
+            } else {
+                properties = response.data
+            }
+
+            dispatch({ type: Types.SET_REACTANT, payload: { index: index, data: properties } })
         } catch (error) {
             // Error 😨
             const message = error.response ? error.response.data.error : error
@@ -45,8 +55,18 @@ export const parseProductFile = (index, temperature, formData) => {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 params: { temperature: temperature }
             })
+
+            // if flask returns a string instead of JSON object for some reason, parse it into an object
+            let properties = {}
+            if (typeof(response.data) === 'string') {
+                // remove NaN
+                const parsed = response.data.replace('NaN', 'null')
+                properties = JSON.parse(parsed)
+            } else {
+                properties = response.data
+            }
     
-            dispatch({ type: Types.SET_PRODUCT, payload: { index: index, data: response.data } })
+            dispatch({ type: Types.SET_PRODUCT, payload: { index: index, data: properties } })
         } catch (error) {
             // Error 😨
             const message = error.response ? error.response.data.error : error
@@ -63,8 +83,18 @@ export const parseDiluentFile = (index, temperature, formData) => {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 params: { temperature: temperature }
             })
+
+            // if flask returns a string instead of JSON object for some reason, parse it into an object
+            let properties = {}
+            if (typeof(response.data) === 'string') {
+                // remove NaN
+                const parsed = response.data.replace('NaN', 'null')
+                properties = JSON.parse(parsed)
+            } else {
+                properties = response.data
+            }
     
-            dispatch({ type: Types.SET_DILUENT, payload: { index: index, data: response.data } })
+            dispatch({ type: Types.SET_DILUENT, payload: { index: index, data: properties } })
         } catch (error) {
             // Error 😨
             const message = error.response ? error.response.data.error : error

@@ -287,6 +287,7 @@ class Header extends Component {
 
                 </div>
 
+                {/* <ReactionScheme /> */}
                 <div className="textArea" style={styles.textArea}>
                     <Form>
                         <FormGroup>
