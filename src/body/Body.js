@@ -49,6 +49,7 @@ const Body = props => {
             throw new Error("Please enter a valid heat of reaction")
     }
 
+    // valdate cp, molWtFraction
     const validateReactants = reactants => {
         const fractions = []
         reactants.forEach((reactant, i) => {
@@ -81,7 +82,7 @@ const Body = props => {
 
         // validate that weight fractions add to 1
         const sum = fractions.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-        if (sum !== 1)
+        if (sum.toPrecision(3) !== '1.00')
             throw new Error('Please make sure weight fractions add to 1')
     }
 
