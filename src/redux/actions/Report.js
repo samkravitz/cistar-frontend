@@ -17,7 +17,7 @@ export const calculate = operatingParams => {
             dispatch({ type: Types.HAZARD_MATRIX_COMPLETE })
 
             // calculation block
-            const reactionInfo = await calculationBlock(operatingParams, reactants)
+            const reactionInfo = await calculationBlock(operatingParams, reactants, products)
             dispatch({ type: Types.SET_REACTION_INFO, payload: reactionInfo })
             dispatch({ type: Types.CALCULATION_BLOCK_COMPLETE })
 
@@ -38,10 +38,11 @@ export const calculate = operatingParams => {
     }
 }
 
-const calculationBlock = async (operatingParams, reactants) => {
+const calculationBlock = async (operatingParams, reactants, products) => {
     const response = await axios.post(`${server}/calculate`, {
         operatingParams: operatingParams,
-        reactants: reactants
+        reactants: reactants,
+        products: products
     })
 
     return response.data
