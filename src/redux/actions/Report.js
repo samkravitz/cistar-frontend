@@ -7,6 +7,7 @@ export const calculate = operatingParams => {
     return async (dispatch, getState) => {
         // dispatch that the calculation is underway
         dispatch({ type: Types.CALCULATION_IN_PROGRESS })
+        dispatch({ type: Types.OPEN_MODAL })
 
         const { reactants, products, diluents } = getState().compound
         const hNums = getHNums(reactants, products, diluents)

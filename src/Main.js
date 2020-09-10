@@ -4,17 +4,21 @@
  *
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+import actions from './redux/actions'
 
 import Header from './header/Header'
 import Body from './body/Body'
 import Report from './report/Report'
 
 const Main = props => {
-    const modal = false;
-    const toggle = () => { }
+
+    const toggle = () => {
+        props.toggleModal()
+    }
+
     return (
         <div className="Main">
             <Header />
@@ -24,8 +28,7 @@ const Main = props => {
             {/* calculation status information modal */}
             <Modal
                 className='reactionInfoModal'
-                isOpen={props.calculationInProgress}
-                toggle={toggle}
+                isOpen={props.modalOpen}
                 size='lg'
                 style={{ cursor: 'wait' }}
             >
@@ -60,7 +63,10 @@ const Main = props => {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={toggle}>Okay</Button>{' '}
+                    { 
+                    props.reportComplete && 
+                    <Button color="primary" onClick={toggle}>Okay</Button>
+                    }
                 </ModalFooter>
             </Modal>
         </div>
@@ -77,10 +83,15 @@ const styles = {
 const mapStateToProps = state => ({
     calculationInProgress: state.status.calculationInProgress,
     reportComplete: state.status.reportComplete,
+    modalOpen: state.status.modalOpen,
 
     hazardMatrixComplete: state.status.hazardMatrixComplete,
     calculationBlockComplete: state.status.calculationBlockComplete,
     cameoTableComplete: state.status.cameoTableComplete,
 })
 
-export default connect(mapStateToProps)(Main)
+const mapDispatchToProps = {
+    toggleModal: actions.status.toggleModal
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)
