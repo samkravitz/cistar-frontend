@@ -84,6 +84,8 @@ class Reactant extends Component {
                 <Input type="text" name="viscosity" value={properties.viscosity || ''} onChange={this.handleChange} />
                 <Input type="text" name="thermalConductivity" value={properties.viscosity || ''} onChange={this.handleChange} /> {/* Thermal conductivity */}
                 <Input type="text" name="cp" value={properties.cp || ''} onChange={this.handleChange} /> {/* CP */}
+                <Input type="text" name="hNumbers" value={properties.hNumbers || ''} onChange={this.handleChange} /> {/* Hazard #s */}
+                <Input type="text" name="hStatements" value={properties.hStatements || ''} onChange={this.handleChange} /> {/* Hazard statements */}
 
                 {/* Popovers */}
                 <Popover placement='right' isOpen={this.state.infoOpen} target='info'>
@@ -97,7 +99,7 @@ class Reactant extends Component {
 const styles = {
     main: {
         display: 'grid',
-        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(15, minmax(auto, 1fr))',
         textAlign: 'center',
         backgroundColor: '#f1f1f1',
     },

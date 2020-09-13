@@ -56,6 +56,8 @@ const Diluent = props => {
             <Input type="text" name="viscosity" value={properties.viscosity || ''} onChange={handleChange} />
             <Input type="text" name="thermalConductivity" value={properties.viscosity || ''} onChange={handleChange} /> {/* Thermal conductivity */}
             <Input type="text" name="cp" value={properties.cp || ''} onChange={handleChange} /> {/* CP */}
+            <Input type="text" name="hNumbers" value={properties.hNumbers || ''} onChange={handleChange} /> {/* Hazard #s */}
+            <Input type="text" name="hStatements" value={properties.hStatements || ''} onChange={handleChange} /> {/* Hazard statements */}
         </div>
     )
 
@@ -64,10 +66,11 @@ const Diluent = props => {
 const styles = {
     main: {
         display: 'grid',
-        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(15, minmax(auto, 1fr))',
         textAlign: 'center',
         alignItems: 'start',
         backgroundColor: '#f1f1f1',
+        padding: '0',
     },
 
     customFileInput: {

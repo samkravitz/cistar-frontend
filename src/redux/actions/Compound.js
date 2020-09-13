@@ -38,6 +38,8 @@ export const parseReactantFile = (index, temperature, formData) => {
                 properties = response.data
             }
 
+            console.log(properties)
+
             dispatch({ type: Types.SET_REACTANT, payload: { index: index, data: properties } })
         } catch (error) {
             // Error 😨

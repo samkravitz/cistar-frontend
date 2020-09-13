@@ -58,7 +58,7 @@ class Properties extends Component {
                 <h6>Relative density at 25&deg;C (g/cm3)</h6>
                 <h6>Auto ignition temperature (&deg;C)</h6>
                 <h6>Decomposition temperature (&deg;C)</h6>
-                <h6>Viscosity ()</h6>
+                <h6>Viscosity</h6>
                 <h6>Thermal Conductivity - k</h6>
                 <h6
                     style={{ color: '#c71e1e' }}
@@ -73,6 +73,8 @@ class Properties extends Component {
                         <i className="far fa-question-circle fa-1x"></i>
                     </span>
                 </h6>
+                <h6>Hazard Numbers</h6>
+                <h6>Hazard Statements</h6>
 
 
                 {/* Popovers */}
@@ -95,7 +97,7 @@ class Properties extends Component {
 const styles = {
     main: {
         display: 'grid',
-        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(15, minmax(auto, 1fr))',
         margin: '0',
         textAlign: 'center',
     },
