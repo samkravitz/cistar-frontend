@@ -91,7 +91,7 @@ const Body = props => {
         <div className="Body">
             <div style={style}>
                 <Properties />
-                {/* this is just a hacky way to map numReactants number of times: */}
+                {/* this is just a hacky way to map x number of times: */}
                 {
                     [...Array(numReactants)].map((e, i) => (
                         <Reactant
