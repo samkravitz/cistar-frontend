@@ -72,9 +72,6 @@ class Properties extends Component {
                         <i className="far fa-question-circle fa-1x"></i>
                     </span>
                 </h6>
-                <h6>Hazard Numbers</h6>
-                <h6>Hazard Statements</h6>
-
 
                 {/* Popovers */}
                 <Popover placement='right' isOpen={this.state.initialWtFractionInfoOpen} target='initialWtFractionInfo'>
@@ -96,7 +93,7 @@ class Properties extends Component {
 const styles = {
     main: {
         display: 'grid',
-        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(15, minmax(auto, 1fr))',
+        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
         textAlign: 'center',
         marginTop: '0.5em',
         alignItems: 'start'
