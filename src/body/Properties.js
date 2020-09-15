@@ -24,11 +24,10 @@ class Properties extends Component {
     render() {
         const { numReactants, numProducts, numDiluents } = this.props
         const numberOfElements = numReactants + numProducts + numDiluents
-        const alignment = numberOfElements > 6 ? 'start' : 'center'
         return (
-            <div className="Properties" style={{ ...styles.main, alignItems: alignment }}>
+            <div className="Properties" style={styles.main}>
 
-                <h2 style={{ alignSelf: 'end' }}>Property</h2>
+                <h2 style={{ margin: '0', padding: '0' }}>Property</h2>
                 <div></div>
                 <h6>Product Name</h6>
                 <h6
@@ -98,8 +97,9 @@ const styles = {
     main: {
         display: 'grid',
         gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(15, minmax(auto, 1fr))',
-        margin: '0',
         textAlign: 'center',
+        marginTop: '0.5em',
+        alignItems: 'start'
     },
 }
 

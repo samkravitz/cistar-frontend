@@ -100,6 +100,7 @@ const styles = {
     main: {
         display: 'grid',
         gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(15, minmax(auto, 1fr))',
+        alignSelf: 'start',
         textAlign: 'center',
         backgroundColor: '#f1f1f1',
     },
