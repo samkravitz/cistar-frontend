@@ -65,8 +65,8 @@ const styles = {
     main: {
         display: 'grid',
         gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+        alignSelf: 'start',
         textAlign: 'center',
-        alignItems: 'start',
         backgroundColor: '#f1f1f1',
     },
     
