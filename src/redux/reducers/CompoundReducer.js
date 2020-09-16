@@ -70,18 +70,6 @@ export default (state = initialState, action) => produce(state, draft => {
 
         case (Types.SET_REACTANT):
             draft.reactants[action.payload.index] = action.payload.data
-
-            if (!draft.reactants[action.payload.index].hNumbers) return
-            
-            let hNumbers = ''
-            let hStatements = ''
-            Object.keys(action.payload.data.hNumbers).forEach(hNum => {
-                hNumbers += hNum + ', '
-                hStatements += action.payload.data.hNumbers[hNum] + ', '
-            })
-            
-            draft.reactants[action.payload.index].hNumbers = hNumbers
-            draft.reactants[action.payload.index].hStatements = hStatements
             return
 
         case (Types.SET_PRODUCT):

@@ -8,16 +8,18 @@ import actions from '../redux/actions'
 const HReactant = ({ number, index, reactants, ...props}) => {
     const properties = reactants[index]
     console.log(properties)
+
     const handleChange = ev => {
-        properties[ev.target.name] = ev.target.value
-        props.updateReactant(index, properties)
+        const newProperties = {...properties}
+        newProperties[ev.target.name] = ev.target.value
+        props.updateReactant(index, newProperties)
     }
 
     return (
         <div className='HReactant'>
             <h6 style={{ textAlign: 'center' }}>Reactant {number}</h6>
-            <Input type="text" name="hNumbers" value={properties.hNumbers || ''} onChange={handleChange} /> {/* CP */}
-            <Input type="text" name="hStatements" value={properties.hStatements || ''} onChange={handleChange} /> {/* CP */}
+            <Input type="text" name="hNumbers" value={properties.hNumbers || ''} onChange={handleChange} />
+            <Input type="text" name="hStatements" value={properties.hStatements || ''} onChange={handleChange} />
         </div>
     )
 }
