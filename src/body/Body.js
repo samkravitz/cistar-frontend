@@ -137,6 +137,24 @@ const Body = props => {
                         />
                     ))
                 }
+                {
+                    [...Array(numProducts)].map((e, i) => (
+                        <HProduct
+                            key={i}
+                            index={i}
+                            number={i + 1}
+                        />
+                    ))
+                }
+                {
+                    [...Array(numDiluents)].map((e, i) => (
+                        <HDiluent
+                            key={i}
+                            index={i}
+                            number={i + 1}
+                        />
+                    ))
+                }
             </div>
 
 
