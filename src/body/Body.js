@@ -7,6 +7,7 @@ import Reactant from './Reactant'
 import Product from './Product'
 import Properties from './Properties'
 import Diluent from './Diluent'
+import Hazard from './Hazard'
 
 const Body = props => {
 
@@ -89,7 +90,7 @@ const Body = props => {
     const { numReactants, numProducts, numDiluents } = props
     return (
         <div className="Body">
-            <div style={style}>
+            <div style={styles.main}>
                 <Properties />
                 {/* this is just a hacky way to map x number of times: */}
                 {
@@ -120,7 +121,10 @@ const Body = props => {
                     ))
                 }
             </div>
-            <div style={style}>
+
+            <Hazard />
+
+            <div style={styles.main}>
                 <Button
                     color="primary"
                     onClick={handleClick}
@@ -129,14 +133,18 @@ const Body = props => {
                 </Button>
             </div>
         </div>
-
     )
-
 }
 
-const style = {
-    display: 'flex',
-    justifyContent: 'center',
+const styles = {
+    main: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
+
+    hazard: {
+
+    },
 }
 
 const mapStateToProps = state => ({
