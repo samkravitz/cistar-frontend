@@ -72,8 +72,8 @@ const Main = props => {
                             <span style={{ color: cameoColor }}>{cameoProgress}</span>
                         </div>
                         {
-                            props.cameoErrors.map(err =>
-                                <span style={styles.error}>{err}</span>
+                            props.cameoErrors.map((err, i) =>
+                                <span style={styles.error} key={i}>{err}</span>
                             )
                         }
                     </div>

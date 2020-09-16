@@ -13,27 +13,38 @@ export const calculate = operatingParams => {
         const hNums = getHNums(reactants, products, diluents)
         dispatch({ type: Types.SET_HNUMS, payload: hNums })
         
+        // matrix
         try {
             const matrix = await getMatrix(hNums)
             dispatch({ type: Types.SET_MATRIX, payload: matrix })
-            dispatch({ type: Types.HAZARD_MATRIX_COMPLETE })
-
-            // calculation block
-            const reactionInfo = await calculationBlock(operatingParams, reactants, products)
-            dispatch({ type: Types.SET_REACTION_INFO, payload: reactionInfo })
-            dispatch({ type: Types.CALCULATION_BLOCK_COMPLETE })
-
-            // cameo table
-            const cameoTable = await getCameoTable(reactants, products, diluents)
-            dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable.html_element })
-            dispatch({ type: Types.SET_CAMEO_ERRORS, payload: cameoTable.errors })
-
-            dispatch({ type: Types.CAMEO_TABLE_COMPLETE })
-
         } catch (error) {
             // Error 😨
             const message = error.response ? error.response.data.error : error
-            alert(message)
+            dispatch({ type: Types.SET_MATRIX_ERRORS, payload: message })
+        } finally {
+            dispatch({ type: Types.HAZARD_MATRIX_COMPLETE })
+        }
+
+        // calculation block
+        try {
+            const reactionInfo = await calculationBlock(operatingParams, reactants, products)
+            dispatch({ type: Types.SET_REACTION_INFO, payload: reactionInfo })
+        } catch (error) {
+            const message = error.response ? error.response.data.error : error
+            dispatch({ type: Types.SET_CALCULATION_ERRORS, payload: message })
+        } finally {
+            dispatch({ type: Types.CALCULATION_BLOCK_COMPLETE })
+        }
+
+        // cameo table
+        try {
+            const cameoTable = await getCameoTable(reactants, products, diluents)
+            dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable.html_element })
+            dispatch({ type: Types.SET_CAMEO_ERRORS, payload: cameoTable.errors })
+        } catch (error) {
+            // Error 😨
+            const message = error.response ? error.response.data.error : error
+            dispatch({ type: Types.SET_CAMEO_ERRORS, payload: [message] })
         } finally {
             // dispatch that calculations are complete and report is generated
             dispatch({ type: Types.CALCULATION_COMPLETE })

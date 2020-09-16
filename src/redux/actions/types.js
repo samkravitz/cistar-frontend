@@ -36,7 +36,9 @@ const Types = {
     CLOSE_MODAL:                'CLOSE_MODAL',
 
     // error types
-    SET_CAMEO_ERRORS:               'SET_CAMEO_ERRORS',
+    SET_CAMEO_ERRORS:           'SET_CAMEO_ERRORS',
+    SET_MATRIX_ERRORS:          'SET_MATRIX_ERRORS',
+    SET_CALCULATION_ERRORS:     'SET_CALCULATION_ERRORS',
 }
 
 export default Types

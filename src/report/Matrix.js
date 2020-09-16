@@ -6,7 +6,11 @@ import yellow from '../images/reactivity/yellow_caution.png'
 import orange from '../images/reactivity/orange_warning.png'
 import red from '../images/reactivity/red_incompatible.png'
 
-const Matrix = ({ matrix }) => {
+const Matrix = ({ matrix, matrixErrors }) => {
+
+    // return null on error
+    if (matrixErrors !== '')
+        return null
 
     const columns = [
         'Name',
@@ -125,6 +129,7 @@ const styles = {
 
 const mapStateToProps = state => ({
     matrix: state.report.matrix,
+    matrixErrors: state.report.matrixErrors,
 })
 
 export default connect(mapStateToProps)(Matrix)

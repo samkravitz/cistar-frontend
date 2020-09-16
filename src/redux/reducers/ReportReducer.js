@@ -12,6 +12,8 @@ const initialState = {
         finalTemp: '',
         adiabaticPressure: ''
     },
+    calculationErrors: '',
+    matrixErrors: '',
 }
 
 export default (state = initialState, action) => produce(state, draft => {
@@ -34,6 +36,14 @@ export default (state = initialState, action) => produce(state, draft => {
 
         case (Types.SET_CAMEO_ERRORS):
             draft.cameoErrors = action.payload
+            return
+
+        case (Types.SET_MATRIX_ERRORS):
+            draft.matrixErrors = action.payload
+            return
+
+        case (Types.SET_CALCULATION_ERRORS):
+            draft.calculationErrors = action.payload
             return
 
         default:

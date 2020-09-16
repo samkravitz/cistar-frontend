@@ -10,7 +10,11 @@ const styles = {
     },
 }
 
-const Calculation = ({ reactionInfo }) => {
+const Calculation = ({ reactionInfo, calculationErrors }) => {
+    // return null on error
+    if (calculationErrors !== '')
+        return null
+
     return (
         <div className='Calculation' style={styles.main}>
             <h4>Calculation</h4>
@@ -23,6 +27,7 @@ const Calculation = ({ reactionInfo }) => {
 
 const mapStateToProps = state => ({
     reactionInfo: state.report.reactionInfo,
+    calculationErrors: state.report.calculationErrors
 })
 
 export default connect(mapStateToProps)(Calculation)
