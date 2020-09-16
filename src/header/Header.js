@@ -173,18 +173,6 @@ class Header extends Component {
                                 <h6 style={{ paddingRight: '1em' }} >Organization: </h6>
                                 <Input type="text" name="organization" value={this.state.organization} onChange={this.onChange} />
                             </div>
-                            <div className="Location" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }} >Location: </h6>
-                                <Input type="text" name="title" value={this.state.location} onChange={this.onChangeLocation} />
-                            </div>
-                            <div className="Location" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }} >Location: </h6>
-                                <Input type="text" name="title" value={this.state.location} onChange={this.onChangeLocation} />
-                            </div>
-                            <div className="Location" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }} >Location: </h6>
-                                <Input type="text" name="title" value={this.state.location} onChange={this.onChangeLocation} />
-                            </div>
                             <Button color="primary" onClick={this.saveReaction}>Save Reaction</Button>
                             <label className="customFileInput" style={styles.customFileInput}>
                                 <Input
