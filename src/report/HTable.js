@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { connect } from 'react-redux'
 
 const styles = {
@@ -62,7 +61,7 @@ const HTable = ({ hNums }) => {
 
                             <td style={styles.td}>
                                 <div style={{display: 'flex', flexDirection: 'column' }}>
-                                    {Object.keys(hNums[row]).map((hNum, j) => (
+                                    {hNums[row]['hNumbers'].split(', ').map((hNum, j) => (
                                         <span key={j}>{hNum}</span>
                                     ))}
                                 </div>     
@@ -70,30 +69,11 @@ const HTable = ({ hNums }) => {
 
                             <td style={styles.td}>
                                 <div style={{display: 'flex', flexDirection: 'column' }}>
-                                    {Object.values(hNums[row]).map((hNum, j) => (
-                                        <span key={j}>{hNum}</span>
+                                    {hNums[row]['hStatements'].split('\n').map((hStatement, j) => (
+                                        <span key={j}>{hStatement}</span>
                                     ))}
                                 </div>     
                             </td>
-                            {/* <td>
-                                <table>
-                                    <tbody style={{ align: 'center' }}>
-                                        {Object.keys(hNums[row]).map((hNum, j) => (
-                                            <tr key={j}><td>{hNum}</td></tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </td>
-                
-                            <td style={styles.td}>
-                                <table>
-                                    <tbody>
-                                        {Object.values(hNums[row]).map((hNum, j) => (
-                                            <tr key={j}><td>{hNum}</td></tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </td> */}
                         </tr>
 
                     ))}

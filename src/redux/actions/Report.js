@@ -12,7 +12,7 @@ export const calculate = operatingParams => {
         const { reactants, products, diluents } = getState().compound
         const hNums = getHNums(reactants, products, diluents)
         dispatch({ type: Types.SET_HNUMS, payload: hNums })
-        console.log(hNums)
+        
         try {
             const matrix = await getMatrix(hNums)
             dispatch({ type: Types.SET_MATRIX, payload: matrix })
@@ -24,8 +24,8 @@ export const calculate = operatingParams => {
             dispatch({ type: Types.CALCULATION_BLOCK_COMPLETE })
 
             // cameo table
-            const cameoTable = await getCameoTable(reactants, products, diluents)
-            dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable })
+            // const cameoTable = await getCameoTable(reactants, products, diluents)
+            //dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable })
             dispatch({ type: Types.CAMEO_TABLE_COMPLETE })
 
         } catch (error) {
@@ -54,7 +54,6 @@ const calculationBlock = async (operatingParams, reactants, products) => {
 const getMatrix = async hNums => {
 
     const promises = Object.keys(hNums).map(async name => {
-        console.log(name, hNums[name])
         const res = await axios.post(`${server}/graph`, hNums[name], {
             headers: { 'Content-Type': 'text/plain' },
         })
@@ -77,27 +76,37 @@ const getCameoTable = async (reactants, products, diluents) => {
 
     return response.data
 }
-// get an object of compundName : Array(hNum) pairs
-// for the matrix component 
+/* get an object of
+*    compundName : {
+*       hNumbers: 'hNumbers',
+*       hStatements: 'hStatements'
+*    }
+*  pairs for the matrix component 
+*/
 const getHNums = (reactants, products, diluents) => {
     const hNums = {}
     reactants.forEach(reactant => {
         if (reactant.productName)
-            hNums[reactant.productName] = reactant.hNumbers
+            hNums[reactant.productName] = {
+                hNumbers: reactant.hNumbers,
+                hStatements: reactant.hStatements,
+            }
     })
 
     products.forEach(product => {
         if (product.productName)
-            hNums[product.productName] = product.hNumbers
+            hNums[product.productName] = {
+                hNumbers: product.hNumbers,
+                hStatements: product.hStatements,
+            }
     })
 
     diluents.forEach(diluent => {
         if (diluent.productName)
-            hNums[diluent.productName] = diluent.hNumbers
+            hNums[diluent.productName] = {
+                hNumbers: diluent.hNumbers,
+                hStatements: diluent.hStatements,
+            }
     })
-
     return hNums
 }
-
-
-
