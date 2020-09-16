@@ -1,13 +1,33 @@
 // Hazard Number & Statement text box for a Reactant
-
 import React from 'react'
+import { Input } from 'reactstrap'
 
-const HReactant = () => {
+import { connect } from 'react-redux'
+import actions from '../redux/actions'
+
+const HReactant = ({ number, index, reactants, ...props}) => {
+    const properties = reactants[index]
+    console.log(properties)
+    const handleChange = ev => {
+        properties[ev.target.name] = ev.target.value
+        props.updateReactant(index, properties)
+    }
+
     return (
         <div className='HReactant'>
-
+            <h6 style={{ textAlign: 'center' }}>Reactant {number}</h6>
+            <Input type="text" name="hNumbers" value={properties.hNumbers || ''} onChange={handleChange} /> {/* CP */}
+            <Input type="text" name="hStatements" value={properties.hStatements || ''} onChange={handleChange} /> {/* CP */}
         </div>
     )
 }
 
-export default HReactant
+const mapStateToProps = state => ({
+    reactants: state.compound.reactants,
+})
+
+const mapDispatchToProps = {
+    updateReactant: actions.compound.updateReactant,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HReactant)

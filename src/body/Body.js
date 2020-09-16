@@ -8,6 +8,9 @@ import Product from './Product'
 import Properties from './Properties'
 import Diluent from './Diluent'
 import Hazard from './Hazard'
+import HReactant from './HReactant'
+import HProduct from './HProduct'
+import HDiluent from './HDiluent'
 
 const Body = props => {
 
@@ -121,8 +124,21 @@ const Body = props => {
                     ))
                 }
             </div>
+            
+            <div className='Hazard' style={styles.hazard}>
+                <Hazard />
+                {/* this is just a hacky way to map x number of times: */}
+                {
+                    [...Array(numReactants)].map((e, i) => (
+                        <HReactant
+                            key={i}
+                            index={i}
+                            number={i + 1}
+                        />
+                    ))
+                }
+            </div>
 
-            <Hazard />
 
             <div style={styles.main}>
                 <Button
@@ -143,7 +159,10 @@ const styles = {
     },
 
     hazard: {
-
+        display: 'flex',
+        justifyContent: 'center',
+        minHeight: '10em',
+        paddingTop: '2em',
     },
 }
 
