@@ -175,8 +175,6 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         height: '100%',
-        // alignItems: 'stretch',
-        // alignSelf: 'flex-start',
     },
 
     hazard: {

@@ -19,6 +19,20 @@ const Main = props => {
         props.toggleModal()
     }
 
+    // word to far right of cameo table progress
+    let cameoProgress = ''
+    if (props.cameoErrors.length === 0) {
+        if (props.cameoTableComplete)
+            cameoProgress = 'done'
+    } else if (props.cameoErrors.includes('No compatiblity matrix formed')) {
+        cameoProgress = 'failed'
+    } else {
+        cameoProgress = 'check errors'
+    }
+
+    // color of cameoProgress
+    const cameoColor = (cameoProgress === '' || cameoProgress === 'done') ? '' : '#c71e1e'
+
     return (
         <div className="Main">
             <Header />
@@ -55,22 +69,19 @@ const Main = props => {
                         </div>
                         <div style={styles.modalItem}>
                             <span>Cameo Table</span>
-                            {
-                                props.cameoTableComplete &&
-                                <span>done</span>
-                            }
+                            <span style={{ color: cameoColor }}>{cameoProgress}</span>
                         </div>
                         {
-                            props.cameoErrors.map(err => 
+                            props.cameoErrors.map(err =>
                                 <span style={styles.error}>{err}</span>
                             )
                         }
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    { 
-                    props.reportComplete && 
-                    <Button color="primary" onClick={toggle}>Okay</Button>
+                    {
+                        props.reportComplete &&
+                        <Button color="primary" onClick={toggle}>Okay</Button>
                     }
                 </ModalFooter>
             </Modal>
