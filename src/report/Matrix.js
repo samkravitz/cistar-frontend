@@ -27,8 +27,6 @@ const Matrix = ({ matrix, matrixErrors }) => {
         'Ingestion',
     ]
 
-    console.log(matrix)
-
     return (
         <div className='Matrix' style={styles.main}>
             <table align='center' style={styles.table}>

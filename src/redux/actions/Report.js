@@ -49,6 +49,7 @@ export const calculate = operatingParams => {
             // dispatch that calculations are complete and report is generated
             dispatch({ type: Types.CALCULATION_COMPLETE })
             dispatch({ type: Types.REPORT_COMPLETE })
+            dispatch({ type: Types.CAMEO_TABLE_COMPLETE })
         }
     }
 }
