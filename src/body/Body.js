@@ -158,7 +158,7 @@ const Body = props => {
             </div>
 
 
-            <div style={styles.main}>
+            <div style={styles.button}>
                 <Button
                     color="primary"
                     onClick={handleClick}
@@ -179,9 +179,15 @@ const styles = {
     hazard: {
         display: 'flex',
         justifyContent: 'center',
-        minHeight: '10em',
+        height: 'auto',
         paddingTop: '2em',
     },
+
+    button: {
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '2em 0',
+    }
 }
 
 const mapStateToProps = state => ({

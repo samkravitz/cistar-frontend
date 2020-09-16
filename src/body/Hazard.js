@@ -8,8 +8,8 @@ const Hazard = () => {
     const [statementInfoOpen, setStatementInfoOpen] = useState(false)
 
     return (
-        <div className='Hazard'>
-            <div style={style}>
+        <div className='Hazard' style={styles.main}>
+            <div style={styles.row}>
                 <h6>Hazard Numbers</h6>
                 <span
                     id='numinfo'
@@ -22,7 +22,7 @@ const Hazard = () => {
             </div>
 
 
-            <div style={style}>
+            <div style={styles.row}>
                 <h6>Hazard Statements</h6>
                 <span
                     id='statementinfo'
@@ -57,8 +57,15 @@ const infoIconStyles = StyleSheet.create({
     }
 })
 
-const style = {
-    display: 'flex'
+const styles = {
+    main: {
+        padding: '2em 0.5em',
+    },
+
+    row: {
+        display: 'flex',
+        paddingBottom: '2em',
+    },
 }
 
 export default Hazard

@@ -18,7 +18,7 @@ const HDiluent = ({ number, index, diluents, ...props}) => {
         <div className='HDiluent'>
             <h6 style={{ textAlign: 'center' }}>Diluent {number}</h6>
             <Input type="text" name="hNumbers" value={properties.hNumbers} onChange={handleChange} />
-            <Input type="textarea" name="hStatements" value={properties.hStatements} onChange={handleChange} />
+            <Input type="textarea" name="hStatements" style={{ height: '200px' }} value={properties.hStatements} onChange={handleChange} />
         </div>
     )
 }
