@@ -24,8 +24,10 @@ export const calculate = operatingParams => {
             dispatch({ type: Types.CALCULATION_BLOCK_COMPLETE })
 
             // cameo table
-            // const cameoTable = await getCameoTable(reactants, products, diluents)
-            //dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable })
+            const cameoTable = await getCameoTable(reactants, products, diluents)
+            dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable.html_element })
+            dispatch({ type: Types.SET_CAMEO_ERRORS, payload: cameoTable.errors })
+
             dispatch({ type: Types.CAMEO_TABLE_COMPLETE })
 
         } catch (error) {
@@ -76,6 +78,7 @@ const getCameoTable = async (reactants, products, diluents) => {
 
     return response.data
 }
+
 /* get an object of
 *    compundName : {
 *       hNumbers: 'hNumbers',

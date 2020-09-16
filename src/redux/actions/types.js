@@ -34,6 +34,9 @@ const Types = {
     CAMEO_TABLE_COMPLETE:       'CAMEO_TABLE_COMPLETE',
     OPEN_MODAL:                 'OPEN_MODAL',
     CLOSE_MODAL:                'CLOSE_MODAL',
+
+    // error types
+    SET_CAMEO_ERRORS:               'SET_CAMEO_ERRORS',
 }
 
 export default Types

@@ -60,6 +60,11 @@ const Main = props => {
                                 <span>done</span>
                             }
                         </div>
+                        {
+                            props.cameoErrors.map(err => 
+                                <span style={styles.error}>{err}</span>
+                            )
+                        }
                     </div>
                 </ModalBody>
                 <ModalFooter>
@@ -77,6 +82,13 @@ const styles = {
     modalItem: {
         display: 'flex',
         justifyContent: 'space-between'
+    },
+
+    error: {
+        display: 'flex',
+        fontSize: '85%',
+        color: '#c71e1e',
+        padding: '0 2em',
     }
 }
 
@@ -88,6 +100,8 @@ const mapStateToProps = state => ({
     hazardMatrixComplete: state.status.hazardMatrixComplete,
     calculationBlockComplete: state.status.calculationBlockComplete,
     cameoTableComplete: state.status.cameoTableComplete,
+
+    cameoErrors: state.report.cameoErrors,
 })
 
 const mapDispatchToProps = {

@@ -6,6 +6,7 @@ const initialState = {
     matrix: [],
     hNums: {},
     cameoTable: '',
+    cameoErrors: [],
     reactionInfo: {
         adiabaticTemp: '',
         finalTemp: '',
@@ -30,7 +31,11 @@ export default (state = initialState, action) => produce(state, draft => {
         case (Types.SET_CAMEO_TABLE):
             draft.cameoTable = action.payload
             return
-            
+
+        case (Types.SET_CAMEO_ERRORS):
+            draft.cameoErrors = action.payload
+            return
+
         default:
             return
     }
