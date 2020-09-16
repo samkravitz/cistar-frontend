@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite'
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
 
-import ReactionScheme from './ReactionScheme'
+// import ReactionScheme from './ReactionScheme'
 
 import { save, load } from '../saveload'
 

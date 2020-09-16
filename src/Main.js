@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 import actions from './redux/actions'

@@ -22,8 +22,6 @@ class Properties extends Component {
     }
 
     render() {
-        const { numReactants, numProducts, numDiluents } = this.props
-        const numberOfElements = numReactants + numProducts + numDiluents
         return (
             <div className="Properties" style={styles.main}>
 
