@@ -2,13 +2,35 @@
 import Types from '../actions/types'
 import produce from 'immer'
 
+// all the properties of a compound before any information is entered
+const emptyCompound = {
+    autoIgnitionTemp: '',
+    boilingPt: '',
+    casNo: '',
+    cp: '',
+    decompositionTemp: '',
+    flashPt: '',
+    hNumbers: '',
+    lowerExplosionLim: '',
+    molWt: '',
+    molWtFraction: '',
+    ph: '',
+    productName: '',
+    relDensity: '',
+    upperExplosionLim: '',
+    vapourDensity: '',
+    vapourPressure: '',
+    viscosity: '',
+    hStatements: '',
+}
+
 const initialState = {
     numReactants: 1,
     numProducts: 1,
     numDiluents: 0,
 
-    reactants: [{}],
-    products: [{}],
+    reactants: [{ ...emptyCompound }],
+    products: [{ ...emptyCompound }],
     diluents: [],
 }
 
@@ -25,7 +47,7 @@ export default (state = initialState, action) => produce(state, draft => {
             // if we are adding reactants, push on empty object
             if (diff >= 0) {
                 for (let i = 0; i < diff; i++)
-                    draft.reactants.push({})
+                    draft.reactants.push({ ...emptyCompound })
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
                     draft.reactants.pop()
@@ -43,7 +65,7 @@ export default (state = initialState, action) => produce(state, draft => {
             // if we are adding products, push on empty object
             if (diff >= 0) {
                 for (let i = 0; i < diff; i++)
-                    draft.products.push({})
+                    draft.products.push({ ...emptyCompound })
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
                     draft.products.pop()
@@ -60,7 +82,7 @@ export default (state = initialState, action) => produce(state, draft => {
             // if we are adding diluents, push on empty object
             if (diff >= 0) {
                 for (let i = 0; i < diff; i++)
-                    draft.diluents.push({})
+                    draft.diluents.push({ ...emptyCompound })
             } else { // otherwise, pop them off
                 for (let i = 0; i > diff; i--)
                     draft.diluents.pop()

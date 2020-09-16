@@ -37,25 +37,25 @@ const Diluent = props => {
                 />
                     Upload SDS
             </label>
-            <Input type="text" name="productName" value={properties.productName || ''} onChange={handleChange} />
-            <Input type="text" name="molWtFraction" value={properties.molWtFraction || ''} onChange={handleChange} />
-            <Input type="text" name="molWt" value={properties.molWt || ''} onChange={handleChange} />
-            <Input type="text" name="casNo" value={properties.casNo || ''} onChange={handleChange} />
+            <Input type="text" name="productName" value={properties.productName} onChange={handleChange} />
+            <Input type="text" name="molWtFraction" value={properties.molWtFraction} onChange={handleChange} />
+            <Input type="text" name="molWt" value={properties.molWt} onChange={handleChange} />
+            <Input type="text" name="casNo" value={properties.casNo} onChange={handleChange} />
             <br />
 
-            <Input type="text" name="ph" value={properties.ph || ''} onChange={handleChange} />
-            <Input type="text" name="boilingPt" value={properties.boilingPt || ''} onChange={handleChange} />
-            <Input type="text" name="flashPt" value={properties.flashPt || ''} onChange={handleChange} />
-            <Input type="text" name="upperExplosionLim" value={properties.upperExplosionLim || ''} onChange={handleChange} /> {/* upper explosion limit */}
-            <Input type="text" name="lowerExplosionLim" value={properties.lowerExplosionLim || ''} onChange={handleChange} /> {/* lower explosion limit  */}
-            <Input type="text" name="vapourPressure" value={properties.vapourPressure || ''} onChange={handleChange} />
-            <Input type="text" name="vapourDensity" value={properties.vapourDensity || ''} onChange={handleChange} />
-            <Input type="text" name="relDensity" value={properties.relDensity || ''} onChange={handleChange} />
-            <Input type="text" name="autoIgnitionTemp" value={properties.autoIgnitionTemp || ''} onChange={handleChange} />
-            <Input type="text" name="decompositionTemp" value={properties.decompositionTemp || ''} onChange={handleChange} />
-            <Input type="text" name="viscosity" value={properties.viscosity || ''} onChange={handleChange} />
-            <Input type="text" name="thermalConductivity" value={properties.viscosity || ''} onChange={handleChange} /> {/* Thermal conductivity */}
-            <Input type="text" name="cp" value={properties.cp || ''} onChange={handleChange} /> {/* CP */}
+            <Input type="text" name="ph" value={properties.ph} onChange={handleChange} />
+            <Input type="text" name="boilingPt" value={properties.boilingPt} onChange={handleChange} />
+            <Input type="text" name="flashPt" value={properties.flashPt} onChange={handleChange} />
+            <Input type="text" name="upperExplosionLim" value={properties.upperExplosionLim} onChange={handleChange} /> {/* upper explosion limit */}
+            <Input type="text" name="lowerExplosionLim" value={properties.lowerExplosionLim} onChange={handleChange} /> {/* lower explosion limit  */}
+            <Input type="text" name="vapourPressure" value={properties.vapourPressure} onChange={handleChange} />
+            <Input type="text" name="vapourDensity" value={properties.vapourDensity} onChange={handleChange} />
+            <Input type="text" name="relDensity" value={properties.relDensity} onChange={handleChange} />
+            <Input type="text" name="autoIgnitionTemp" value={properties.autoIgnitionTemp} onChange={handleChange} />
+            <Input type="text" name="decompositionTemp" value={properties.decompositionTemp} onChange={handleChange} />
+            <Input type="text" name="viscosity" value={properties.viscosity} onChange={handleChange} />
+            <Input type="text" name="thermalConductivity" value={properties.viscosity} onChange={handleChange} /> {/* Thermal conductivity */}
+            <Input type="text" name="cp" value={properties.cp} onChange={handleChange} /> {/* CP */}
         </div>
     )
 

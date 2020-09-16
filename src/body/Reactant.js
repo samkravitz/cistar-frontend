@@ -65,25 +65,25 @@ class Reactant extends Component {
                     }
                 </div>
 
-                <Input type="text" name="productName" value={properties.productName || ''} onChange={this.handleChange} />
-                <Input type="text" name="molWtFraction" value={properties.molWtFraction || ''} onChange={this.handleChange} />
-                <Input type="text" name="molWt" value={properties.molWt || ''} onChange={this.handleChange} />
-                <Input type="text" name="casNo" value={properties.casNo || ''} onChange={this.handleChange} />
+                <Input type="text" name="productName" value={properties.productName} onChange={this.handleChange} />
+                <Input type="text" name="molWtFraction" value={properties.molWtFraction} onChange={this.handleChange} />
+                <Input type="text" name="molWt" value={properties.molWt} onChange={this.handleChange} />
+                <Input type="text" name="casNo" value={properties.casNo} onChange={this.handleChange} />
                 <br />
 
-                <Input type="text" name="ph" value={properties.ph || ''} onChange={this.handleChange} />
-                <Input type="text" name="boilingPt" value={properties.boilingPt || ''} onChange={this.handleChange} />
-                <Input type="text" name="flashPt" value={properties.flashPt || ''} onChange={this.handleChange} />
-                <Input type="text" name="upperExplosionLim" value={properties.upperExplosionLim || ''} onChange={this.handleChange} /> {/* upper explosion limit */}
-                <Input type="text" name="lowerExplosionLim" value={properties.lowerExplosionLim || ''} onChange={this.handleChange} /> {/* lower explosion limit  */}
-                <Input type="text" name="vapourPressure" value={properties.vapourPressure || ''} onChange={this.handleChange} />
-                <Input type="text" name="vapourDensity" value={properties.vapourDensity || ''} onChange={this.handleChange} />
-                <Input type="text" name="relDensity" value={properties.relDensity || ''} onChange={this.handleChange} />
-                <Input type="text" name="autoIgnitionTemp" value={properties.autoIgnitionTemp || ''} onChange={this.handleChange} />
-                <Input type="text" name="decompositionTemp" value={properties.decompositionTemp || ''} onChange={this.handleChange} />
-                <Input type="text" name="viscosity" value={properties.viscosity || ''} onChange={this.handleChange} />
-                <Input type="text" name="thermalConductivity" value={properties.viscosity || ''} onChange={this.handleChange} /> {/* Thermal conductivity */}
-                <Input type="text" name="cp" value={properties.cp || ''} onChange={this.handleChange} /> {/* CP */}
+                <Input type="text" name="ph" value={properties.ph} onChange={this.handleChange} />
+                <Input type="text" name="boilingPt" value={properties.boilingPt} onChange={this.handleChange} />
+                <Input type="text" name="flashPt" value={properties.flashPt} onChange={this.handleChange} />
+                <Input type="text" name="upperExplosionLim" value={properties.upperExplosionLim} onChange={this.handleChange} /> {/* upper explosion limit */}
+                <Input type="text" name="lowerExplosionLim" value={properties.lowerExplosionLim} onChange={this.handleChange} /> {/* lower explosion limit  */}
+                <Input type="text" name="vapourPressure" value={properties.vapourPressure} onChange={this.handleChange} />
+                <Input type="text" name="vapourDensity" value={properties.vapourDensity} onChange={this.handleChange} />
+                <Input type="text" name="relDensity" value={properties.relDensity} onChange={this.handleChange} />
+                <Input type="text" name="autoIgnitionTemp" value={properties.autoIgnitionTemp} onChange={this.handleChange} />
+                <Input type="text" name="decompositionTemp" value={properties.decompositionTemp} onChange={this.handleChange} />
+                <Input type="text" name="viscosity" value={properties.viscosity} onChange={this.handleChange} />
+                <Input type="text" name="thermalConductivity" value={properties.viscosity} onChange={this.handleChange} /> {/* Thermal conductivity */}
+                <Input type="text" name="cp" value={properties.cp} onChange={this.handleChange} /> {/* CP */}
 
                 {/* Popovers */}
                 <Popover placement='right' isOpen={this.state.infoOpen} target='info'>
