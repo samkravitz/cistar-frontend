@@ -12,6 +12,7 @@ export const calculate = operatingParams => {
         const { reactants, products, diluents } = getState().compound
         const hNums = getHNums(reactants, products, diluents)
         dispatch({ type: Types.SET_HNUMS, payload: hNums })
+        console.log(hNums)
         try {
             const matrix = await getMatrix(hNums)
             dispatch({ type: Types.SET_MATRIX, payload: matrix })
@@ -53,7 +54,10 @@ const calculationBlock = async (operatingParams, reactants, products) => {
 const getMatrix = async hNums => {
 
     const promises = Object.keys(hNums).map(async name => {
-        const res = await axios.post(`${server}/graph`, Object.keys(hNums[`${name}`]))
+        console.log(name, hNums[name])
+        const res = await axios.post(`${server}/graph`, hNums[name], {
+            headers: { 'Content-Type': 'text/plain' },
+        })
         const data = res.data
         data['name'] = name
         return data
