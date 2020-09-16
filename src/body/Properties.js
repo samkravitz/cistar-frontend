@@ -25,11 +25,11 @@ class Properties extends Component {
         return (
             <div className="Properties" style={styles.main}>
 
-                <h2 style={{ margin: '0', padding: '0' }}>Property</h2>
+                <h2>Property</h2>
                 <div></div>
-                <h6>Product Name</h6>
+                <h6 style={{ paddingTop: '10px' }}>Product Name</h6>
                 <h6
-                    style={{ color: '#c71e1e' }}
+                    style={{ color: '#c71e1e', paddingTop: '10px' }}
                 >
                     Initial Weight Fraction
                     <span
@@ -41,24 +41,24 @@ class Properties extends Component {
                         <i className="far fa-question-circle fa-1x"></i>
                     </span>
                 </h6>
-                <h6>Mol. Weight (g/mol)</h6>
-                <h6>CAS-No.</h6>
+                <h6 style={{ paddingTop: '10px' }}>Mol. Weight (g/mol)</h6>
+                <h6 style={{ paddingTop: '10px' }}>CAS-No.</h6>
 
-                <h5>Physical and Chemical Properties</h5>
-                <h6>pH at 20°C (g/l)</h6>
-                <h6>Initial boiling point (&deg;C)</h6>
-                <h6>Flash point (&deg;C)</h6>
-                <h6>Upper explosion limit (% V)</h6>
-                <h6>Lower explosion limit (% V)</h6>
-                <h6>Vapour pressure at 20&deg;C (hPa)</h6>
-                <h6>Vapour density (Air = 1.0)</h6>
-                <h6>Relative density at 25&deg;C (g/cm3)</h6>
-                <h6>Auto ignition temperature (&deg;C)</h6>
-                <h6>Decomposition temperature (&deg;C)</h6>
-                <h6>Viscosity</h6>
-                <h6>Thermal Conductivity - k</h6>
+                <h5 style={{ paddingTop: '10px' }}>Physical and Chemical Properties</h5>
+                <h6 style={{ paddingTop: '10px' }}>pH at 20°C (g/l)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Initial boiling point (&deg;C)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Flash point (&deg;C)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Upper explosion limit (% V)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Lower explosion limit (% V)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Vapour pressure at 20&deg;C (hPa)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Vapour density (Air = 1.0)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Relative density at 25&deg;C (g/cm3)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Auto ignition temperature (&deg;C)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Decomposition temperature (&deg;C)</h6>
+                <h6 style={{ paddingTop: '10px' }}>Viscosity</h6>
+                <h6 style={{ paddingTop: '10px' }}>Thermal Conductivity - k</h6>
                 <h6
-                    style={{ color: '#c71e1e' }}
+                    style={{ color: '#c71e1e', paddingTop: '10px' }}
                 >
                     Specific heat capacity - Cp (cal/g/&deg;C)
                     <span
@@ -91,10 +91,8 @@ class Properties extends Component {
 const styles = {
     main: {
         display: 'grid',
-        gridTemplateRows: 'repeat(6, 1fr) 1fr repeat(13, minmax(auto, 1fr))',
+        gridAutoRows: '1fr',
         textAlign: 'center',
-        marginTop: '0.5em',
-        alignItems: 'start'
     },
 }
 

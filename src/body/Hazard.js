@@ -40,7 +40,7 @@ const Hazard = () => {
             </Popover>
 
             <Popover placement='right' isOpen={statementInfoOpen} target='statementinfo'>
-                <PopoverBody>Please sepparate H-Statements by pressing the Enter Key (new line)</PopoverBody>
+                <PopoverBody>Please separate H-Statements by pressing the Enter Key (new line)</PopoverBody>
             </Popover>
         </div>
     )
@@ -64,6 +64,7 @@ const styles = {
 
     row: {
         display: 'flex',
+        justifyContent: 'flex-start',
         paddingBottom: '2em',
     },
 }
