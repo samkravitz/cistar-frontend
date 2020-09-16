@@ -11,6 +11,7 @@ const emptyCompound = {
     decompositionTemp: '',
     flashPt: '',
     hNumbers: '',
+    hStatements: '',
     lowerExplosionLim: '',
     molWt: '',
     molWtFraction: '',
@@ -21,7 +22,6 @@ const emptyCompound = {
     vapourDensity: '',
     vapourPressure: '',
     viscosity: '',
-    hStatements: '',
 }
 
 const initialState = {

@@ -36,11 +36,11 @@ const Hazard = () => {
 
             {/* Popovers */}
             <Popover placement='right' isOpen={numberInfoOpen} target='numinfo'>
-                <PopoverBody>Please sepparate H-Numbers with a comma</PopoverBody>
+                <PopoverBody>Please sepparate H-Numbers with a comma & space (ex: H100, H101, )</PopoverBody>
             </Popover>
 
             <Popover placement='right' isOpen={statementInfoOpen} target='statementinfo'>
-                <PopoverBody>Please sepparate H-Statements with a comma</PopoverBody>
+                <PopoverBody>Please sepparate H-Statements by pressing the Enter Key (new line)</PopoverBody>
             </Popover>
         </div>
     )
