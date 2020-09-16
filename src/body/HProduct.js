@@ -18,7 +18,7 @@ const HProduct = ({ number, index, products, ...props}) => {
         <div className='HProduct'>
             <h6 style={{ textAlign: 'center' }}>Product {number}</h6>
             <Input type="text" name="hNumbers" value={properties.hNumbers || ''} onChange={handleChange} />
-            <Input type="text" name="hStatements" value={properties.hStatements || ''} onChange={handleChange} />
+            <Input type="textarea" name="hStatements" value={properties.hStatements || ''} onChange={handleChange} />
         </div>
     )
 }
