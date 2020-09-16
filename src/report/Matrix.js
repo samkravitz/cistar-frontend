@@ -6,50 +6,8 @@ import yellow from '../images/reactivity/yellow_caution.png'
 import orange from '../images/reactivity/orange_warning.png'
 import red from '../images/reactivity/red_incompatible.png'
 
-const styles = {
-    main: {
-        padding: '1rem',
-        width: '100vw',
-    },
-
-    table: {
-        borderSpacing: '0',
-        border: '1px solid black',
-        align: 'center'
-    },
-
-    th: {
-        margin: '0',
-        padding: '0.5rem',
-        borderBottom: '1px solid black',
-        borderRight: '1px solid black',
-        lineHeight: '1.5',
-    },
-
-    td: {
-        margin: '0',
-        padding: '0.5rem',
-        borderBottom: '1px solid black',
-        borderRight: '1px solid black'
-    },
-
-    caption: {
-        captionSide: 'top',
-        color: 'black',
-    },
-
-    legend: {
-        display: 'flex',
-        justifyContent: 'center',
-        color: 'black',
-    },
-
-    legendItem : {
-        padding: '0em 1em',
-    }
-}
-
 const Matrix = ({ matrix }) => {
+
     const columns = [
         'Name',
         'Flammability',
@@ -64,6 +22,8 @@ const Matrix = ({ matrix }) => {
         'Other',
         'Ingestion',
     ]
+
+    console.log(matrix)
 
     return (
         <div className='Matrix' style={styles.main}>
@@ -118,6 +78,49 @@ const Matrix = ({ matrix }) => {
             </div>
         </div>
     )
+}
+
+const styles = {
+    main: {
+        padding: '1rem',
+        width: '100vw',
+    },
+
+    table: {
+        borderSpacing: '0',
+        border: '1px solid black',
+        align: 'center'
+    },
+
+    th: {
+        margin: '0',
+        padding: '0.5rem',
+        borderBottom: '1px solid black',
+        borderRight: '1px solid black',
+        lineHeight: '1.5',
+    },
+
+    td: {
+        margin: '0',
+        padding: '0.5rem',
+        borderBottom: '1px solid black',
+        borderRight: '1px solid black'
+    },
+
+    caption: {
+        captionSide: 'top',
+        color: 'black',
+    },
+
+    legend: {
+        display: 'flex',
+        justifyContent: 'center',
+        color: 'black',
+    },
+
+    legendItem : {
+        padding: '0em 1em',
+    }
 }
 
 const mapStateToProps = state => ({

@@ -54,7 +54,7 @@ const calculationBlock = async (operatingParams, reactants, products) => {
 const getMatrix = async hNums => {
 
     const promises = Object.keys(hNums).map(async name => {
-        const res = await axios.post(`${server}/graph`, hNums[name], {
+        const res = await axios.post(`${server}/graph`, hNums[name]['hNumbers'], {
             headers: { 'Content-Type': 'text/plain' },
         })
         const data = res.data
