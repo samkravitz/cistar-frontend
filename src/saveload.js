@@ -15,7 +15,7 @@ export const save = headerState => {
     const state = store.getState()
 
     const data = JSON.stringify({
-        type: 'CISTAR_REACTION',
+        type: 'CISTAR_REACTIONv2',
         nameOfResearcher: headerState.nameOfResearcher,
         projectTitle: headerState.projectTitle,
         principalInvestigator: headerState.principalInvestigator,
@@ -36,7 +36,8 @@ export const load = reader => {
         const reaction = JSON.parse(reader.target.result)
         
         // correct file check
-        if (reaction.type !== 'CISTAR_REACTION') throw new Error('Invalid file type')
+        if (reaction.type === 'CISTAR_REACTION') throw new Error('Invalid reaction version')
+        if (reaction.type !== 'CISTAR_REACTIONv2') throw new Error('Invalid file type')
 
         // compound dispatching
         const compound = reaction.compound
