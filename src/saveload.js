@@ -26,6 +26,7 @@ export const save = headerState => {
         compound: state.compound,
         operatingParams: state.operatingParams,
     })
+    
     download(new Blob([...data]), headerState.projectTitle + '.json', 'text/json')
 }
 

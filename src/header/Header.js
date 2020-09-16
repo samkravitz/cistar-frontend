@@ -130,7 +130,7 @@ class Header extends Component {
         // and set everything else to the store
         reader.onload = (file => {
             const data = load(file)
-            console.log(data)
+
             this.setState({
                 nameOfResearcher: data.nameOfResearcher,
                 projectTitle: data.projectTitle,
