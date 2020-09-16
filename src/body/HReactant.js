@@ -7,7 +7,6 @@ import actions from '../redux/actions'
 
 const HReactant = ({ number, index, reactants, ...props}) => {
     const properties = reactants[index]
-    console.log(properties)
 
     const handleChange = ev => {
         const newProperties = {...properties}
