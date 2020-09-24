@@ -19,6 +19,10 @@ const initialState = {
 export default (state = initialState, action) => produce(state, draft => {
     switch (action.type) {
         case (Types.SET_HNUMS):
+            Object.keys(action.payload).forEach(hNum => {
+                if (!action.payload[hNum]['hStatements'])
+                    action.payload[hNum]['hStatements'] = ''
+            })
             draft.hNums = action.payload
             return
 

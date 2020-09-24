@@ -149,7 +149,7 @@ class Header extends Component {
         return (
             <div className="Header" style={styles.main}>
                 <h1 style={styles.rheact}>RHEACT</h1>
-                <h3 style={styles.rheactLabel}>Reactive Hazards Evaluation Analysis Tool</h3>
+                <h3 style={styles.rheactLabel}>Reactive Hazards Evaluation & Analysis Compilation Tool</h3>
                 <div className="HeaderFlex" style={styles.flexTop}>
                     <div className="TopWrapper">
                         <div className="TitleLocation" style={{ padding: '4em 1em' }}>
