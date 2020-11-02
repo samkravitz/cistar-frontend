@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import green from '../images/reactivity/green_compatible.png'
-import yellow from '../images/reactivity/yellow_caution.png'
-import orange from '../images/reactivity/orange_warning.png'
-import red from '../images/reactivity/red_incompatible.png'
+import green from '../images/reactivity/safe.png'
+import yellow from '../images/reactivity/caution.png'
+import orange from '../images/reactivity/warning.png'
+import red from '../images/reactivity/danger.png'
 
 const Matrix = ({ matrix, matrixErrors }) => {
 
@@ -27,6 +27,201 @@ const Matrix = ({ matrix, matrixErrors }) => {
         'Ingestion',
     ]
 
+    const newMatrix = []
+
+    matrix.forEach(element => {
+        newMatrix.push({...element})
+    })
+
+    newMatrix.forEach(element => {
+        switch (element.carcinogen) {
+            case '#7fd13b':
+                element.carcinogenPic = green
+                break
+            case '#ffff00':
+                element.carcinogenPic = yellow
+                break
+            case '#fffa500':
+                element.carcinogenPic = orange
+                break
+            case '#c00000':
+                element.carcinogenPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.eyeContact) {
+            case '#7fd13b':
+                element.eyeContactPic = green
+                break
+            case '#ffff00':
+                element.eyeContactPic = yellow
+                break
+            case '#fffa500':
+                element.eyeContactPic = orange
+                break
+            case '#c00000':
+                element.eyeContactPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.flammability) {
+            case '#7fd13b':
+                element.flammabilityPic = green
+                break
+            case '#ffff00':
+                element.flammabilityPic = yellow
+                break
+            case '#fffa500':
+                element.flammabilityPic = orange
+                break
+            case '#c00000':
+                element.flammabilityPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.ingestion) {
+            case '#7fd13b':
+                element.ingestionPic = green
+                break
+            case '#ffff00':
+                element.ingestionPic = yellow
+                break
+            case '#fffa500':
+                element.ingestionPic = orange
+                break
+            case '#c00000':
+                element.ingestionPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.other) {
+            case '#7fd13b':
+                element.otherPic = green
+                break
+            case '#ffff00':
+                element.otherPic = yellow
+                break
+            case '#fffa500':
+                element.otherPic = orange
+                break
+            case '#c00000':
+                element.otherPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.reactivity) {
+            case '#7fd13b':
+                element.reactivityPic = green
+                break
+            case '#ffff00':
+                element.reactivityPic = yellow
+                break
+            case '#fffa500':
+                element.reactivityPic = orange
+                break
+            case '#c00000':
+                element.reactivityPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.reproductiveHazard) {
+            case '#7fd13b':
+                element.reproductiveHazardPic = green
+                break
+            case '#ffff00':
+                element.reproductiveHazardPic = yellow
+                break
+            case '#fffa500':
+                element.reproductiveHazardPic = orange
+                break
+            case '#c00000':
+                element.reproductiveHazardPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.respiratory) {
+            case '#7fd13b':
+                element.respiratoryPic = green
+                break
+            case '#ffff00':
+                element.respiratoryPic = yellow
+                break
+            case '#fffa500':
+                element.respiratoryPic = orange
+                break
+            case '#c00000':
+                element.respiratoryPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.sensitizer) {
+            case '#7fd13b':
+                element.sensitizerPic = green
+                break
+            case '#ffff00':
+                element.sensitizerPic = yellow
+                break
+            case '#fffa500':
+                element.sensitizerPic = orange
+                break
+            case '#c00000':
+                element.sensitizerPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.skinAbsorption) {
+            case '#7fd13b':
+                element.skinAbsorptionPic = green
+                break
+            case '#ffff00':
+                element.skinAbsorptionPic = yellow
+                break
+            case '#fffa500':
+                element.skinAbsorptionPic = orange
+                break
+            case '#c00000':
+                element.skinAbsorptionPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+
+        switch (element.skinContact) {
+            case '#7fd13b':
+                element.skinContactPic = green
+                break
+            case '#ffff00':
+                element.skinContactPic = yellow
+                break
+            case '#fffa500':
+                element.skinContactPic = orange
+                break
+            case '#c00000':
+                element.skinContactPic = red
+                break
+            default:
+                console.log('Error: Unknown value')
+        }
+    })
+
     return (
         <div className='Matrix' style={styles.main}>
             <table align='center' style={styles.table}>
@@ -43,17 +238,17 @@ const Matrix = ({ matrix, matrixErrors }) => {
                     {matrix.map((row, i) => (
                         <tr key={i}>
                             <td style={{ ...styles.th, }}>{row.name}</td>
-                            <td style={{ ...styles.th, color: row.flammability, backgroundColor: row.flammability }}>{row.flammability}</td>
-                            <td style={{ ...styles.th, color: row.reactivity, backgroundColor: row.reactivity }}>{row.reactivity}</td>
-                            <td style={{ ...styles.th, color: row.skinAbsorption, backgroundColor: row.skinAbsorption }}>{row.skinAbsorption}</td>
-                            <td style={{ ...styles.th, color: row.skinContact, backgroundColor: row.skinContact }}>{row.skinContact}</td>
-                            <td style={{ ...styles.th, color: row.eyeContact, backgroundColor: row.eyeContact }}>{row.eyeContact}</td>
-                            <td style={{ ...styles.th, color: row.respiratory, backgroundColor: row.respiratory }}>{row.respiratory}</td>
-                            <td style={{ ...styles.th, color: row.carcinogen, backgroundColor: row.carcinogen }}>{row.carcinogen}</td>
-                            <td style={{ ...styles.th, color: row.reproductiveHazard, backgroundColor: row.reproductiveHazard }}>{row.reproductiveHazard}</td>
-                            <td style={{ ...styles.th, color: row.sensitizer, backgroundColor: row.sensitizer }}>{row.sensitizer}</td>
-                            <td style={{ ...styles.th, color: row.other, backgroundColor: row.other }}>{row.other}</td>
-                            <td style={{ ...styles.th, color: row.ingestion, backgroundColor: row.ingestion }}>{row.ingestion}</td>
+                            <td style={{ ...styles.th, color: row.flammability, backgroundColor: row.flammability }}><img src={newMatrix[i].flammabilityPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.reactivity, backgroundColor: row.reactivity }}><img src={newMatrix[i].reactivityPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.skinAbsorption, backgroundColor: row.skinAbsorption }}><img src={newMatrix[i].skinAbsorptionPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.skinContact, backgroundColor: row.skinContact }}><img src={newMatrix[i].skinContactPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.eyeContact, backgroundColor: row.eyeContact }}><img src={newMatrix[i].eyeContactPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.respiratory, backgroundColor: row.respiratory }}><img src={newMatrix[i].respiratoryPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.carcinogen, backgroundColor: row.carcinogen }}><img src={newMatrix[i].carcinogenPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.reproductiveHazard, backgroundColor: row.reproductiveHazard }}><img src={newMatrix[i].reproductiveHazardPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.sensitizer, backgroundColor: row.sensitizer }}><img src={newMatrix[i].sensitizerPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.other, backgroundColor: row.other }}><img src={newMatrix[i].otherPic} alt="green" style={styles.image}/></td>
+                            <td style={{ ...styles.th, color: row.ingestion, backgroundColor: row.ingestion }}><img src={newMatrix[i].ingestionPic} alt="green" style={styles.image}/></td>
                         </tr>
 
                     ))}
@@ -62,19 +257,19 @@ const Matrix = ({ matrix, matrixErrors }) => {
             <div className="Legend" style={styles.legend} >
                 <span>Legend:</span>
                 <div style={styles.legendItem}>
-                    <img src={green} alt="green" style={{ margin: '0px 6px' }}/>
+                    <img src={green} alt="green" style={styles.image}/>
                     Safe
                 </div>
                 <div style={styles.legendItem}>
-                    <img src={yellow} alt="yellow" style={{ margin: '0px 6px' }}/>
+                    <img src={yellow} alt="yellow" style={styles.image}/>
                     Caution
                 </div>
                 <div style={styles.legendItem}>
-                    <img src={orange} alt="orange" style={{ margin: '0px 6px' }}/>
+                    <img src={orange} alt="orange" style={styles.image}/>
                     Warning
                 </div>
                 <div style={styles.legendItem}>
-                    <img src={red} alt="red" style={{ margin: '0px 6px' }}/>
+                    <img src={red} alt="red" style={styles.image}/>
                     Danger
                 </div>
             </div>
@@ -120,8 +315,14 @@ const styles = {
         color: 'black',
     },
 
-    legendItem : {
+    legendItem: {
         padding: '0em 1em',
+    },
+
+    image: {
+        margin: '0px 6px',
+        width: '15px',
+        height: '15px',
     }
 }
 
