@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import green from '../images/reactivity/safe.png'
-import yellow from '../images/reactivity/caution.png'
-import orange from '../images/reactivity/warning.png'
-import red from '../images/reactivity/danger.png'
+import green from '../images/reactivity/safe_thick.png'
+import yellow from '../images/reactivity/caution_thick.png'
+import orange from '../images/reactivity/warning_thick.png'
+import red from '../images/reactivity/danger_thick.png'
 
 const Matrix = ({ matrix, matrixErrors }) => {
 
@@ -321,8 +321,8 @@ const styles = {
 
     image: {
         margin: '0px 6px',
-        width: '15px',
-        height: '15px',
+        width: '20px',
+        height: '20px',
     }
 }
 

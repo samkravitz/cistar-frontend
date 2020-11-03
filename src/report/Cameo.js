@@ -3,10 +3,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './cameo.css'
 
-import green from '../images/reactivity/safe.png'
-import yellow from '../images/reactivity/caution.png'
-import orange from '../images/reactivity/warning.png'
-import red from '../images/reactivity/danger.png'
+import green from '../images/reactivity/safe_thick.png'
+import yellow from '../images/reactivity/caution_thick.png'
+import orange from '../images/reactivity/warning_thick.png'
+import red from '../images/reactivity/danger_thick.png'
 
 const Cameo = ({ cameoTable, cameoTableComplete }) => {
     cameoTable = cameoTable.split('/images/reactivity/green_compatible.png').join(green)
