@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { Label, Input, Button, FormGroup, Form, Popover, PopoverBody } from 'reactstrap'
 import { StyleSheet, css } from 'aphrodite'
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
 
+import SideReaction from './SideReaction'
 // import ReactionScheme from './ReactionScheme'
 
 import { save, load } from '../saveload'
@@ -28,6 +29,9 @@ class Header extends Component {
         heatOfReactionInfoOpen: false,
         cpMixInfoOpen: false,
         numCompoundsInfoOpen: false,
+
+        // known side reactions
+        sideReactions: '0'
     }
 
     // sets the state from one of the non-operating param inputs as they change
@@ -143,6 +147,10 @@ class Header extends Component {
         })
 
         reader.readAsText(event.target.files[0])
+    }
+
+    setSideReactions = event => {
+        this.setState({ sideReactions: event.target.value })
     }
 
     render() {
@@ -301,6 +309,26 @@ class Header extends Component {
                     </Form>
                 </div>
 
+                {/* # of Side Reactionsstyle= known*/}
+                
+                <Label for="SideReactions">Number of known side reactions</Label>
+                <div className="SideReactions" style={{  display: 'flex', justifyContent: 'center' }}>
+                    <Input
+                        type="select"
+                        name="SideReactions"
+                        id="SideReactions"
+                        onClick={this.setSideReactions}
+                    >
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </Input>
+                </div>
+
+                <SideReaction num={parseInt(this.state.sideReactions)} />
+
                 <div className="ReactantsProductsDiluents" style={styles.rpd}>
                     <span style={styles.rpd.element}>
                         <Label for="Reactants">
@@ -320,7 +348,7 @@ class Header extends Component {
                             <option>3</option>
                             <option>4</option>
                         </Input>
-                    </span>
+                    </span>  
 
                     <span style={styles.rpd.element}>
                         <Label for="Products">Products</Label>
