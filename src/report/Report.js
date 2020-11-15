@@ -8,6 +8,7 @@ import Matrix from './Matrix'
 import HTable from './HTable'
 import Calculation from './Calculation'
 import Cameo from './Cameo'
+import Alert from './Alert'
 
 const styles = {
     main: {
@@ -26,6 +27,7 @@ const Report = props => {
         <div className='Report' id='Report' style={styles.main}>
             <h2>Report</h2>
             <Calculation />
+            <Alert />
             <HTable />
             <Matrix />
             <Cameo />
