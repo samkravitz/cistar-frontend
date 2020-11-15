@@ -41,7 +41,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.carcinogenPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.carcinogenPic = orange
                 break
             case '#c00000':
@@ -58,7 +58,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.eyeContactPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.eyeContactPic = orange
                 break
             case '#c00000':
@@ -75,7 +75,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.flammabilityPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.flammabilityPic = orange
                 break
             case '#c00000':
@@ -92,7 +92,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.ingestionPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.ingestionPic = orange
                 break
             case '#c00000':
@@ -109,7 +109,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.otherPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.otherPic = orange
                 break
             case '#c00000':
@@ -126,7 +126,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.reactivityPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.reactivityPic = orange
                 break
             case '#c00000':
@@ -143,7 +143,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.reproductiveHazardPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.reproductiveHazardPic = orange
                 break
             case '#c00000':
@@ -160,7 +160,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.respiratoryPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.respiratoryPic = orange
                 break
             case '#c00000':
@@ -177,7 +177,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.sensitizerPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.sensitizerPic = orange
                 break
             case '#c00000':
@@ -194,7 +194,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.skinAbsorptionPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.skinAbsorptionPic = orange
                 break
             case '#c00000':
@@ -211,7 +211,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             case '#ffff00':
                 element.skinContactPic = yellow
                 break
-            case '#fffa500':
+            case '#ffa500':
                 element.skinContactPic = orange
                 break
             case '#c00000':

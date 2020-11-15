@@ -32,7 +32,7 @@ const Report = props => {
             <Matrix />
             <Cameo />
 
-            <Button
+            {/* <Button
                 color="primary"
                 onClick={() => {
                     html2canvas(document.getElementById('Report')).then(canvas => {
@@ -56,7 +56,7 @@ const Report = props => {
                 }}
             >
                 Save Report
-            </Button>
+            </Button> */}
         </div>
     )
 }

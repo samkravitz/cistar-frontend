@@ -167,7 +167,6 @@ class Header extends Component {
     }
 
     render() {
-        console.log(this.props.numSideReactions)
         return (
             <div className="Header" style={styles.main}>
                 <h1 style={styles.rheact}>RHEACT</h1>
