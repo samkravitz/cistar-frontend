@@ -129,6 +129,9 @@ const Alert = props => {
         // valid final temp
         if (!isNaN(props.reactionInfo.finalTemp)) {
             for (let i = 0; i < props.numSideReactions; i++) {
+                if (props.sideReactions[i].tempOnset === '')
+                    continue
+
                 // temperature onset
                 if (!isNaN(Number(props.sideReactions[i].tempOnset))) {
                     if (Number(props.reactionInfo.finalTemp) > Number(props.sideReactions[i].tempOnset) ) {
@@ -141,6 +144,9 @@ const Alert = props => {
         // valid final pressure
         if (!isNaN(props.reactionInfo.adiabaticPressure)) {
             for (let i = 0; i < props.numSideReactions; i++) {
+                if (props.sideReactions[i].pressureOnset === '')
+                    continue
+
                 // pressure onset
                 if (!isNaN(Number(props.sideReactions[i].pressureOnset))) {
                     if (Number(props.reactionInfo.adiabaticPressure) > Number(props.sideReactions[i].pressureOnset) ) {
