@@ -79,6 +79,7 @@ export default (state = initialState, action) => produce(state, draft => {
 
             // update the contents of diluents array
             diff = numSideReactions - draft.sideReactions.length
+
             // if we are adding diluents, push on empty object
             if (diff >= 0) {
                 for (let i = 0; i < diff; i++)

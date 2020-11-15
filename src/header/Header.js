@@ -29,9 +29,6 @@ class Header extends Component {
         heatOfReactionInfoOpen: false,
         cpMixInfoOpen: false,
         numCompoundsInfoOpen: false,
-
-        // known side reactions
-        sideReactions: '0'
     }
 
     // sets the state from one of the non-operating param inputs as they change
@@ -150,10 +147,27 @@ class Header extends Component {
     }
 
     setSideReactions = event => {
-        this.setState({ sideReactions: event.target.value })
+        this.props.setNumSideReactions(event.target.value)
+    }
+
+    renderSideReactions = () => {
+        const arr = []
+
+        for (let i = 0; i < this.props.numSideReactions; i++) {
+            arr.push(
+                <SideReaction
+                    key={i}
+                    index={i}
+                    number={i + 1}
+                />
+            )
+        }
+
+        return arr
     }
 
     render() {
+        console.log(this.props.numSideReactions)
         return (
             <div className="Header" style={styles.main}>
                 <h1 style={styles.rheact}>RHEACT</h1>
@@ -309,7 +323,7 @@ class Header extends Component {
                     </Form>
                 </div>
 
-                {/* # of Side Reactionsstyle= known*/}
+                {/* # of Side Reactions known*/}
                 
                 <Label for="SideReactions">Number of known side reactions</Label>
                 <div className="SideReactions" style={{  display: 'flex', justifyContent: 'center' }}>
@@ -327,7 +341,9 @@ class Header extends Component {
                     </Input>
                 </div>
 
-                <SideReaction num={parseInt(this.state.sideReactions)} />
+                { this.renderSideReactions() }
+                
+                {/* <SideReaction num={parseInt(this.state.sideReactions)} /> */}
 
                 <div className="ReactantsProductsDiluents" style={styles.rpd}>
                     <span style={styles.rpd.element}>
@@ -488,16 +504,19 @@ const mapStateToProps = state => ({
     reactionClass: state.operatingParams.reactionClass,
     reactionScale: state.operatingParams.reactionScale,
     keyReactantQuantity: state.operatingParams.keyReactantQuantity,
+    numSideReactions: state.operatingParams.numSideReactions,
 
     numReactants: state.compound.numReactants,
     numProducts: state.compound.numProducts,
     numDiluents: state.compound.numDiluents,
+
 })
 
 const mapDispatchToProps = {
     setNumReactants: actions.compound.setNumReactants,
     setNumProducts: actions.compound.setNumProducts,
     setNumDiluents: actions.compound.setNumDiluents,
+    
 
     setTemperature: actions.operatingParams.setTemperature,
     setPressure: actions.operatingParams.setPressure,
@@ -507,6 +526,7 @@ const mapDispatchToProps = {
     setReactionScale: actions.operatingParams.setReactionScale,
     setReactionClass: actions.operatingParams.setReactionClass,
     setKeyReactantQuantity: actions.operatingParams.setKeyReactantQuantity,
+    setNumSideReactions: actions.operatingParams.setNumSideReactions
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
