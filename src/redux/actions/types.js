@@ -35,6 +35,10 @@ const Types = {
     OPEN_MODAL:                 'OPEN_MODAL',
     CLOSE_MODAL:                'CLOSE_MODAL',
 
+    // side reaction types
+    SET_SIDE_REACTION_NUM:      'SET_SIDE_REACTION_NUM',
+    SET_SIDE_REACTION:          'SET_SIDE_REACTION',
+
     // error types
     SET_CAMEO_ERRORS:           'SET_CAMEO_ERRORS',
     SET_MATRIX_ERRORS:          'SET_MATRIX_ERRORS',
