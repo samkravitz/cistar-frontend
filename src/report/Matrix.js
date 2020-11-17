@@ -6,6 +6,15 @@ import yellow from '../images/reactivity/caution_thick.png'
 import orange from '../images/reactivity/warning_thick.png'
 import red from '../images/reactivity/danger_thick.png'
 
+const links = [
+    'https://www.osha.gov/Publications/osha3151.pdf',
+    'https://ehs.ucmerced.edu/researchers-labs/ppe/selection',
+    'https://www.era-environmental.com/blog/personal-protective-equipment-how-to-read-an-sds',
+    'https://www.usf.edu/administrative-services/environmental-health-safety/documents/hazard_control_ppe_guide.pdf',
+    'https://www.ehs.washington.edu/system/files/resources/ppeguidelines.pdf',
+    'https://www.purdue.edu/ehps/rem/laboratory/Personal/PPE/gloveselection.pdf',
+]
+
 const Matrix = ({ matrix, matrixErrors }) => {
 
     // return null on error
@@ -272,6 +281,13 @@ const Matrix = ({ matrix, matrixErrors }) => {
                     <img src={red} alt="red" style={styles.image}/>
                     Danger
                 </div>
+            </div>
+
+            <div className='Links' style={{ textAlign: 'center', padding: '35px 0' }}>
+                The following links can guide the PPE selection process:
+                {
+                    links.map(link => <><br/><a href={link}>{link}</a></>)
+                }
             </div>
         </div>
     )
