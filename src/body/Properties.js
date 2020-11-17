@@ -78,7 +78,7 @@ class Properties extends Component {
 
                 <Popover placement='right' isOpen={this.state.specificHeatInfoOpen} target='specificHeatInfo'>
                     <PopoverBody>
-                        Please enter the specific heat capacity of the component in cal/g/&deg;C.
+                        Please enter the specific heat capacity of the component in (cal/g/&deg;C) at the operating temperature.
                         Kindly ignore if the value for Cp, mix has already been entered before.
                     </PopoverBody>
                 </Popover>

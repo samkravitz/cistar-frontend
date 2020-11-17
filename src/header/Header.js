@@ -404,7 +404,7 @@ class Header extends Component {
                 </Popover>
 
                 <Popover placement="right" isOpen={this.state.cpMixInfoOpen} target="cpMixInfo">
-                    <PopoverBody> Enter the specific heat capacity of the reaction mixture (in cal/g/&deg;C). Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components. </PopoverBody>
+                    <PopoverBody> Enter the specific heat capacity of the reaction mixture (in cal/g/&deg;C) at the operating temperature. Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components. </PopoverBody>
                 </Popover>
 
                 <Popover placement="right" isOpen={this.state.compoundInfoOpen} target="compoundInfo">
