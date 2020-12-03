@@ -247,7 +247,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
                         onMouseOut={() => setOpen(false)}
                     >
                         <i className="far fa-question-circle fa-1x"></i>
-                </span>    
+                    </span>    
                 </caption>
                 <thead>
                     <tr>
