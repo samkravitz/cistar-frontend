@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Label, Input, Button, FormGroup, Form, Popover, PopoverBody } from 'reactstrap'
+import { Popover, PopoverBody } from 'reactstrap'
 import { connect } from 'react-redux'
 import { StyleSheet, css } from 'aphrodite'
 
@@ -23,7 +23,6 @@ const Calculation = ({ reactionInfo, calculationErrors }) => {
                 >
                     <i className="far fa-question-circle fa-1x"></i>
                 </span>
-                
             </h4>
 
             <span>Adiabatic temperature change: {Number(reactionInfo.adiabaticTemp).toFixed(3)} °C</span> <br/>
