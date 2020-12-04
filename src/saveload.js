@@ -75,7 +75,6 @@ export const load = reader => {
         if (operatingParams.sideReactions) {
             store.dispatch({ type: Types.SET_SIDE_REACTION_NUM, payload: operatingParams.sideReactions.length })
             operatingParams.sideReactions.forEach((sideReaction, i) => {
-                console.log(i, sideReaction)
                 store.dispatch({ type: Types.SET_SIDE_REACTION, payload: { index: i, data: sideReaction } })
             })
         }
