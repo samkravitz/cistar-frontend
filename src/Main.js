@@ -39,6 +39,10 @@ const Main = props => {
             <Body />
             <Report />
 
+            <div className='Survey' style={{ textAlign: 'center' }}>
+                Please help us improve this tool by taking this <a href='https://purdue.ca1.qualtrics.com/jfe/form/SV_9EMVzeLuuLq27rv'>survey</a>.
+            </div>
+            
             {/* calculation status information modal */}
             <Modal
                 className='reactionInfoModal'
