@@ -5,6 +5,7 @@
  */
 
 import download from 'downloadjs'
+import SideReaction from './header/SideReaction'
 import { store } from './index'
 import Types from './redux/actions/types'
 
@@ -70,6 +71,15 @@ export const load = reader => {
         store.dispatch({ type: Types.SET_REACTION_SCALE, payload: operatingParams.reactionScale })
         store.dispatch({ type: Types.SET_KEY_REACTANT_QUANTITY, payload: operatingParams.keyReactantQuantity })
 
+        // side reaction dispatching
+        if (operatingParams.sideReactions) {
+            store.dispatch({ type: Types.SET_SIDE_REACTION_NUM, payload: operatingParams.sideReactions.length })
+            operatingParams.sideReactions.forEach((sideReaction, i) => {
+                console.log(i, sideReaction)
+                store.dispatch({ type: Types.SET_SIDE_REACTION, payload: { index: i, data: sideReaction } })
+            })
+        }
+        
         return { 
             nameOfResearcher: reaction.nameOfResearcher,
             projectTitle: reaction.projectTitle,

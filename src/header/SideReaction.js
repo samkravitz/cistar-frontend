@@ -17,17 +17,17 @@ const SideReaction = props => {
                 
                 <div className='Temperature Onset'>
                     <Label for="tempOnset">Reaction {props.number} temperature onset</Label>
-                    <Input type="text" name="tempOnset" onChange={handleChange} />
+                    <Input type="text" name="tempOnset" onChange={handleChange} value={props.sideReactions[props.index].tempOnset} />
                 </div>
 
                 <div className='pressureOnset'>
                     <Label for="pressureOnset">Reaction {props.number} pressure onset</Label>
-                    <Input type="text" name="pressureOnset" onChange={handleChange} />
+                    <Input type="text" name="pressureOnset" onChange={handleChange} value={props.sideReactions[props.index].pressureOnset} />
                 </div>
 
                 <div className='details'>
                     <Label for="details">Reaction {props.number} details</Label>
-                    <Input type="text" name="details" onChange={handleChange} />
+                    <Input type="text" name="details" onChange={handleChange} value={props.sideReactions[props.index].details} />
                 </div>
             </div>
         </div>

@@ -330,7 +330,8 @@ class Header extends Component {
                         type="select"
                         name="SideReactions"
                         id="SideReactions"
-                        onClick={this.setSideReactions}
+                        onChange={this.setSideReactions}
+                        value={Number(this.props.numSideReactions)}
                     >
                         <option>0</option>
                         <option>1</option>
