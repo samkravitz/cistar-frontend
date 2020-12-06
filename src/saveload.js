@@ -32,7 +32,7 @@ export const save = headerState => {
 }
 
 // dispatches all redux store components in a reaction file
-//  and returns the title and location to the header component
+// and returns the title and location to the header component
 export const load = reader => {
     try {
         const reaction = JSON.parse(reader.target.result)
