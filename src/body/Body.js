@@ -170,7 +170,7 @@ const Body = props => {
     )
 }
 
-const styles = {
+const  styles = {
     main: {
         display: 'flex',
         justifyContent: 'center',
