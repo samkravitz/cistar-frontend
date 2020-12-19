@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cadc39c1bf8b5cb12ce712fdb683a1fa",
+    "revision": "08f649da52c83ea21bd61b5ae0839cf0",
     "url": "/cistar-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cistar-frontend/static/css/3.2a86faee.chunk.css"
   },
   {
-    "revision": "756561a92eaf1e1800dd",
+    "revision": "2a95cf0f2ffb9b4aebba",
     "url": "/cistar-frontend/static/css/main.c2097976.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cistar-frontend/static/js/4.48aa4d16.chunk.js"
   },
   {
-    "revision": "756561a92eaf1e1800dd",
-    "url": "/cistar-frontend/static/js/main.a134a81d.chunk.js"
+    "revision": "2a95cf0f2ffb9b4aebba",
+    "url": "/cistar-frontend/static/js/main.9bf2e1b7.chunk.js"
   },
   {
     "revision": "1ceac914ffb76e547bb9",
