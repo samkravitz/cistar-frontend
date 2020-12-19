@@ -159,14 +159,44 @@ const Alert = props => {
         return arr
     }
 
+    const reactants = compareReactants()
+    const products = compareProducts()
+    const diluents = compareDiluents()
+    const sideReactions = compareSideReactions()
+
+    // no alerts
+    if (reactants.length !== 0 && products.length !== 0 && diluents.length !== 0 && sideReactions.length !== 0)
+        return null
+
 
     return (
         <div className='Alert' style={style.main} >
             <h4>Alerts</h4>
-            { compareReactants() }
-            { compareProducts() }
-            { compareDiluents() }
-            { compareSideReactions() }
+
+            { reactants.length !== 0 
+            &&
+            <><br/><div>Reactant Alerts</div></>
+            }
+            {reactants}
+
+            { products.length !== 0 
+            &&
+            <><br/><div>Product Alerts</div></>
+            }
+            {products}
+
+            { diluents.length !== 0 
+            &&
+            <><br/><div>Diluent Alerts</div></>
+            }
+            {diluents}
+
+            { sideReactions.length !== 0 
+            &&
+            <><br/><div>Diluent Alerts</div></>
+            }
+            {sideReactions}
+            
         </div>
     )
 }
