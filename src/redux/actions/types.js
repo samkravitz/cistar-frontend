@@ -43,6 +43,12 @@ const Types = {
     SET_CAMEO_ERRORS:           'SET_CAMEO_ERRORS',
     SET_MATRIX_ERRORS:          'SET_MATRIX_ERRORS',
     SET_CALCULATION_ERRORS:     'SET_CALCULATION_ERRORS',
+
+    // route types
+    SET_HOME:                   'SET_HOME',
+    SET_USER_GUIDE:             'SET_USER_GUIDE',
+    SET_PUBLICATIONS:           'SET_PUBLICATIONS',
+
 }
 
 export default Types

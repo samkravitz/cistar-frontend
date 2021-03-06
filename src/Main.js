@@ -11,7 +11,10 @@ import actions from './redux/actions'
 
 import Header from './header/Header'
 import Body from './body/Body'
+import Params from './header/Params'
 import Report from './report/Report'
+import UserGuide from './body/UserGuide'
+import Publications from './body/Publications'
 
 const Main = props => {
 
@@ -33,11 +36,30 @@ const Main = props => {
     // color of cameoProgress
     const cameoColor = (cameoProgress === '' || cameoProgress === 'done') ? '' : '#c71e1e'
 
+    const home = props.route === 'HOME' ? true : false
+    const userGuide = props.route === 'USER_GUIDE' ? true : false
+    const publications = props.route === 'PUBLICATIONS' ? true : false
+
     return (
         <div className="Main">
             <Header />
-            <Body />
-            <Report />
+            {home  &&
+            <>
+                <Params />
+                <Body />
+                <Report />
+            </>
+            }
+
+            {
+                userGuide &&
+                <UserGuide />
+            }
+
+            {
+                publications &&
+                <Publications />
+            }
 
             <div className='Survey' style={{ textAlign: 'center' }}>
                 Please help us improve this tool by taking this <a href='https://purdue.ca1.qualtrics.com/jfe/form/SV_9EMVzeLuuLq27rv'>survey</a>.
@@ -117,6 +139,8 @@ const mapStateToProps = state => ({
     cameoTableComplete: state.status.cameoTableComplete,
 
     cameoErrors: state.report.cameoErrors,
+
+    route: state.route.route,
 })
 
 const mapDispatchToProps = {
