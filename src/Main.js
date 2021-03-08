@@ -4,14 +4,59 @@
  *
  */
 
-import React from 'react'
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 import actions from './redux/actions'
+import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
 
 import Header from './header/Header'
 import Body from './body/Body'
 import Report from './report/Report'
+
+
+// const MyDoc = () => (
+//     React.createElement(
+//     <Document>
+//       <Page>
+//           <div>
+//               Hello
+//           </div>
+//       </Page>
+//     </Document>
+//     )
+// )
+
+// const MyDoc = React.createClass({
+//     render: function() {
+//         return (
+//             <Document>
+//             <Page>
+//                 <div>
+//                     Hello
+//                 </div>
+//             </Page>
+//             </Document>
+//         )
+//     }
+// })
+
+// class MyDoc extends Component {
+//     render() {
+//         return (
+//             <Document>
+//              <Page>
+//                  Hello
+//              </Page>
+//              </Document>
+//         )
+//     }
+// }
+    
+
 
 const Main = props => {
 
@@ -34,7 +79,7 @@ const Main = props => {
     const cameoColor = (cameoProgress === '' || cameoProgress === 'done') ? '' : '#c71e1e'
 
     return (
-        <div className="Main">
+        <div className="Main" id='Main'>
             <Header />
             <Body />
             <Report />
@@ -42,7 +87,8 @@ const Main = props => {
             <div className='Survey' style={{ textAlign: 'center' }}>
                 Please help us improve this tool by taking this <a href='https://purdue.ca1.qualtrics.com/jfe/form/SV_9EMVzeLuuLq27rv'>survey</a>.
             </div>
-            
+
+
             {/* calculation status information modal */}
             <Modal
                 className='reactionInfoModal'

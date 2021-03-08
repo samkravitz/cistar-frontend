@@ -44,3 +44,51 @@
     display: flex;
     justify-content: center;
 }
+
+
+.div {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    background-color: white;
+}
+
+.tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.td {
+    border: 1px solid #B4B4B4;
+    padding-top: 6px;
+    padding-left: 18px;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.th {
+    border: 1px solid #B4B4B4;
+    background-color: #E0EEE0;
+    padding: 6px;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.caption {
+    caption-side: top;
+    color: black;
+    display: flex;
+    justify-content: center;
+}

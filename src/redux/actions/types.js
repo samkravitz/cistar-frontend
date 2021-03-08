@@ -23,6 +23,7 @@ const Types = {
     SET_MATRIX:                 'SET_MATRIX',
     SET_REACTION_INFO:          'SET_REACTION_INFO',
     SET_CAMEO_TABLE:            'SET_CAMEO_TABLE',
+    SET_RAW_CAMEO_TABLE:        'SET_RAW_CAMEO_TABLE',
 
     // status types
     CALCULATION_IN_PROGRESS:    'CALCULATION_IN_PROGRESS',
