@@ -183,8 +183,10 @@ class Params extends Component {
                 <div className="ParamsFlex" style={styles.flexTop}>
                     <div className="TopWrapper">
                         <div className="TitleLocation" style={{ padding: '4em 1em' }}>
+                            <Label for="Name"><h4>General Information</h4></Label>
                             <div className="nameOfResearcher" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }}>Name of the Researcher: </h6>
+                                
+                                <h6 className='Name' style={{ paddingRight: '1em' }}>Name of the Researcher: </h6>
                                 <Input type="text" name="nameOfResearcher" value={this.state.nameOfResearcher} onChange={this.onChange} />
                             </div>
                             <div className="projectTitle" style={styles.titleLocation}>
@@ -317,8 +319,10 @@ class Params extends Component {
 
                 </div>
 
+                <h4 style={{ textAlign: 'center' }}>Additional Information</h4>
                 {/* <ReactionScheme /> */}
                 <div className="textArea" style={styles.textArea}>
+                
                     <Form>
                         <FormGroup>
                             <Label for="chemicalScheme">Paste the complete, balanced chemical reaction scheme including ALL the by-products</Label>
@@ -485,7 +489,7 @@ const styles = {
     },
 
     textArea: {
-        paddingTop: '5em',
+        //paddingTop: '5em',
         display: 'flex',
         justifyContent: 'center'
     },
