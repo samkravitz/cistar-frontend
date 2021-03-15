@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/cistar-frontend/precache-manifest.c4494e6fc718aa0d03c8cb0e6740a410.js"
+  "/cistar-frontend/precache-manifest.fad52aef5d0bafa2b80bf15028001ddd.js"
 );
 
 self.addEventListener('message', (event) => {
