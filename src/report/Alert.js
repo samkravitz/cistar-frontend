@@ -142,19 +142,19 @@ const Alert = props => {
         }
 
         // valid final pressure
-        if (!isNaN(props.reactionInfo.adiabaticPressure)) {
-            for (let i = 0; i < props.numSideReactions; i++) {
-                if (props.sideReactions[i].pressureOnset === '')
-                    continue
+        // if (!isNaN(props.reactionInfo.adiabaticPressure)) {
+        //     for (let i = 0; i < props.numSideReactions; i++) {
+        //         if (props.sideReactions[i].pressureOnset === '')
+        //             continue
 
-                // pressure onset
-                if (!isNaN(Number(props.sideReactions[i].pressureOnset))) {
-                    if (Number(props.reactionInfo.adiabaticPressure) > Number(props.sideReactions[i].pressureOnset) ) {
-                        arr.push(<><span style={style.alert}>Final pressure exceeds side reaction {i + 1} pressure onset</span><br/></>)
-                    }
-                }
-            }
-        }
+        //         // pressure onset
+        //         if (!isNaN(Number(props.sideReactions[i].pressureOnset))) {
+        //             if (Number(props.reactionInfo.adiabaticPressure) > Number(props.sideReactions[i].pressureOnset) ) {
+        //                 arr.push(<><span style={style.alert}>Final pressure exceeds side reaction {i + 1} pressure onset</span><br/></>)
+        //             }
+        //         }
+        //     }
+        // }
 
         return arr
     }

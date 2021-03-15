@@ -182,8 +182,8 @@ class Params extends Component {
             <div className="Params" style={styles.main}>
                 <div className="ParamsFlex" style={styles.flexTop}>
                     <div className="TopWrapper">
-                        <div className="TitleLocation" style={{ padding: '4em 1em' }}>
-                            <Label for="Name"><h4>General Information</h4></Label>
+                        <div className="TitleLocation" style={{ paddingBottom: '2em' }}>
+                            <h4 style={{ textAlign: 'center', paddingBottom: '10px' }}>General Information</h4>
                             <div className="nameOfResearcher" style={styles.titleLocation}>
                                 
                                 <h6 className='Name' style={{ paddingRight: '1em' }}>Name of the Researcher: </h6>
@@ -221,7 +221,7 @@ class Params extends Component {
 
 
                     <div className="OperatingParams">
-                        <h4 style={{ textAlign: 'center' }}> Operating Parameters: </h4>
+                        <h4 style={{ textAlign: 'center' }}> Operating Parameters </h4>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
                             <div className="Params" style={styles.operatingParams}>
                                 <h6>
@@ -297,7 +297,7 @@ class Params extends Component {
                                 <h6 style={{ paddingTop: '1em' }}>Key Reactant quantity (moles)</h6>
                                 <Input type="text" name="keyReactantQuantity" onChange={this.handleChangeKeyReactantQuantity} value={this.props.keyReactantQuantity} />
                                 <h6
-                                    style={{ paddingTop: '1em', color: 'black' }}
+                                    style={{ paddingTop: '1em', color: '#c71e1e' }}
                                 >
                                     Cp (mix) (cal/g/°C)
                                     <span
