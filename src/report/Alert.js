@@ -193,7 +193,7 @@ const Alert = props => {
 
             { sideReactions.length !== 0 
             &&
-            <><br/><div>Diluent Alerts</div></>
+            <><br/><div>Process Alerts</div></>
             }
             {sideReactions}
             
