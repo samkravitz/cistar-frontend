@@ -5,7 +5,6 @@ import { Button } from 'reactstrap'
 import guide from '../images/RHEACT-USER-GUIDE.pdf'
 
 const UserGuide = () => {
-
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
 
@@ -24,36 +23,43 @@ const UserGuide = () => {
     }
 
     return (
-        <div className='UserGuide' style={{ paddingTop: '2em' }}>
-            <div className='ButtonBar' style={styles.buttonBar}>
-                <Button
-                    color='primary'
-                    onClick={back}>
-                    <i class="fas fa-chevron-left"></i>
-                </Button>
-                <p style={{ padding: '15px 15px 0px 15px', textAlign: 'center' }}>Page {pageNumber} of {numPages}</p>
-                <Button
-                    color='primary'
-                    onClick={forward}
-                >
-                    <i class="fas fa-chevron-right"></i>
-                </Button>
-            </div>
+        // <div className='UserGuide' style={{ paddingTop: '2em' }}>
+        //     <div className='ButtonBar' style={styles.buttonBar}>
+        //         <Button
+        //             color='primary'
+        //             onClick={back}>
+        //             <i className="fas fa-chevron-left"></i>
+        //         </Button>
+        //         <p style={{ padding: '15px 15px 0px 15px', textAlign: 'center' }}>Page {pageNumber} of {numPages}</p>
+        //         <Button
+        //             color='primary'
+        //             onClick={forward}
+        //         >
+        //             <i className="fas fa-chevron-right"></i>
+        //         </Button>
+        //     </div>
 
 
 
-            <div className='Document' style={styles.document}>
-                <Document
-                    file={guide}
-                    onLoadSuccess={onDocumentLoadSuccess}
-                >
-                    <Page
-                        pageNumber={pageNumber}
-                        scale={1.5}
-                    />
-                </Document>
-            </div>
-        </div >
+        //     <div className='Document' style={styles.document}>
+        //         <Document
+        //             file={guide}
+        //             onLoadSuccess={onDocumentLoadSuccess}
+        //         >
+        //             <Page
+        //                 pageNumber={pageNumber}
+        //                 scale={1.5}
+        //             />
+        //         </Document>
+        //     </div>
+        // </div >
+        <div className='userGuide' style={{ height: '100vh' }}>
+            <iframe
+                title="file"
+                style={{ width: '100%', height: '100%' }}
+                src={guide}
+            />
+        </div>
     )
 }
 

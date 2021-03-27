@@ -62,8 +62,10 @@ const Main = props => {
             }
 
             <div className='Survey' style={{ textAlign: 'center' }}>
-                Please help us improve this tool by taking this <a href='https://purdue.ca1.qualtrics.com/jfe/form/SV_9EMVzeLuuLq27rv'>survey</a>.
+                Please help us improve this tool by taking this <a href='https://docs.google.com/forms/d/e/1FAIpQLSetuP7QoIw6GYkwH9Ji7yP5WD4BWb85heafLaojoJ92zqXuvg/viewform?usp=sf_link'>survey</a>.
             </div>
+
+            {/* <a href='https://purdue.ca1.qualtrics.com/jfe/form/SV_9EMVzeLuuLq27rv'>survey</a>. */}
             
             {/* calculation status information modal */}
             <Modal

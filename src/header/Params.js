@@ -205,7 +205,7 @@ class Params extends Component {
                                 <h6 style={{ paddingRight: '1em' }} >Organization: </h6>
                                 <Input type="text" name="organization" value={this.state.organization} onChange={this.onChange} />
                             </div>
-                            <Button color="primary" onClick={this.saveReaction}>Save Reaction</Button>
+                            <Button className='rheact-btn' color="primary" onClick={this.saveReaction}>Save Reaction</Button>
                             <label className="customFileInput" style={styles.customFileInput}>
                                 <Input
                                     type="file"
