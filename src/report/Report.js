@@ -1,17 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'reactstrap'
-import html2canvas from 'html2canvas'
-import jsPDF from 'jspdf'
 import axios from 'axios'
 import server from '../server'
 import download from 'downloadjs'
-import { saveAs } from 'file-saver'
 import { store } from '../index'
 
-
-import { renderToStaticMarkup, renderToString } from 'react-dom/server'
-import styled, { ServerStyleSheet } from 'styled-components'
+import { renderToString } from 'react-dom/server'
 
 import Matrix from './Matrix'
 import HTable from './HTable'
