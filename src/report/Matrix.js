@@ -300,7 +300,7 @@ const Matrix = ({ matrix, matrixErrors }) => {
             <div className='Links' style={{ textAlign: 'center', padding: '35px 0' }}>
                 The following links can guide the PPE selection process:
                 {
-                    links.map(link => <><br/><a href={link}>{link}</a></>)
+                    links.map((link, i) => <React.Fragment key={i}><br/><a href={link}>{link}</a></React.Fragment>)
                 }
             </div>
 
