@@ -52,11 +52,9 @@ const Report = props => {
                             <Cameo       store={store} />
                         </div>
 
-                        const report = await axios.get(`${server}/save`, {
-                            params: {
-                                data: encodeURI(renderToString(component)),
-                            },
-                            responseType: 'blob'
+                        const report = await axios.post(`${server}/save`, { data: renderToString(component) }, {
+                            responseType: 'blob',
+                            crossOrigin: true,
                         })
 
                         download(new Blob([report.data]), 'report.pdf', 'application/pdf')
