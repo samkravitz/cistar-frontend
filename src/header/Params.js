@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import {
     Label,
     Input,
@@ -7,16 +7,12 @@ import {
     Form,
     Popover,
     PopoverBody,
-    Nav,
-    NavItem,
-    NavLink
 } from 'reactstrap'
 import { StyleSheet, css } from 'aphrodite'
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
 
 import SideReaction from './SideReaction'
-// import ReactionScheme from './ReactionScheme'
 
 import { save, load } from '../saveload'
 

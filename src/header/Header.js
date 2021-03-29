@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
     Nav,
     NavItem,
     NavLink
 } from 'reactstrap'
-import { StyleSheet, css } from 'aphrodite'
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
 

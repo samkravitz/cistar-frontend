@@ -3,9 +3,7 @@
  *
  * * - title, location, operating params, number of reactants/products/diluents, and all parsed information
  */
-
 import download from 'downloadjs'
-import SideReaction from './header/SideReaction'
 import { store } from './index'
 import Types from './redux/actions/types'
 

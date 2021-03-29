@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import guide from '../images/RHEACT-USER-GUIDE.pdf'
 
