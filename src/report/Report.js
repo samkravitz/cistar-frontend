@@ -3,6 +3,15 @@ import { connect } from 'react-redux'
 import { Button } from 'reactstrap'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import axios from 'axios'
+import server from '../server'
+import download from 'downloadjs'
+import { saveAs } from 'file-saver'
+import { store } from '../index'
+
+
+import { renderToStaticMarkup, renderToString } from 'react-dom/server'
+import styled, { ServerStyleSheet } from 'styled-components'
 
 import Matrix from './Matrix'
 import HTable from './HTable'
@@ -21,7 +30,8 @@ const styles = {
 
 const Report = props => {
     // if report has not been submitted yet return
-    if (! props.reportComplete) return null;
+    if (!props.reportComplete)
+        return null;
 
     return (
         <div className='Report' id='Report' style={styles.main}>
@@ -32,31 +42,36 @@ const Report = props => {
             <Matrix />
             <Cameo />
 
-            {/* <Button
+            <Button
                 color="primary"
-                onClick={() => {
-                    html2canvas(document.getElementById('Report')).then(canvas => {
-                            console.log(document.getElementById('#Report'))
-                            console.log(document.getElementById('Report'))
-                            console.log('document: ', document.body)
-                            console.log(canvas)
-                            console.log('hi')
-                            const pdf = new jsPDF()
-                            pdf.addImage(canvas.toDataURL(), 'JPEG', 0, 0)
-                            window.open(canvas.toDataURL())
-                            pdf.save('report.pdf')
-                    })
-                    // }
-                    // var pdf = new jsPDF('p','pt','a4');
+                style={{ margin: '2em 0' }}
+                onClick={async () => {
 
-                    // pdf.addHTML(document.body,function() {
-                    //     pdf.output('datauri');
-                    // });
+                    try {
+                        const component = <div className='Report' id='Report' style={styles.main}>
+                            <h2>Report</h2>
+                            <Calculation store={store} />
+                            <Alert       store={store} />
+                            <HTable      store={store} />
+                            <Matrix      store={store} />
+                            <Cameo       store={store} />
+                        </div>
 
+                        const report = await axios.get(`${server}/save`, {
+                            params: {
+                                data: encodeURI(renderToString(component)),
+                            },
+                            responseType: 'blob'
+                        })
+
+                        download(new Blob([report.data]), 'report.pdf', 'application/pdf')
+                    } catch (error) {
+                        alert('Unable to save report as PDF')
+                    }
                 }}
             >
                 Save Report
-            </Button> */}
+            </Button>
         </div>
     )
 }

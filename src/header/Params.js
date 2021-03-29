@@ -299,7 +299,7 @@ class Params extends Component {
                                 <h6
                                     style={{ paddingTop: '1em', color: '#c71e1e' }}
                                 >
-                                    Cp (mix) (cal/g/°C)
+                                    Cp (mix) (cal/g/&deg;C)
                                     <span
                                         id='cpMixInfo'
                                         className={css(infoIconStyles.operatingParams)}

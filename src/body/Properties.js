@@ -45,7 +45,7 @@ class Properties extends Component {
                 <h6 style={{ paddingTop: '10px' }}>CAS-No.</h6>
 
                 <h5 style={{ paddingTop: '10px' }}>Physical and Chemical Properties</h5>
-                <h6 style={{ paddingTop: '10px' }}>pH at 20°C (g/l)</h6>
+                <h6 style={{ paddingTop: '10px' }}>pH at 20&deg;C (g/l)</h6>
                 <h6 style={{ paddingTop: '10px' }}>Initial boiling point (&deg;C)</h6>
                 <h6 style={{ paddingTop: '10px' }}>Flash point (&deg;C)</h6>
                 <h6 style={{ paddingTop: '10px' }}>Upper explosion limit (% V)</h6>

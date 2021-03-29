@@ -39,6 +39,7 @@ export const calculate = operatingParams => {
         // cameo table
         try {
             const cameoTable = await getCameoTable(reactants, products, diluents)
+            //const cameoTable = { html_element: '', errors: []}
             dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable.html_element })
             dispatch({ type: Types.SET_CAMEO_ERRORS, payload: cameoTable.errors })
         } catch (error) {
