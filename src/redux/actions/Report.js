@@ -12,7 +12,25 @@ export const calculate = operatingParams => {
         const { reactants, products, diluents } = getState().compound
         const hNums = getHNums(reactants, products, diluents)
         dispatch({ type: Types.SET_HNUMS, payload: hNums })
-        
+
+        // cameo table
+        getCameoTable(reactants, products, diluents)
+            .then(response => {
+                //const cameoTable = { html_element: '', errors: []}
+                dispatch({ type: Types.SET_CAMEO_TABLE, payload: response.html_element })
+                dispatch({ type: Types.SET_CAMEO_ERRORS, payload: response.errors })
+            })
+            .catch(error => {
+                const message = error.response ? error.response.data.error : error
+                dispatch({ type: Types.SET_MATRIX_ERRORS, payload: message })
+            })
+            .finally(() => {
+                //dispatch that calculations are complete and report is generated
+                dispatch({ type: Types.CALCULATION_COMPLETE })
+                dispatch({ type: Types.REPORT_COMPLETE })
+                dispatch({ type: Types.CAMEO_TABLE_COMPLETE })
+            })
+
         // matrix
         try {
             const matrix = await getMatrix(hNums)
@@ -34,23 +52,6 @@ export const calculate = operatingParams => {
             dispatch({ type: Types.SET_CALCULATION_ERRORS, payload: message })
         } finally {
             dispatch({ type: Types.CALCULATION_BLOCK_COMPLETE })
-        }
-
-        // cameo table
-        try {
-            const cameoTable = await getCameoTable(reactants, products, diluents)
-            //const cameoTable = { html_element: '', errors: []}
-            dispatch({ type: Types.SET_CAMEO_TABLE, payload: cameoTable.html_element })
-            dispatch({ type: Types.SET_CAMEO_ERRORS, payload: cameoTable.errors })
-        } catch (error) {
-            // Error 😨
-            const message = error.response ? error.response.data.error : error
-            dispatch({ type: Types.SET_CAMEO_ERRORS, payload: [message] })
-        } finally {
-            // dispatch that calculations are complete and report is generated
-            dispatch({ type: Types.CALCULATION_COMPLETE })
-            dispatch({ type: Types.REPORT_COMPLETE })
-            dispatch({ type: Types.CAMEO_TABLE_COMPLETE })
         }
     }
 }
@@ -77,18 +78,36 @@ const getMatrix = async hNums => {
         return data
     })
 
-    const matrix = await Promise.all(promises)
-    return matrix
-    
+    return await Promise.all(promises)
 }
 
 const getCameoTable = async (reactants, products, diluents) => {
+    // strip irrelevant data to reduce amount sent to server
+    const reactantsStripped = reactants.map(reactant => {
+        return {
+            productName: reactant.productName,
+            casNo: reactant.casNo
+        }
+    })
+
+    const productsStripped = products.map(product => {
+        return {
+            productName: product.productName,
+            casNo: product.casNo
+        }
+    })
+
+    const diluentsStripped = diluents.map(diluent => {
+        return {
+            productName: diluent.productName,
+            casNo: diluent.casNo
+        }
+    })
+
     const response = await axios.post(`${server}/cameo`, {
-        reactants: reactants,
-        products: products,
-        diluents: diluents,
-    }, {
-        crossOrigin: true
+        reactants: reactantsStripped,
+        products: productsStripped,
+        diluents: diluentsStripped,
     })
 
     return response.data
