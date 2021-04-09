@@ -3,6 +3,7 @@ import Types from './types'
 // cpMix will either be false or the value of cp mix in the operating params
 export const toggleModal = () => {
     return async (dispatch, getState) => {
+        console.log('toggle modal')
         // modal is open, so close it
         if (getState().status.modalOpen) {
             dispatch({ type: Types.CLOSE_MODAL })

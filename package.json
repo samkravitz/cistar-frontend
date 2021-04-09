@@ -41,7 +41,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://www.samkravitz.github.io/cistar-frontend",
+  "homepage": "https://engineering.purdue.edu/CISTAR/frontend-test",
   "devDependencies": {
     "gh-pages": "^2.2.0"
   }

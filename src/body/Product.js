@@ -27,16 +27,18 @@ const Product = props => {
         <div className="Product" style={styles.main}>
             <h4 sm="4">Product {number}</h4>
 
-            <label className="customFileInput" style={styles.customFileInput}>
-                <Input
-                    type="file"
-                    name="file"
-                    encType="multipart/form-data"
-                    style={{ display: 'none' }}
-                    onChange={handleFileSelect}
-                />
-                    Upload SDS
-            </label>
+            <div className='uploadSDSButton'>
+                <label className="customFileInput" style={styles.customFileInput}>
+                    <Input
+                        type="file"
+                        name="file"
+                        encType="multipart/form-data"
+                        style={{ display: 'none' }}
+                        onChange={handleFileSelect}
+                    />
+                        Upload SDS
+                </label>
+            </div>
             <Input type="text" name="productName" value={properties.productName} onChange={handleChange} />
             <Input type="text" name="molWtFraction" value={properties.molWtFraction} onChange={handleChange} />
             <Input type="text" name="molWt" value={properties.molWt} onChange={handleChange} />
