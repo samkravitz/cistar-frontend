@@ -1,12 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'reactstrap'
-import axios from 'axios'
-import server from '../server'
-import download from 'downloadjs'
-import { store } from '../index'
-
-import { renderToString } from 'react-dom/server'
 
 import Matrix from './Matrix'
 import HTable from './HTable'
@@ -40,28 +34,7 @@ const Report = props => {
             <Button
                 color="primary"
                 style={{ margin: '2em 0' }}
-                onClick={async () => {
-
-                    try {
-                        const component = <div className='Report' id='Report' style={styles.main}>
-                            <h2>Report</h2>
-                            <Calculation store={store} />
-                            <Alert       store={store} />
-                            <HTable      store={store} />
-                            <Matrix      store={store} />
-                            <Cameo       store={store} />
-                        </div>
-
-                        const report = await axios.post(`${server}/save`, { data: renderToString(component) }, {
-                            responseType: 'blob',
-                            crossOrigin: true,
-                        })
-
-                        download(new Blob([report.data]), 'report.pdf', 'application/pdf')
-                    } catch (error) {
-                        alert('Unable to save report as PDF')
-                    }
-                }}
+                onClick={props.saveAsPdf}
             >
                 Save Report
             </Button>

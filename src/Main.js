@@ -29,7 +29,7 @@ const Main = props => {
             <>
                 <Params />
                 <Body />
-                <Report />
+                <Report saveAsPdf={props.saveAsPdf}/>
             </>
             }
 
