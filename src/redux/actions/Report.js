@@ -86,7 +86,9 @@ const getCameoTable = async (reactants, products, diluents) => {
     const response = await axios.post(`${server}/cameo`, {
         reactants: reactants,
         products: products,
-        diluents: diluents
+        diluents: diluents,
+    }, {
+        crossOrigin: true
     })
 
     return response.data
