@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import actions from './redux/actions'
+import actions from '../redux/actions'
 import { Button } from 'reactstrap'
 
 const Modal = props => {

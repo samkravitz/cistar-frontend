@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import Modal from './Modal'
+import Modal from './components/Modal'
 import actions from './redux/actions'
 
 import Header from './header/Header'

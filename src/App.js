@@ -1,12 +1,13 @@
 import React from 'react'
-import { jsPDF } from "jspdf";
-import html2canvas from 'html2canvas';
+import { jsPDF } from "jspdf"
+import html2canvas from 'html2canvas'
 
 import Main from './Main'
 
 const App = () => {
 
     const saveAsPdf = () => {
+        // scroll x & y http://html2canvas.hertzen.com/configuration/
         window.scrollTo(0, 0)
         //https://stackoverflow.com/questions/24069124/how-to-save-a-image-in-multiple-pages-of-pdf-using-jspdf
         const app = document.getElementById('App')

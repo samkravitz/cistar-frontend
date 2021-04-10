@@ -12,6 +12,7 @@ import { StyleSheet, css } from 'aphrodite'
 import { connect } from 'react-redux'
 import actions from '../redux/actions'
 
+import TextArea from '../components/TextArea'
 import SideReaction from './SideReaction'
 
 import { save, load } from '../saveload'
@@ -137,7 +138,6 @@ const Params = props => {
                     </div>
                 </div>
 
-
                 <div className="OperatingParams">
                     <h4 style={{ textAlign: 'center' }}> Operating Parameters </h4>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -236,10 +236,16 @@ const Params = props => {
 
             </div>
 
-            {/* <h4 style={{ textAlign: 'center' }}>Additional Information</h4>
+            <h4 style={{ textAlign: 'center' }}>Additional Information</h4>
+            <TextArea 
+                    setValue={setDescription}
+                    value={description}
+                    label={'Paste the complete, balanced chemical reaction scheme including ALL the by-products'}
+                />
             {/* <ReactionScheme /> */}
-            {/* <div className="textArea" style={styles.textArea}>
-                <Form>
+            <div className="textArea" style={styles.textArea}>
+                
+                {/* <Form>
                     <FormGroup>
                         <Label for="chemicalScheme">Paste the complete, balanced chemical reaction scheme including ALL the by-products</Label>
                         <Input type="textarea" name="chemicalScheme" id="chemicalScheme" onChange={this.onChange} value={this.state.chemicalScheme} />
@@ -256,8 +262,8 @@ const Params = props => {
 
                         }} />
                     </FormGroup>
-                </Form>
-            </div> */}
+                </Form> */}
+            </div>
 
             {/* # of Side Reactions known*/}
 
@@ -412,9 +418,8 @@ const styles = {
     },
 
     textArea: {
-        //paddingTop: '5em',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     nav: {
