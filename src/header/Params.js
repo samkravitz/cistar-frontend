@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import {
     Label,
     Input,
@@ -16,121 +16,46 @@ import SideReaction from './SideReaction'
 
 import { save, load } from '../saveload'
 
-class Params extends Component {
+const Params = props => {
 
-    state = {
-        nameOfResearcher: '',
-        projectTitle: '',
-        principalInvestigator: '',
-        labLocation: '',
-        organization: '',
+    // General information
+    const [nameOfResearcher, setNameOfResearcher] = useState('')
+    const [projectTitle, setProjectTitle] = useState('')
+    const [principalInvestigator, setPrincipalInvestigator] = useState('')
+    const [labLocation, setLabLocation] = useState('')
+    const [organization, setOrganization] = useState('')
 
-        // textarea state
-        chemicalScheme: '',
-        description: '',
+    // additional information
+    const [chemicalScheme, setChemicalScheme] = useState('')
+    const [description, setDescription] = useState('')
 
-        // information icon popover
-        temperatureInfoOpen: false,
-        pressureInfoOpen: false,
-        stateInfoOpen: false,
-        heatOfReactionInfoOpen: false,
-        cpMixInfoOpen: false,
-        numCompoundsInfoOpen: false,
+    // information icon popover
+    const [temperatureInfoOpen, setTemperatureInfoOpen] = useState(false)
+    const [pressureInfoOpen, setPressureInfoOpen] = useState(false)
+    const [stateInfoOpen, setStateInfoOpen] = useState(false)
+    const [heatOfReactionInfoOpen, setHeatOfReactionInfoOpen] = useState(false)
+    const [cpMixInfoOpen, setCpMixInfoOpen] = useState(false)
+    const [numCompoundsInfoOpen, setNumCompoundsInfoOpen] = useState(false)
+
+    const saveReaction = () => {
+        save({
+            nameOfResearcher,
+            projectTitle,
+            principalInvestigator,
+            labLocation,
+            organization,
+            chemicalScheme,
+            description,
+            temperatureInfoOpen,
+            pressureInfoOpen,
+            stateInfoOpen,
+            heatOfReactionInfoOpen,
+            cpMixInfoOpen,
+            numCompoundsInfoOpen,
+        })
     }
 
-    // sets the state from one of the non-operating param inputs as they change
-    onChange = event => {
-        this.setState({ [event.target.name]: event.target.value })
-    }
-
-    handleChangeR = event => {
-        const numReactants = parseInt(event.target.value)
-        this.props.setNumReactants(numReactants)
-    }
-
-    handleChangeP = event => {
-        const numProducts = parseInt(event.target.value)
-        this.props.setNumProducts(numProducts)
-    }
-
-    handleChangeD = event => {
-        const numDiluents = parseInt(event.target.value)
-        this.props.setNumDiluents(numDiluents)
-    }
-
-    handleChangeTemperature = event => {
-        this.props.setTemperature(event.target.value)
-    }
-
-    handleChangePressure = event => {
-        this.props.setPressure(event.target.value)
-    }
-
-    handleChangePhysicalState = event => {
-        this.props.setPhysicalState(event.target.value)
-    }
-
-    handleChangeHeatOfReaction = event => {
-        this.props.setHeatOfReaction(event.target.value)
-    }
-
-    handleChangeCp = event => {
-        this.props.setCp(event.target.value)
-    }
-
-    handleChangeReactionClass = event => {
-        this.props.setReactionClass(event.target.value)
-    }
-
-    handleChangeReactionScale = event => {
-        this.props.setReactionScale(event.target.value)
-    }
-
-    handleChangeKeyReactantQuantity = event => {
-        this.props.setKeyReactantQuantity(event.target.value)
-    }
-
-    toggleTemperatureInfo = event => {
-        this.setState(prevState => ({
-            temperatureInfoOpen: !prevState.temperatureInfoOpen,
-        }))
-    }
-
-    togglePressureInfo = event => {
-        this.setState(prevState => ({
-            pressureInfoOpen: !prevState.pressureInfoOpen,
-        }))
-    }
-
-    toggleStateInfo = event => {
-        this.setState(prevState => ({
-            stateInfoOpen: !prevState.stateInfoOpen,
-        }))
-    }
-
-    toggleHeatOfReactionInfo = event => {
-        this.setState(prevState => ({
-            heatOfReactionInfoOpen: !prevState.heatOfReactionInfoOpen,
-        }))
-    }
-
-    toggleCpMixInfo = event => {
-        this.setState(prevState => ({
-            cpMixInfoOpen: !prevState.cpMixInfoOpen,
-        }))
-    }
-
-    toggleCompoundInfo = event => {
-        this.setState(prevState => ({
-            compoundInfoOpen: !prevState.compoundInfoOpen,
-        }))
-    }
-
-    saveReaction = () => {
-        save(this.state)
-    }
-
-    loadReaction = event => {
+    const loadReaction = event => {
         const reader = new FileReader()
 
         // hacky way to get the return value from this load callback.
@@ -139,28 +64,26 @@ class Params extends Component {
         reader.onload = (file => {
             const data = load(file)
 
-            this.setState({
-                nameOfResearcher: data.nameOfResearcher,
-                projectTitle: data.projectTitle,
-                principalInvestigator: data.principalInvestigator,
-                labLocation: data.labLocation,
-                organization: data.organization,
-                chemicalScheme: data.chemicalScheme,
-                description: data.description,
-            })
+            setNameOfResearcher(data.nameOfResearcher)
+            setProjectTitle(data.projectTitle)
+            setPrincipalInvestigator(data.principalInvestigator)
+            setLabLocation(data.labLocation)
+            setOrganization(data.organization)
+            setChemicalScheme(data.chemicalScheme)
+            setDescription(data.description)
         })
 
         reader.readAsText(event.target.files[0])
     }
 
-    setSideReactions = event => {
-        this.props.setNumSideReactions(event.target.value)
+    const setSideReactions = event => {
+        props.setNumSideReactions(event.target.value)
     }
 
-    renderSideReactions = () => {
+    const renderSideReactions = () => {
         const arr = []
 
-        for (let i = 0; i < this.props.numSideReactions; i++) {
+        for (let i = 0; i < props.numSideReactions; i++) {
             arr.push(
                 <SideReaction
                     key={i}
@@ -173,257 +96,261 @@ class Params extends Component {
         return arr
     }
 
-    render() {
-        return (
-            <div className="Params" style={styles.main}>
-                <div className="ParamsFlex" style={styles.flexTop}>
-                    <div className="TopWrapper">
-                        <div className="TitleLocation" style={{ paddingBottom: '2em' }}>
-                            <h4 style={{ textAlign: 'center', paddingBottom: '10px' }}>General Information</h4>
-                            <div className="nameOfResearcher" style={styles.titleLocation}>
-                                
-                                <h6 className='Name' style={{ paddingRight: '1em' }}>Name of the Researcher: </h6>
-                                <Input type="text" name="nameOfResearcher" value={this.state.nameOfResearcher} onChange={this.onChange} />
-                            </div>
-                            <div className="projectTitle" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }}>Project Title: </h6>
-                                <Input type="text" name="projectTitle" value={this.state.projectTitle} onChange={this.onChange} />
-                            </div>
-                            <div className="principalInvestigator" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }}>Principal Investigator: </h6>
-                                <Input type="text" name="principalInvestigator" value={this.state.principalInvestigator} onChange={this.onChange} />
-                            </div>
-                            <div className="labLocation" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }}>Lab Location: </h6>
-                                <Input type="text" name="labLocation" value={this.state.labLocation} onChange={this.onChange} />
-                            </div>
-                            <div className="organization" style={styles.titleLocation}>
-                                <h6 style={{ paddingRight: '1em' }} >Organization: </h6>
-                                <Input type="text" name="organization" value={this.state.organization} onChange={this.onChange} />
-                            </div>
-                            <Button className='rheact-btn' color="primary" onClick={this.saveReaction}>Save Reaction</Button>
-                            <label className="customFileInput" style={styles.customFileInput}>
-                                <Input
-                                    type="file"
-                                    name="file"
-                                    encType="multipart/form-data"
-                                    style={{ display: 'none' }}
-                                    onChange={this.loadReaction}
-                                />
+    return (
+        <div className="Params" style={styles.main}>
+            <div className="ParamsFlex" style={styles.flexTop}>
+                <div className="TopWrapper">
+                    <div className="TitleLocation" style={{ paddingBottom: '2em' }}>
+                        <h4 style={{ textAlign: 'center', paddingBottom: '10px' }}>General Information</h4>
+                        <div className="nameOfResearcher" style={styles.titleLocation}>
+
+                            <h6 className='Name' style={{ paddingRight: '1em' }}>Name of the Researcher: </h6>
+                            <Input type="text" name="nameOfResearcher" value={nameOfResearcher} onChange={e => setNameOfResearcher(e.target.value)} />
+                        </div>
+                        <div className="projectTitle" style={styles.titleLocation}>
+                            <h6 style={{ paddingRight: '1em' }}>Project Title: </h6>
+                            <Input type="text" name="projectTitle" value={projectTitle} onChange={e => setProjectTitle(e.target.value)} />
+                        </div>
+                        <div className="principalInvestigator" style={styles.titleLocation}>
+                            <h6 style={{ paddingRight: '1em' }}>Principal Investigator: </h6>
+                            <Input type="text" name="principalInvestigator" value={principalInvestigator} onChange={e => setPrincipalInvestigator(e.target.value)} />
+                        </div>
+                        <div className="labLocation" style={styles.titleLocation}>
+                            <h6 style={{ paddingRight: '1em' }}>Lab Location: </h6>
+                            <Input type="text" name="labLocation" value={labLocation} onChange={e => setLabLocation(e.target.value)} />
+                        </div>
+                        <div className="organization" style={styles.titleLocation}>
+                            <h6 style={{ paddingRight: '1em' }} >Organization: </h6>
+                            <Input type="text" name="organization" value={organization} onChange={e => setOrganization(e.target.value)} />
+                        </div>
+                        <Button className='rheact-btn' color="primary" onClick={saveReaction}>Save Reaction</Button>
+                        <label className="customFileInput" style={styles.customFileInput}>
+                            <Input
+                                type="file"
+                                name="file"
+                                encType="multipart/form-data"
+                                style={{ display: 'none' }}
+                                onChange={loadReaction}
+                            />
                                 Load Reaction
                             </label>
+                    </div>
+                </div>
+
+
+                <div className="OperatingParams">
+                    <h4 style={{ textAlign: 'center' }}> Operating Parameters </h4>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <div className="Params" style={styles.operatingParams}>
+                            <h6>
+                                Temperature (&deg;C)
+                                    <span
+                                    id='temperatureInfo'
+                                    className={css(infoIconStyles.operatingParams)}
+                                    onMouseOver={() => setTemperatureInfoOpen(true)}
+                                    onMouseOut={() => setTemperatureInfoOpen(false)}
+                                >
+                                    <i className="far fa-question-circle fa-1x"></i>
+                                </span>
+                            </h6>
+                            <Input type="text" name="temperature" onChange={e => props.setTemperature(e.target.value)} value={props.temperature} />
+
+                            <h6
+                                style={{ paddingTop: '1em' }}
+                            >
+                                Pressure (bar)
+                                    <span
+                                    id='pressureInfo'
+                                    className={css(infoIconStyles.operatingParams)}
+                                    onMouseOver={() => setPressureInfoOpen(true)}
+                                    onMouseOut={() => setPressureInfoOpen(false)}
+                                >
+                                    <i className="far fa-question-circle fa-1x"></i>
+                                </span>
+                            </h6>
+                            <Input type="text" name="pressure" onChange={e => props.setPressure(e.target.value)} value={props.pressure} />
+
+
+                            <h6
+                                style={{ paddingTop: '1em' }}
+                            >
+                                State
+                                    <span
+                                    id='stateInfo'
+                                    className={css(infoIconStyles.operatingParams)}
+                                    onMouseOver={() => setStateInfoOpen(true)}
+                                    onMouseOut={() => setStateInfoOpen(false)}
+                                >
+                                    <i className="far fa-question-circle fa-1x"></i>
+                                </span>
+                            </h6>
+                            <Input type="select" name="st" id="exampleSelect" onChange={e => props.setPhysicalState(e.target.value)} value={props.physicalState}>
+                                <option>Liquid</option>
+                                <option>Gas</option>
+                            </Input>
+
+
+                            <h6
+                                style={{ paddingTop: '1em' }}
+                            >
+                                Heat of Reaction (cal / g)
+                                    <span
+                                    id='heatOfReactionInfo'
+                                    className={css(infoIconStyles.operatingParams)}
+                                    onMouseOver={() => setHeatOfReactionInfoOpen(true)}
+                                    onMouseOut={() => setHeatOfReactionInfoOpen(false)}
+                                >
+                                    <i className="far fa-question-circle fa-1x"></i>
+                                </span>
+                            </h6>
+                            <Input type="text" name="heatOfReaction" onChange={e => props.setHeatOfReaction(e.target.value)} value={props.heatOfReaction} />
+                        </div>
+
+                        <div style={{ ...styles.operatingParams, color: 'black' }}>
+                            <h6>Reaction Class</h6>
+                            <Input type="text" name="reactionClass" onChange={e => props.setReactionClass(e.target.value)} value={props.reactionClass} />
+                            <h6 style={{ paddingTop: '1em' }}>Reaction Scale (kg)</h6>
+                            <Input type="text" name="reactionScale" onChange={e => props.setReactionScale(e.target.value)} value={props.reactionScale} />
+                            <h6 style={{ paddingTop: '1em' }}>Key Reactant quantity (moles)</h6>
+                            <Input type="text" name="keyReactantQuantity" onChange={e => props.setKeyReactantQuantity(e.target.value)} value={props.keyReactantQuantity} />
+                            <h6
+                                style={{ paddingTop: '1em', color: '#c71e1e' }}
+                            >
+                                Cp (mix) (cal/g/&deg;C)
+                                    <span
+                                    id='cpMixInfo'
+                                    className={css(infoIconStyles.operatingParams)}
+                                    onMouseOver={() => setCpMixInfoOpen(true)}
+                                    onMouseOut={() => setCpMixInfoOpen(false)}
+                                >
+                                    <i className="far fa-question-circle fa-1x"></i>
+                                </span>
+                            </h6>
+                            <Input type="text" name="cp" onChange={e => props.setCp(e.target.value)} value={props.cp} />
                         </div>
                     </div>
 
-
-                    <div className="OperatingParams">
-                        <h4 style={{ textAlign: 'center' }}> Operating Parameters </h4>
-                        <div style={{ display: 'flex', justifyContent: 'center' }}>
-                            <div className="Params" style={styles.operatingParams}>
-                                <h6>
-                                    Temperature (&deg;C)
-                                    <span
-                                        id='temperatureInfo'
-                                        className={css(infoIconStyles.operatingParams)}
-                                        onMouseOver={this.toggleTemperatureInfo}
-                                        onMouseOut={this.toggleTemperatureInfo}
-                                    >
-                                        <i className="far fa-question-circle fa-1x"></i>
-                                    </span>
-                                </h6>
-                                <Input type="text" name="temperature" onChange={this.handleChangeTemperature} value={this.props.temperature} />
-
-
-                                <h6
-                                    style={{ paddingTop: '1em' }}
-                                >
-                                    Pressure (bar)
-                                    <span
-                                        id='pressureInfo'
-                                        className={css(infoIconStyles.operatingParams)}
-                                        onMouseOver={this.togglePressureInfo}
-                                        onMouseOut={this.togglePressureInfo}
-                                    >
-                                        <i className="far fa-question-circle fa-1x"></i>
-                                    </span>
-                                </h6>
-                                <Input type="text" name="pressure" onChange={this.handleChangePressure} value={this.props.pressure} />
-
-
-                                <h6
-                                    style={{ paddingTop: '1em' }}
-                                >
-                                    State
-                                    <span
-                                        id='stateInfo'
-                                        className={css(infoIconStyles.operatingParams)}
-                                        onMouseOver={this.toggleStateInfo}
-                                        onMouseOut={this.toggleStateInfo}
-                                    >
-                                        <i className="far fa-question-circle fa-1x"></i>
-                                    </span>
-                                </h6>
-                                <Input type="select" name="st" id="exampleSelect" onChange={this.handleChangePhysicalState} value={this.props.physicalState}>
-                                    <option>Liquid</option>
-                                    <option>Gas</option>
-                                </Input>
-
-
-                                <h6
-                                    style={{ paddingTop: '1em' }}
-                                >
-                                    Heat of Reaction (cal / g)
-                                    <span
-                                        id='heatOfReactionInfo'
-                                        className={css(infoIconStyles.operatingParams)}
-                                        onMouseOver={this.toggleHeatOfReactionInfo}
-                                        onMouseOut={this.toggleHeatOfReactionInfo}
-                                    >
-                                        <i className="far fa-question-circle fa-1x"></i>
-                                    </span>
-                                </h6>
-                                <Input type="text" name="heatOfReaction" onChange={this.handleChangeHeatOfReaction} value={this.props.heatOfReaction} />
-                            </div>
-
-                            <div style={{ ...styles.operatingParams, color: 'black' }}>
-                                <h6>Reaction Class</h6>
-                                <Input type="text" name="reactionClass" onChange={this.handleChangeReactionClass} value={this.props.reactionClass} />
-                                <h6 style={{ paddingTop: '1em' }}>Reaction Scale (kg)</h6>
-                                <Input type="text" name="reactionScale" onChange={this.handleChangeReactionScale} value={this.props.reactionScale} />
-                                <h6 style={{ paddingTop: '1em' }}>Key Reactant quantity (moles)</h6>
-                                <Input type="text" name="keyReactantQuantity" onChange={this.handleChangeKeyReactantQuantity} value={this.props.keyReactantQuantity} />
-                                <h6
-                                    style={{ paddingTop: '1em', color: '#c71e1e' }}
-                                >
-                                    Cp (mix) (cal/g/&deg;C)
-                                    <span
-                                        id='cpMixInfo'
-                                        className={css(infoIconStyles.operatingParams)}
-                                        onMouseOver={this.toggleCpMixInfo}
-                                        onMouseOut={this.toggleCpMixInfo}
-                                    >
-                                        <i className="far fa-question-circle fa-1x"></i>
-                                    </span>
-                                </h6>
-                                <Input type="text" name="cp" onChange={this.handleChangeCp} value={this.props.cp} />
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
                 </div>
 
-                <h4 style={{ textAlign: 'center' }}>Additional Information</h4>
-                {/* <ReactionScheme /> */}
-                <div className="textArea" style={styles.textArea}>
-                
-                    <Form>
-                        <FormGroup>
-                            <Label for="chemicalScheme">Paste the complete, balanced chemical reaction scheme including ALL the by-products</Label>
-                            <Input type="textarea" name="chemicalScheme" id="chemicalScheme" onChange={this.onChange} value={this.state.chemicalScheme} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="description">Provide a brief description of scope of the experiment highlighting key unit operations, sequences, hazards, etc.</Label>
-                            <Input type="textarea" name="description" id="description" onChange={this.onChange} value={this.state.description} />
-                        </FormGroup>
-                    </Form>
-                </div>
 
-                {/* # of Side Reactions known*/}
-                
-                <Label for="SideReactions">Number of known side reactions</Label>
-                <div className="SideReactions" style={{  display: 'flex', justifyContent: 'center' }}>
-                    <Input
-                        type="select"
-                        name="SideReactions"
-                        id="SideReactions"
-                        onChange={this.setSideReactions}
-                        value={Number(this.props.numSideReactions)}
-                    >
-                        <option>0</option>
+
+            </div>
+
+            {/* <h4 style={{ textAlign: 'center' }}>Additional Information</h4>
+            {/* <ReactionScheme /> */}
+            {/* <div className="textArea" style={styles.textArea}>
+                <Form>
+                    <FormGroup>
+                        <Label for="chemicalScheme">Paste the complete, balanced chemical reaction scheme including ALL the by-products</Label>
+                        <Input type="textarea" name="chemicalScheme" id="chemicalScheme" onChange={this.onChange} value={this.state.chemicalScheme} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="description">Provide a brief description of scope of the experiment highlighting key unit operations, sequences, hazards, etc.</Label>
+                        <Input style={{ height: `${this.scrollHeight}px` }} type="textarea" name="description" id="description" onChange={e => {
+                            //console.log('hi')
+                            this.onChange(e);
+                            //e.target.style.height = 'inherit';
+                            //e.target.style.height = `${e.target.scrollHeight}px`; 
+
+                        }} value={this.state.description} onKeyDown={e => {
+
+                        }} />
+                    </FormGroup>
+                </Form>
+            </div> */}
+
+            {/* # of Side Reactions known*/}
+
+            <Label for="SideReactions">Number of known side reactions</Label>
+            <div className="SideReactions" style={{ display: 'flex', justifyContent: 'center' }}>
+                <Input
+                    type="select"
+                    name="SideReactions"
+                    id="SideReactions"
+                    onChange={e => props.setNumSideReactions(e.target.value)}
+                    value={Number(props.numSideReactions)}
+                >
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </Input>
+            </div>
+
+            { renderSideReactions()}
+
+            {/* <SideReaction num={parseInt(this.state.sideReactions)} /> */}
+
+            <div className="ReactantsProductsDiluents" style={styles.rpd}>
+                <span style={styles.rpd.element}>
+                    <Label for="Reactants">
+                        Reactants
+                            <span
+                            id='compoundInfo'
+                            className={css(infoIconStyles.operatingParams)}
+                            onMouseOver={e => setNumCompoundsInfoOpen(true)}
+                            onMouseOut={e => setNumCompoundsInfoOpen(false)}
+                        >
+                            <i className="far fa-question-circle fa-1x"></i>
+                        </span>
+                    </Label>
+                    <Input type="select" name="Reactants" id="Reactants" onChange={e => props.setNumReactants(parseInt(e.target.value))} value={props.numReactants}>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
                     </Input>
-                </div>
+                </span>
 
-                { this.renderSideReactions() }
-                
-                {/* <SideReaction num={parseInt(this.state.sideReactions)} /> */}
+                <span style={styles.rpd.element}>
+                    <Label for="Products">Products</Label>
+                    <Input type="select" name="Products" id="Products" onChange={e => props.setNumProducts(parseInt(e.target.value))} value={props.numProducts}>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </Input>
+                </span>
 
-                <div className="ReactantsProductsDiluents" style={styles.rpd}>
-                    <span style={styles.rpd.element}>
-                        <Label for="Reactants">
-                            Reactants
-                            <span
-                                id='compoundInfo'
-                                className={css(infoIconStyles.operatingParams)}
-                                onMouseOver={this.toggleCompoundInfo}
-                                onMouseOut={this.toggleCompoundInfo}
-                            >
-                                <i className="far fa-question-circle fa-1x"></i>
-                            </span>
-                        </Label>
-                        <Input type="select" name="Reactants" id="Reactants" onChange={this.handleChangeR} value={this.props.numReactants}>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </Input>
-                    </span>  
+                <span style={styles.rpd.element}>
+                    <Label for="Diluents">Diluents</Label>
+                    <Input type="select" name="Diluents" id="Diluents" onChange={e => props.setNumDiluents(parseInt(e.target.value))} value={props.numDiluents}>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                    </Input>
+                </span>
+            </div>
+            <span style={{ color: '#c71e1e' }}>* Inputs in red are required user inputs *</span> */}
 
-                    <span style={styles.rpd.element}>
-                        <Label for="Products">Products</Label>
-                        <Input type="select" name="Products" id="Products" onChange={this.handleChangeP} value={this.props.numProducts}>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </Input>
-                    </span>
+            {/* Popovers */}
+            <Popover placement="right" isOpen={temperatureInfoOpen} target="temperatureInfo">
+                <PopoverBody>Enter reaction system temperature (in &deg;C)</PopoverBody>
+            </Popover>
 
-                    <span style={styles.rpd.element}>
-                        <Label for="Diluents">Diluents</Label>
-                        <Input type="select" name="Diluents" id="Diluents" onChange={this.handleChangeD} value={this.props.numDiluents}>
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                        </Input>
-                    </span>
-                </div>
-                <span style={{ color: '#c71e1e' }}>* Inputs in red are required user inputs *</span>
+            <Popover placement="right" isOpen={pressureInfoOpen} target="pressureInfo">
+                <PopoverBody> Enter reaction system pressure (in bar) </PopoverBody>
+            </Popover>
 
-                {/* Popovers */}
-                <Popover placement="right" isOpen={this.state.temperatureInfoOpen} target="temperatureInfo">
-                    <PopoverBody>Enter reaction system temperature (in &deg;C)</PopoverBody>
-                </Popover>
+            <Popover placement="right" isOpen={stateInfoOpen} target="stateInfo">
+                <PopoverBody> Enter the physical state of the system (Liquid/Gas) </PopoverBody>
+            </Popover>
 
-                <Popover placement="right" isOpen={this.state.pressureInfoOpen} target="pressureInfo">
-                    <PopoverBody> Enter reaction system pressure (in bar) </PopoverBody>
-                </Popover>
+            <Popover placement="right" isOpen={heatOfReactionInfoOpen} target="heatOfReactionInfo">
+                <PopoverBody> Enter the heat of the reaction for this system (in cal/g) </PopoverBody>
+            </Popover>
 
-                <Popover placement="right" isOpen={this.state.stateInfoOpen} target="stateInfo">
-                    <PopoverBody> Enter the physical state of the system (Liquid/Gas) </PopoverBody>
-                </Popover>
+            <Popover placement="right" isOpen={cpMixInfoOpen} target="cpMixInfo">
+                <PopoverBody> Enter the specific heat capacity of the reaction mixture (in cal/g/&deg;C) at the operating temperature. Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components. </PopoverBody>
+            </Popover>
 
-                <Popover placement="right" isOpen={this.state.heatOfReactionInfoOpen} target="heatOfReactionInfo">
-                    <PopoverBody> Enter the heat of the reaction for this system (in cal/g) </PopoverBody>
-                </Popover>
+            <Popover placement="right" isOpen={numCompoundsInfoOpen} target="compoundInfo">
+                <PopoverBody> Enter the number of reactants, products and diluents involved in the system </PopoverBody>
+            </Popover>
+        </div >
 
-                <Popover placement="right" isOpen={this.state.cpMixInfoOpen} target="cpMixInfo">
-                    <PopoverBody> Enter the specific heat capacity of the reaction mixture (in cal/g/&deg;C) at the operating temperature. Enter a value here or input the individual weight fractions and specific heat capacities for the reaction components. </PopoverBody>
-                </Popover>
-
-                <Popover placement="right" isOpen={this.state.compoundInfoOpen} target="compoundInfo">
-                    <PopoverBody> Enter the number of reactants, products and diluents involved in the system </PopoverBody>
-                </Popover>
-            </div >
-
-        )
-    }
+    )
 }
 
 const styles = {
@@ -530,7 +457,6 @@ const mapDispatchToProps = {
     setNumReactants: actions.compound.setNumReactants,
     setNumProducts: actions.compound.setNumProducts,
     setNumDiluents: actions.compound.setNumDiluents,
-    
 
     setTemperature: actions.operatingParams.setTemperature,
     setPressure: actions.operatingParams.setPressure,
